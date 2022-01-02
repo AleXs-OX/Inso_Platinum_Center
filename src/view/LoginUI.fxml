@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,12 +11,6 @@
 
 <AnchorPane prefHeight="309.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginUI">
    <children>
-      <TextField id="textFieldUser" layoutX="239.0" layoutY="152.0" />
-      <Button id="buttonLogin" fx:id="buttonLogin" layoutX="212.0" layoutY="258.0" mnemonicParsing="false" text="Login">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font></Button>
-      <TextField id="textFieldPass" layoutX="239.0" layoutY="202.0" />
       <Text layoutX="115.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
          <font>
             <Font size="18.0" />
@@ -26,10 +21,17 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="117.0" fitWidth="136.0" layoutX="171.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="imageLogo" fitHeight="86.0" fitWidth="142.0" layoutX="169.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="35.0">
          <image>
             <Image url="@../../images/platinum_center_logo.png" />
          </image>
       </ImageView>
+      <TextField id="textFieldUser" fx:id="textFiledUser" layoutX="232.0" layoutY="151.0" />
+      <PasswordField fx:id="textFieldPass" layoutX="232.0" layoutY="201.0" />
+      <Button id="buttonLogin" fx:id="buttonLogin" layoutX="205.0" layoutY="252.0" mnemonicParsing="false" text="Login">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

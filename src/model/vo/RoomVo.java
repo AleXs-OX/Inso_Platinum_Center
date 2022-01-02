@@ -10,13 +10,8 @@ public class RoomVo {
     private Time apertura;
     private Time cierre;
     
-    public RoomVo(int idSala, String nombreSala, int aforo, Time apertura, Time cierre) {
+    public RoomVo() {
 		super();
-		this.idSala = idSala;
-		this.nombreSala = nombreSala;
-		this.aforo = aforo;
-		this.apertura = apertura;
-		this.cierre = cierre;
 	}
     
 	public int getIdSala() {

@@ -12,14 +12,8 @@ public class ActivityVo {
 	private String descripcion;
 	private Time duracion;
 	
-	public ActivityVo(String nombreActividad, Date fecha, int idEmpleado, int idSala, String descripcion, Time duracion) {
+	public ActivityVo() {
 		super();
-		this.nombreActividad = nombreActividad;
-		this.fecha = fecha;
-		this.idEmpleado = idEmpleado;
-		this.idSala = idSala;
-		this.descripcion = descripcion;
-		this.duracion = duracion;
 	}
 	
 	public String getNombreActividad() {

@@ -2,27 +2,34 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="234.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginUI">
+<AnchorPane prefHeight="309.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginUI">
    <children>
-      <TextField layoutX="196.0" layoutY="54.0" />
-      <Button layoutX="167.0" layoutY="172.0" mnemonicParsing="false" text="Login">
+      <TextField id="textFieldUser" layoutX="239.0" layoutY="152.0" />
+      <Button id="buttonLogin" fx:id="buttonLogin" layoutX="212.0" layoutY="258.0" mnemonicParsing="false" text="Login">
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Button>
-      <TextField layoutX="196.0" layoutY="104.0" />
-      <Text layoutX="72.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
+      <TextField id="textFieldPass" layoutX="239.0" layoutY="202.0" />
+      <Text layoutX="115.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="72.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" wrappingWidth="100.80000839233401">
+      <Text layoutX="115.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" wrappingWidth="100.80000839233401">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <ImageView fitHeight="117.0" fitWidth="136.0" layoutX="171.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/platinum_center_logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

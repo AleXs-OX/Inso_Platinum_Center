@@ -58,4 +58,12 @@ public class RoomVo {
 	public void setCierre(String cierre) {
 		this.cierre = Time.valueOf(cierre);
 	}
+
+	public void setApertura(Time apertura) {
+		this.apertura = apertura;
+	}
+
+	public void setCierre(Time cierre) {
+		this.cierre = cierre;
+	}
 }

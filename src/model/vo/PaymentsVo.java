@@ -3,7 +3,7 @@ package model.vo;
 import java.sql.Date;
 
 /*
- * Representación de la tabla "Pagos", la cual abarca las cuotas pagadas por los clientes.
+ * Representacion de la tabla "Pagos", la cual abarca las cuotas pagadas por los clientes.
  */
 public class PaymentsVo {
 	

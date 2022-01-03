@@ -1,7 +1,7 @@
 package model.vo;
 
 /*
- * Representación de la tabla MaterialesEjercicios de la BBDD
+ * Representacion de la tabla MaterialesEjercicios de la BBDD
  */
 public class MaterialsExercisesVo {
 	

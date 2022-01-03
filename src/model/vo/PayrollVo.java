@@ -3,7 +3,7 @@ package model.vo;
 import java.sql.Date;
 
 /*
- * Representación de la tabla "Cobros" de la BBDD
+ * Representacion de la tabla "Cobros" de la BBDD
  */
 public class PayrollVo {
 	

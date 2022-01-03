@@ -1,7 +1,7 @@
 package model.vo;
 
 /*
- * Representación de la tabla AlimentosDietas de la BBDD
+ * Representacion de la tabla AlimentosDietas de la BBDD
  */
 public class FoodsDietsVo {
 	

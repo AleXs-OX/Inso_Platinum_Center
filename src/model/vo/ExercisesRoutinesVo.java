@@ -1,7 +1,7 @@
 package model.vo;
 
 /*
- * Representación de la tabla EjerciciosRutinas de la BBDD
+ * Representacion de la tabla EjerciciosRutinas de la BBDD
  */
 public class ExercisesRoutinesVo {
 	

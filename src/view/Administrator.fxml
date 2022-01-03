@@ -4,7 +4,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginUI">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdministratorUI">
    <children>
       <Text layoutX="228.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="hola" wrappingWidth="156.13671875" />
    </children>

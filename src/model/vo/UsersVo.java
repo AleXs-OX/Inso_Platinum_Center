@@ -67,5 +67,9 @@ public class UsersVo {
 	public void setTipoDeUsuario(TipoDeUsuario tipo) {
 		this.tipoDeUsuario = tipo.ordinal();
 	}
+
+	public void setTipoDeUsuario(int tipo) {
+		this.tipoDeUsuario = tipo;
+	}
 	
 }

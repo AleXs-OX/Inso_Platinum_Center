@@ -1,4 +1,7 @@
 package model.dao;
 
-public class ClientDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class ClientDao extends SQL_Controller_Conexion {
+
 }

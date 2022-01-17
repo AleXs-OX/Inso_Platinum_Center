@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="buttonGuardar" layoutX="404.0" layoutY="283.0" mnemonicParsing="false" text="Guardar" />
-      <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUEVA DIETA" textAlignment="CENTER" wrappingWidth="210.41015625">
+      <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" DIETA" textAlignment="CENTER" wrappingWidth="210.41015625">
          <font>
             <Font size="18.0" />
          </font>

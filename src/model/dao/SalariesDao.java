@@ -33,29 +33,6 @@ public class SalariesDao extends SQL_Controller_Conexion{
 		}
 	}
 	
-	public void actualizar(SalariesVo salario) throws Exception{
-		try {
-			this.openConnection();
-			
-			PreparedStatement st = this.getConnection().prepareStatement("UPDATE SALARIOS SET "
-					+ "nombreSalario=?, cantidad=?, descripcion? WHERE idSalario=?");
-			st.setString(1, salario.getNombreSalario());
-			st.setFloat(2, salario.getCantidad());
-			st.setString(3, salario.getDescripcion());
-			st.setInt(4, salario.getIdSalario());
-			
-			st.executeUpdate();
-		}catch(Exception e) {
-			throw new Exception("Error actualizando salario: " + e.getMessage());
-		}finally {
-			try {
-				this.closeConnection();
-			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión actualizando salario: " + e.getMessage());
-			}
-		}
-	}
-	
 	public List<SalariesVo> listar() throws Exception{
 		ArrayList<SalariesVo> listaSalarios = new ArrayList<SalariesVo>();
 		

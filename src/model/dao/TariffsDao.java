@@ -33,29 +33,6 @@ public class TariffsDao extends SQL_Controller_Conexion{
 		}
 	}
 	
-	public void actualizar(TariffsVo tarifa) throws Exception{
-		try {
-			this.openConnection();
-			
-			PreparedStatement st = this.getConnection().prepareStatement("UPDATE TARIFAS SET "
-					+ "nombreTarifa=?, importe=?, descripcion=? WHERE idTarifa=?");
-			st.setString(1, tarifa.getNombreTarifa());
-			st.setFloat(2, tarifa.getImporte());
-			st.setString(3, tarifa.getDescripcion());
-			st.setInt(4, tarifa.getIdTarifa());
-			
-			st.executeUpdate();
-		}catch(Exception e) {
-			throw new Exception("Error al actualizar tarifa: " + e.getMessage());
-		}finally {
-			try {
-				this.closeConnection();
-			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión al actualizar tarifa: " + e.getMessage());
-			}
-		}
-	}
-	
 	public List<TariffsVo> listar() throws Exception{
 		ArrayList<TariffsVo> listaTarifas = new ArrayList<TariffsVo>();
 		

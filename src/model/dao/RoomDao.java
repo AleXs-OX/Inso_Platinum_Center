@@ -1,4 +1,6 @@
 package model.dao;
 
-public class RoomDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class RoomDao extends SQL_Controller_Conexion{
 }

@@ -1,4 +1,6 @@
 package model.dao;
 
-public class PayrollDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class PayrollDao extends SQL_Controller_Conexion{
 }

@@ -1,4 +1,6 @@
 package model.dao;
 
-public class AdministratorDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class AdministratorDao extends SQL_Controller_Conexion{
 }

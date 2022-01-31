@@ -43,11 +43,11 @@ public class RoutineVo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
+
 	public int getCalorias() {
 		return calorias;
 	}
-	
+
 	public void setCalorias(int calorias) {
 		this.calorias = calorias;
 	}

@@ -1,5 +1,7 @@
 package model.dao;
 
-public class FoodDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class FoodDao extends SQL_Controller_Conexion{
 
 }

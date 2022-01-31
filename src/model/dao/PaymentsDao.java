@@ -1,5 +1,7 @@
 package model.dao;
 
-public class PaymentsDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class PaymentsDao extends SQL_Controller_Conexion{
 
 }

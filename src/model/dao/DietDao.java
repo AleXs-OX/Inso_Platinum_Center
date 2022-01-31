@@ -1,4 +1,6 @@
 package model.dao;
 
-public class DietDao {
+import model.connection.SQL_Controller_Conexion;
+
+public class DietDao extends SQL_Controller_Conexion{
 }

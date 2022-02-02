@@ -101,6 +101,7 @@ public class UsersDao extends SQL_Controller_Conexion {
 
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios (idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoDeUsuario)" +
                     "VALUES (?,?,?,?,?,?)");
+
             st.setInt(1, user.getIdUsuario());
             st.setString(2, user.getNombreCompleto());
             st.setString(3, user.getNombreUsuario());

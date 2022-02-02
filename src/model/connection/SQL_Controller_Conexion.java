@@ -21,7 +21,7 @@ public class SQL_Controller_Conexion {
     	this.user = "root";
     	this.password = "ordenador123";
     	this.databaseName = "platinumcenter";
-		this.driverName = "com.mysql.jdbc.Driver";
+		this.driverName = "com.mysql.cj.jdbc.Driver";
     }
     
     public void openConnection() throws Exception{

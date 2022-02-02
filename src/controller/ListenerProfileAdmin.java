@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,11 @@ public class ListenerProfileAdmin {
 
     @FXML
     private Button buttonShowClients;
+    private Button buttonAddUser;
+    private Button buttonEditUser;
+    private Button buttonDeleteUser;
+
+    @FXML
     private Stage primaryStage;
 
 
@@ -35,4 +41,5 @@ public class ListenerProfileAdmin {
         //System.out.println("PRUEBAAAAAAAAAAAaa");
 
     }
+
 }

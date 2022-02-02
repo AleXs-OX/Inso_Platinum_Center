@@ -32,7 +32,7 @@ public class ListenerProfileAdmin {
         primaryStage = (Stage) this.buttonShowClients.getScene().getWindow();
         primaryStage.getScene().setRoot(newRoot);
 
-        System.out.println("PRUEBAAAAAAAAAAAaa");
+        //System.out.println("PRUEBAAAAAAAAAAAaa");
 
     }
 }

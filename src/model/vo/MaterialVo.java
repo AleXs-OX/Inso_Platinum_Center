@@ -2,7 +2,7 @@ package model.vo;
 
 import java.sql.Date;
 
-public class Material_OwnGymVo {
+public class MaterialVo {
 	
 	private int idMaterial;
 	private String nombreMaterial;
@@ -10,7 +10,7 @@ public class Material_OwnGymVo {
 	private Date fechaBaja;
 	private int idSala;
 	
-	public Material_OwnGymVo() {
+	public MaterialVo() {
 		super();
 	}
 

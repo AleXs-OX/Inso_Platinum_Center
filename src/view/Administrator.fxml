@@ -5,15 +5,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerProfileAdmin">
    <children>
-      <Button fx:id="buttonGuardar" layoutX="384.0" layoutY="273.0" mnemonicParsing="false" text="Guardar" />
       <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ADMINISTRADOR" textAlignment="CENTER" wrappingWidth="210.41015625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="59.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" wrappingWidth="84.845703125">
+      <Text layoutX="59.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes" wrappingWidth="84.845703125">
          <font>
             <Font size="18.0" />
          </font>
@@ -23,7 +22,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="58.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empleado">
+      <Text layoutX="58.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Empleados">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,7 +37,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button fx:id="buttonCliente" layoutX="165.0" layoutY="92.0" mnemonicParsing="false" text="Acceder" />
+      <Button fx:id="buttonShowClients" layoutX="165.0" layoutY="92.0" mnemonicParsing="false" text="Acceder" />
       <Button fx:id="buttonEmpleado" layoutX="165.0" layoutY="136.0" mnemonicParsing="false" text="Acceder" />
       <Button fx:id="buttonActividades" layoutX="165.0" layoutY="178.0" mnemonicParsing="false" text="Acceder" />
       <Button fx:id="buttonDietas" layoutX="165.0" layoutY="217.0" mnemonicParsing="false" text="Acceder" />

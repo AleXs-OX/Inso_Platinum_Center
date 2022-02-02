@@ -3,12 +3,12 @@ package model.vo;
 import java.sql.Date;
 
 /*
- * Representacion de la tabla "Cobros" de la BBDD
+ * Representacion de la tabla "Pagos" de la BBDD
  */
 public class PayrollVo {
 	
 	private int idEmpleado;
-	private Date fechaCobro;
+	private Date fechaPago;
 	private int idSalario;
 		
 	public PayrollVo() {
@@ -23,16 +23,16 @@ public class PayrollVo {
 		this.idEmpleado = idEmpleado;
 	}
 	
-	public Date getFechaCobro() {
-		return fechaCobro;
+	public Date getFechaPago() {
+		return fechaPago;
 	}
 	
-	public void setFechaCobro(Date fechaCobro) {
-		this.fechaCobro = fechaCobro;
+	public void setFechaPago(Date fechaPago) {
+		this.fechaPago = fechaPago;
 	}
 	
-	public void setFechaCobro(String fechaCobro) {
-		this.fechaCobro = Date.valueOf(fechaCobro);
+	public void setFechaPago(String fechaPago) {
+		this.fechaPago = Date.valueOf(fechaPago);
 	}
 	
 	public int getIdSalario() {

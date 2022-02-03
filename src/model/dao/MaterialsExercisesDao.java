@@ -10,7 +10,7 @@ import model.vo.ExerciseVo;
 import model.vo.MaterialVo;
 
 public class MaterialsExercisesDao extends SQL_Controller_Conexion{
-	public void añadir(MaterialVo material, ExerciseVo ejercicio) throws Exception{
+	public void anadir(MaterialVo material, ExerciseVo ejercicio) throws Exception{
 		try {
 			this.openConnection();
 			
@@ -21,12 +21,12 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 			
 			st.executeUpdate();
 		}catch(Exception e) {
-			throw new Exception("Error al añadir un material a ejercicio: " + e.getMessage());
+			throw new Exception("Error al aï¿½adir un material a ejercicio: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch (Exception e) {
-				throw new Exception("Error al cerrar la conexión añadiendo un material a ejercicio: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexiï¿½n aï¿½adiendo un material a ejercicio: " + e.getMessage());
 			}
 		}
 	}
@@ -47,7 +47,7 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error cerrando la conexión al eliminar un material de ejercicio: " + e.getMessage());
+				throw new Exception("Error cerrando la conexiï¿½n al eliminar un material de ejercicio: " + e.getMessage());
 			}
 		}
 	}
@@ -79,7 +79,7 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error cerrando conexión al listar materiales de un ejercicio: " + e.getMessage());
+				throw new Exception("Error cerrando conexiï¿½n al listar materiales de un ejercicio: " + e.getMessage());
 			}
 		}
 		

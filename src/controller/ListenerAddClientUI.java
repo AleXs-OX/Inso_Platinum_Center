@@ -25,8 +25,6 @@ public class ListenerAddClientUI {
     @FXML
     private TextField textField_ID_Cliente;
     @FXML
-    private TextField textFieldTarifa;
-    @FXML
     private TextField textFieldPass;
 
     @FXML
@@ -51,7 +49,7 @@ public class ListenerAddClientUI {
         //Transformacion a int
          int idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
          String nombreUsuario = textFieldNombre.getText();
-         String nombreCompleto = nombreUsuario.concat(" ").concat(nombreUsuario) ;
+         String nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
          String contrasena = textFieldPass.getText();
          //Date fechaNacimiento = parse(textFieldFecha.toString());
 

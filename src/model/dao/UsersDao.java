@@ -96,29 +96,31 @@ public class UsersDao extends SQL_Controller_Conexion {
     }
 
     public void registrar(UsersVo user) throws Exception{
+
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios (idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoDeUsuario)" +
+            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios (idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoUsuario)" +
                     "VALUES (?,?,?,?,?,?)");
 
             st.setInt(1, user.getIdUsuario());
             st.setString(2, user.getNombreCompleto());
             st.setString(3, user.getNombreUsuario());
-            st.setString(3, user.getContrasena());
-            st.setDate(4, user.getFechaNacimiento());
-            st.setInt(5, user.getTipoDeUsuario());
+            st.setString(4, user.getContrasena());
+            st.setDate(5, user.getFechaNacimiento());
+            st.setInt(6, user.getTipoDeUsuario());
 
-            System.out.println("Nuevo usuario añadido con exito");
+            st.execute();
+            System.out.println("Nuevo usuario insertado con exito");
 
         }
         catch(Exception e){
-            throw new Exception("Registrar Usuario "+e.getMessage());
+            throw new Exception("Error al registrar Usuario. Codigo de error -> "+e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion registrar usuario: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion registrar usuario: [Codigo de error -> " + e.getMessage());
             }
         }
     }

@@ -27,7 +27,7 @@ public class SQL_Controller_Conexion {
     public void openConnection() throws Exception{
     	if(this.url == "" || this.user == "" || this.password == "" || this.driverName == "") {
 
-    		throw new Exception("Error al abrir la conexión: uno o mas campos estan vacios");
+    		throw new Exception("Error al abrir la conexion: uno o mas campos estan vacios");
 
     	}else {
 

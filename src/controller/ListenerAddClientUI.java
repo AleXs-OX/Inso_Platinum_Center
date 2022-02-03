@@ -54,12 +54,14 @@ public class ListenerAddClientUI {
          //Date fechaNacimiento = parse(textFieldFecha.toString());
 
         /* - - Transformacion DatePicker en String y despues en Date - - */
-        String date = textFieldFecha.toString();
+        //String date = textFieldFecha.toString();
 
         /* - - Crea objeto para transformarlo en DateJavaUtil - - */
-        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+        //SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
         /* - - Transformacion DateJavaUtil en DateJavaSQL - - */
-        java.sql.Date fechaNacimiento = new java.sql.Date (formatter1.parse(date).getTime());
+        //java.sql.Date fechaNacimiento = new java.sql.Date (formatter1.parse(date).getTime());
+
+        java.sql.Date fechaNacimiento = new java.sql.Date(1999/10/16);
 
 
         /* - - Tipos de usuario - -*/

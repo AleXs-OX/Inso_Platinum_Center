@@ -21,12 +21,12 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 			
 			st.executeUpdate();
 		}catch(Exception e) {
-			throw new Exception("Error al a�adir un material a ejercicio: " + e.getMessage());
+			throw new Exception("Error al anadir un material a ejercicio: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch (Exception e) {
-				throw new Exception("Error al cerrar la conexi�n a�adiendo un material a ejercicio: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexion anadiendo un material a ejercicio: " + e.getMessage());
 			}
 		}
 	}
@@ -79,7 +79,7 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error cerrando conexi�n al listar materiales de un ejercicio: " + e.getMessage());
+				throw new Exception("Error cerrando conexion al listar materiales de un ejercicio: " + e.getMessage());
 			}
 		}
 		

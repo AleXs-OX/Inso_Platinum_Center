@@ -46,14 +46,20 @@ public class ListenerAddClientUI {
          String nombreUsuario = textFieldNombre.getText();
          String nombreCompleto = nombreUsuario.concat(" ").concat(nombreUsuario) ;
          String contrasena = textFieldPass.getText();
-         //Date fechaNacimiento = textFieldFecha.to;
+         Date fechaNacimiento = textFieldFecha.to;
          int tipoDeUsuario;
 
-
-        /* 1º Crear objeto usersDAO*/
+        /*Crea objeto userDao*/
         UsersDao userDao = new UsersDao();
-        UsersVo userVo = new UsersVo();
 
+        /* - - Tipos de usuario - -*/
+        /* 1 - Administrador */
+        /* 2 - Empleado */
+        /* 3 - Cliente*/
+        /**/
+        UsersVo userVo = new UsersVo(idUsuario,nombreCompleto,nombreUsuario,contrasena,fechaNacimiento,3);
+
+        /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
         userDao.registrar(userVo);
 
 

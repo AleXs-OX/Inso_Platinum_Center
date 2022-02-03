@@ -8,9 +8,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddClientUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddClientUI">
    <children>
-      <Button fx:id="buttonGuardar" layoutX="388.0" layoutY="271.0" mnemonicParsing="false" text="Guardar" />
+      <Button fx:id="buttonGuardar" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" text="Guardar" />
       <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE" textAlignment="CENTER" wrappingWidth="210.41015625">
          <font>
             <Font size="18.0" />
@@ -26,12 +26,12 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="76.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta">
+      <Text layoutX="76.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacim">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <DatePicker fx:id="datePickerFechaAlta" layoutX="229.0" layoutY="149.0" />
+      <DatePicker fx:id="textFieldFecha" layoutX="229.0" layoutY="149.0" />
       <Text layoutX="76.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID cliente ">
          <font>
             <Font size="18.0" />
@@ -39,12 +39,18 @@
       </Text>
       <TextField fx:id="textFieldNombre" layoutX="229.0" layoutY="63.0" />
       <TextField fx:id="textFieldApellidos" layoutX="229.0" layoutY="106.0" />
-      <TextField fx:id="texteFieldIdCliente" layoutX="229.0" layoutY="189.0" />
-      <ChoiceBox layoutX="229.0" layoutY="232.0" prefWidth="150.0" />
-      <Text layoutX="76.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarifa">
+      <TextField fx:id="textField_ID_Cliente" layoutX="229.0" layoutY="189.0" />
+      <ChoiceBox fx:id="choiceBoxTarifas" layoutX="231.0" layoutY="265.0" prefWidth="150.0" />
+      <Text layoutX="78.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarifa">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <Text layoutX="74.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textFieldPass" layoutX="229.0" layoutY="225.0" />
    </children>
 </AnchorPane>

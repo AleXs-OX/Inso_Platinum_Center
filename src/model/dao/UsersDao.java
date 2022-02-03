@@ -108,6 +108,9 @@ public class UsersDao extends SQL_Controller_Conexion {
             st.setString(3, user.getContrasena());
             st.setDate(4, user.getFechaNacimiento());
             st.setInt(5, user.getTipoDeUsuario());
+
+            System.out.println("Nuevo usuario añadido con exito");
+
         }
         catch(Exception e){
             throw new Exception("Registrar Usuario "+e.getMessage());

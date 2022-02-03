@@ -11,15 +11,22 @@ import model.dao.UsersDao;
 import model.vo.UsersVo;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 public class ListenerAddClientUI {
 
     @FXML
     private TextField textFieldNombre;
+    @FXML
     private TextField textFieldApellidos;
+    @FXML
     private DatePicker textFieldFecha;
+    @FXML
     private TextField textField_ID_Cliente;
+    @FXML
     private TextField textFieldTarifa;
+    @FXML
     private TextField textFieldPass;
 
     @FXML
@@ -46,26 +53,30 @@ public class ListenerAddClientUI {
          String nombreUsuario = textFieldNombre.getText();
          String nombreCompleto = nombreUsuario.concat(" ").concat(nombreUsuario) ;
          String contrasena = textFieldPass.getText();
-         Date fechaNacimiento = textFieldFecha.to;
-         int tipoDeUsuario;
+         //Date fechaNacimiento = parse(textFieldFecha.toString());
 
-        /*Crea objeto userDao*/
-        UsersDao userDao = new UsersDao();
+        /* - - Transformacion DatePicker en String y despues en Date - - */
+        String date = textFieldFecha.toString();
+
+        /* - - Crea objeto para transformarlo en DateJavaUtil - - */
+        SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
+        /* - - Transformacion DateJavaUtil en DateJavaSQL - - */
+        java.sql.Date fechaNacimiento = new java.sql.Date (formatter1.parse(date).getTime());
+
 
         /* - - Tipos de usuario - -*/
         /* 1 - Administrador */
         /* 2 - Empleado */
         /* 3 - Cliente*/
         /**/
-        UsersVo userVo = new UsersVo(idUsuario,nombreCompleto,nombreUsuario,contrasena,fechaNacimiento,3);
+        int tipoDeUsuario = 3; // Tipo usuario cliente.
 
+        /*Crea objeto userDao*/
+        UsersDao userDao = new UsersDao();
+        UsersVo userVo = new UsersVo(idUsuario,nombreCompleto,nombreUsuario,contrasena,fechaNacimiento,tipoDeUsuario);
         /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
         userDao.registrar(userVo);
 
-
-
-        /* 2º Alli se conecta a la base de tados con extends de conectionDB*/
-        /* 3º Se usa de modelo DAO su verion en VO*/
     }
     public void compruebaDatos(){
 

@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="386.0" prefWidth="567.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddClientUI">
    <children>
-      <Button fx:id="buttonGuardar" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" text="Guardar" />
+      <Button fx:id="buttonGuardar" layoutX="229.0" layoutY="313.0" mnemonicParsing="false" onAction="#buttonCreateClient" text="Guardar" />
       <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CLIENTE" textAlignment="CENTER" wrappingWidth="210.41015625">
          <font>
             <Font size="18.0" />

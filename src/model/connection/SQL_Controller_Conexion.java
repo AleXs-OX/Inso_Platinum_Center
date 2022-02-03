@@ -34,6 +34,7 @@ public class SQL_Controller_Conexion {
     		try {
     			Class.forName(this.driverName);
     			this.connection = DriverManager.getConnection(url, user, password);
+				System.out.println("Conexion exitosa a la base de datos");
 
     		}catch(Exception e) {
     			throw new Exception("Error al abrir la conexion: " + e.getMessage());

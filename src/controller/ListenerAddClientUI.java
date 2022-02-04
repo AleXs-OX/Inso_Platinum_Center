@@ -51,6 +51,7 @@ public class ListenerAddClientUI {
          String nombreUsuario = textFieldNombre.getText();
          String nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
          String contrasena = textFieldPass.getText();
+
          //Date fechaNacimiento = parse(textFieldFecha.toString());
 
         /* - - Transformacion DatePicker en String y despues en Date - - */

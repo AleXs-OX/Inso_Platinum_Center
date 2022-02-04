@@ -14,6 +14,8 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
+import static java.sql.Date.valueOf;
+
 public class ListenerAddClientUI {
 
     @FXML
@@ -21,11 +23,11 @@ public class ListenerAddClientUI {
     @FXML
     private TextField textFieldApellidos;
     @FXML
-    private TextField textFieldFecha;
-    @FXML
     private TextField textField_ID_Cliente;
     @FXML
     private TextField textFieldPass;
+    @FXML
+    private DatePicker datePicker;
 
     @FXML
     private ChoiceBox<String> choiceBoxTarifas;
@@ -33,6 +35,7 @@ public class ListenerAddClientUI {
     public void initialize(){
 
         this.anadeTarifas();
+        //datePicker.setDisable(true);
 
     }
 
@@ -46,32 +49,20 @@ public class ListenerAddClientUI {
 
         this.compruebaDatos();
 
-        //Transformacion a int
          int idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
          String nombreUsuario = textFieldNombre.getText();
          String nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
          String contrasena = textFieldPass.getText();
-         //java.sql.Date fechaNacimiento = Date.valueOf(textFieldFecha.toString());
-        String fecha = textFieldFecha.getText();
 
-         //Date fechaNacimiento = parse(textFieldFecha.toString());
-
-        /* - - Transformacion DatePicker en String y despues en Date - - */
-        //String date = textFieldFecha.toString();
-
-        /* - - Crea objeto para transformarlo en DateJavaUtil - - */
-        //SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy");
-        /* - - Transformacion DateJavaUtil en DateJavaSQL - - */
-        //java.sql.Date fechaNacimiento = new java.sql.Date (formatter1.parse(date).getTime());
-
-        java.sql.Date fechaNacimiento = new java.sql.Date(1999/10/16);
+        java.sql.Date fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
 
 
-        /* - - Tipos de usuario - -*/
-        /* 1 - Administrador */
-        /* 2 - Empleado */
-        /* 3 - Cliente*/
-        /**/
+                                    /* - - Tipos de usuario - -*/
+                                    /* 1 - Administrador */
+                                    /* 2 - Empleado */
+                                    /* 3 - Cliente*/
+                                    /**/
+
         int tipoDeUsuario = 3; // Tipo usuario cliente.
 
         /*Crea objeto userDao*/

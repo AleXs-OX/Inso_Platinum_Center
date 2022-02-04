@@ -21,7 +21,7 @@ public class ListenerAddClientUI {
     @FXML
     private TextField textFieldApellidos;
     @FXML
-    private DatePicker textFieldFecha;
+    private TextField textFieldFecha;
     @FXML
     private TextField textField_ID_Cliente;
     @FXML
@@ -51,6 +51,8 @@ public class ListenerAddClientUI {
          String nombreUsuario = textFieldNombre.getText();
          String nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
          String contrasena = textFieldPass.getText();
+         //java.sql.Date fechaNacimiento = Date.valueOf(textFieldFecha.toString());
+        String fecha = textFieldFecha.getText();
 
          //Date fechaNacimiento = parse(textFieldFecha.toString());
 

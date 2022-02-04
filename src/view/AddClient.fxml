@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -31,7 +30,6 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <DatePicker fx:id="textFieldFecha" layoutX="229.0" layoutY="149.0" />
       <Text layoutX="76.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID cliente ">
          <font>
             <Font size="18.0" />
@@ -52,5 +50,6 @@
          </font>
       </Text>
       <TextField fx:id="textFieldPass" layoutX="229.0" layoutY="225.0" />
+      <TextField fx:id="textFieldFecha" layoutX="229.0" layoutY="146.0" />
    </children>
 </AnchorPane>

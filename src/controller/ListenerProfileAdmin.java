@@ -51,12 +51,6 @@ public class ListenerProfileAdmin {
 
         primaryStage.close();
 
-
-
-
-
-        //System.out.println("PRUEBAAAAAAAAAAAaa");
-
     }
 
 }

@@ -10,7 +10,7 @@ import model.dao.UsersDao;
 import model.vo.UsersVo;
 
 
-public class ListenerAddClientUI {
+public class ListenerAddClientUI extends ListenerClientsUI{
 
     @FXML
     private TextField textFieldNombre;
@@ -30,7 +30,6 @@ public class ListenerAddClientUI {
 
     private Stage primaryStage;
 
-
     @FXML
     private ChoiceBox<String> choiceBoxTarifas;
 
@@ -45,7 +44,6 @@ public class ListenerAddClientUI {
 
         this.anadeTarifas();
         datePicker.setEditable(false);
-
     }
 
     public void anadeTarifas(){
@@ -53,47 +51,70 @@ public class ListenerAddClientUI {
         choiceBoxTarifas.setItems(lista_Tarifas);
         this.choiceBoxTarifas.setValue("Seleccionar");
 
-
     }
     public void buttonCreateClientMethod(ActionEvent event) throws Exception {
 
-        this.compruebaDatos();
+        if(this.compruebaDatos()) {
 
-        this.idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
-        this.nombreUsuario = textFieldNombre.getText();
-        this.nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
-        this.contrasena = textFieldPass.getText();
-        this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
+            this.idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
+            this.nombreUsuario = textFieldNombre.getText();
+            this.nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText());
+            this.contrasena = textFieldPass.getText();
+            this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
 
-                                    /* - - Tipos de usuario - -*/
-                                    /* 1 - Administrador */
-                                    /* 2 - Empleado */
-                                    /* 3 - Cliente*/
-                                    /**/
+            /* - - Tipos de usuario - -*/
+            /* 1 - Administrador */
+            /* 2 - Empleado */
+            /* 3 - Cliente*/
+            /**/
 
-        int tipoDeUsuario = 3; // Tipo usuario cliente.
+            int tipoDeUsuario = 3; // Tipo usuario cliente.
 
-        /*Crea objeto userDao*/
-        UsersDao userDao = new UsersDao();
-        UsersVo userVo = new UsersVo(idUsuario,nombreCompleto,nombreUsuario,contrasena,fechaNacimiento,tipoDeUsuario);
-        /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
-        userDao.registrar(userVo);
+            /*Crea objeto userDao*/
+            UsersDao userDao = new UsersDao();
+            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoDeUsuario);
+            /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
+            userDao.registrar(userVo);
 
-        this.resetEspaciosBlanco();
-        this.mensajeCreacionExitoso();
+            this.resetEspaciosBlanco();
+            this.mensajeCreacionExitoso();
 
-    }
-    public void buttonCancelMethod(ActionEvent event){
-
-        this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
-        this.primaryStage.close();
-    }
-    private void compruebaDatos(){
-
-        /*Falta añadir ventana emergente*/
-        if(textField_ID_Cliente.getText() == null|| this.nombreUsuario == null|| this.nombreCompleto == null|| this.contrasena == null|| datePicker.getValue() == null){
-
+            /*Recarga la tabla de nuevo para que el usuario creado sea visible*/
+            /*Usa extends de ListenerClientsUI*/
+            this.closeWindow();
         }
+
+    }
+    public void buttonCancelMethod(ActionEvent event) throws Exception {
+
+        this.closeWindow();
+    }
+
+    private Boolean compruebaDatos(){
+
+        if(textField_ID_Cliente.getText() == null|| this.textFieldNombre.getText() == null|| this.textFieldApellidos.getText() == null
+                || this.textFieldPass.getText() == null || this.choiceBoxTarifas.getValue() == null){
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Datos incorrectos");
+            alert.setHeaderText(null);
+            alert.setContentText("Algun campo introducido es incorrecto o esta vacio\n");
+            alert.showAndWait();
+            return false;
+
+        }else{
+
+            if(datePicker.getValue() == null){
+                Alert alert2 = new Alert(Alert.AlertType.WARNING);
+                alert2.setTitle("Fecha incorrecta");
+                alert2.setHeaderText(null);
+                alert2.setContentText("La fecha introducida es incorrecta");
+                alert2.setContentText("Porfavor pulse "+"enter"+ "cuando termine de escribirla o seleccione el selector de fecha");
+                alert2.showAndWait();
+                return false;
+            }
+        }
+        return true;
 
     }
     private void mensajeCreacionExitoso(){
@@ -111,6 +132,11 @@ public class ListenerAddClientUI {
         this.datePicker.setValue(null);
         this.choiceBoxTarifas.setValue("Seleccionar");
 
+    }
+    private void closeWindow() throws Exception {
+        this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
+        this.primaryStage.close();
+        this.showListClients();
     }
 
 }

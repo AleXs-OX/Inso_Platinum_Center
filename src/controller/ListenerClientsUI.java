@@ -16,12 +16,8 @@ import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
 
-import java.io.IOException;
-import java.lang.reflect.Array;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public class ListenerClientsUI {
@@ -31,6 +27,9 @@ public class ListenerClientsUI {
 
     @FXML
     private Button buttonAddUser;
+
+    @FXML
+    private Button buttonReload;
 
     @FXML
     private TableView<UsersVo> tableShowClients;
@@ -51,11 +50,9 @@ public class ListenerClientsUI {
     private Stage primaryStage;
 
 
-
     public void initialize() throws Exception {
 
         this.showListClients();
-
     }
 
     public void showListClients() throws Exception {
@@ -97,6 +94,10 @@ public class ListenerClientsUI {
             stage.setScene(scene);
             stage.show();
 
+    }
+
+    public void buttonReloadUsers() throws Exception {
+        this.showListClients();
     }
 }
 

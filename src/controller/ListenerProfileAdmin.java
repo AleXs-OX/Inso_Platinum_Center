@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -34,9 +35,25 @@ public class ListenerProfileAdmin {
 
     public void showAdminProfileFXML() throws IOException{
 
-        Parent newRoot = FXMLLoader.load(getClass().getResource("/view/showClients.fxml"));
+        //Parent newRoot = FXMLLoader.load(getClass().getResource("/view/showClients.fxml"));
+        //primaryStage.getScene().setRoot(newRoot);
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/showClients.fxml"));
+
         primaryStage = (Stage) this.buttonShowClients.getScene().getWindow();
-        primaryStage.getScene().setRoot(newRoot);
+
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+        Stage stage = new Stage();
+        stage.setTitle("Show Clients");
+        stage.setScene(scene);
+        stage.show();
+
+        primaryStage.close();
+
+
+
+
 
         //System.out.println("PRUEBAAAAAAAAAAAaa");
 

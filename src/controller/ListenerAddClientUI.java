@@ -32,10 +32,17 @@ public class ListenerAddClientUI {
     @FXML
     private ChoiceBox<String> choiceBoxTarifas;
 
+    /*Variables*/
+    private int idUsuario;
+    private String nombreUsuario;
+    private String nombreCompleto;
+    private String contrasena;
+    private java.sql.Date fechaNacimiento;
+
     public void initialize(){
 
         this.anadeTarifas();
-        //datePicker.setDisable(true);
+        datePicker.setEditable(false);
 
     }
 
@@ -49,13 +56,11 @@ public class ListenerAddClientUI {
 
         this.compruebaDatos();
 
-         int idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
-         String nombreUsuario = textFieldNombre.getText();
-         String nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
-         String contrasena = textFieldPass.getText();
-
-        java.sql.Date fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
-
+        this.idUsuario = Integer.parseInt(textField_ID_Cliente.getText());
+        this.nombreUsuario = textFieldNombre.getText();
+        this.nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText()) ;
+        this.contrasena = textFieldPass.getText();
+        this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
 
                                     /* - - Tipos de usuario - -*/
                                     /* 1 - Administrador */
@@ -75,6 +80,9 @@ public class ListenerAddClientUI {
     public void compruebaDatos(){
 
         /*Falta añadir ventana emergente*/
+        if(textField_ID_Cliente.getText() == null|| this.nombreUsuario == null|| this.nombreCompleto == null|| this.contrasena == null|| datePicker.getValue() == null){
+
+        }
 
     }
 

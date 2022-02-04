@@ -65,9 +65,8 @@ public class ListenerClientsUI {
         allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
         dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
 
-
         UsersDao usersDao = new UsersDao();
-        ArrayList<UsersVo> userArrayList = new ArrayList<UsersVo>();
+        ArrayList<UsersVo> userArrayList;
         userArrayList = usersDao.listar();
 
         ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);

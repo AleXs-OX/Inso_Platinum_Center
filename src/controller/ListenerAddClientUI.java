@@ -4,17 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
-
-import static java.sql.Date.valueOf;
 
 public class ListenerAddClientUI {
 
@@ -28,6 +22,14 @@ public class ListenerAddClientUI {
     private TextField textFieldPass;
     @FXML
     private DatePicker datePicker;
+
+    @FXML
+    private Button buttonCreateClient;
+    @FXML
+    private Button buttonCancel;
+
+    private Stage primaryStage;
+
 
     @FXML
     private ChoiceBox<String> choiceBoxTarifas;
@@ -49,10 +51,11 @@ public class ListenerAddClientUI {
     public void anadeTarifas(){
         ObservableList<String> lista_Tarifas = FXCollections.observableArrayList("Tarifa 1", "Tarifa 2", "Tarifa 3");
         choiceBoxTarifas.setItems(lista_Tarifas);
+        this.choiceBoxTarifas.setValue("Seleccionar");
+
 
     }
-
-    public void buttonCreateClient(ActionEvent event) throws Exception {
+    public void buttonCreateClientMethod(ActionEvent event) throws Exception {
 
         this.compruebaDatos();
 
@@ -76,13 +79,37 @@ public class ListenerAddClientUI {
         /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
         userDao.registrar(userVo);
 
+        this.resetEspaciosBlanco();
+        this.mensajeCreacionExitoso();
+
     }
-    public void compruebaDatos(){
+    public void buttonCancelMethod(ActionEvent event){
+
+        this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
+        this.primaryStage.close();
+    }
+    private void compruebaDatos(){
 
         /*Falta añadir ventana emergente*/
         if(textField_ID_Cliente.getText() == null|| this.nombreUsuario == null|| this.nombreCompleto == null|| this.contrasena == null|| datePicker.getValue() == null){
 
         }
+
+    }
+    private void mensajeCreacionExitoso(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacion");
+        alert.setHeaderText(null);
+        alert.setContentText("Usuario "+this.nombreCompleto+ " creado con exito!");
+        alert.showAndWait();
+    }
+    private void resetEspaciosBlanco(){
+        this.textField_ID_Cliente.setText("");
+        this.textFieldNombre.setText("");
+        this.textFieldApellidos.setText("");
+        this.textFieldPass.setText("");
+        this.datePicker.setValue(null);
+        this.choiceBoxTarifas.setValue("Seleccionar");
 
     }
 

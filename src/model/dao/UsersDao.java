@@ -5,11 +5,12 @@ import model.vo.UsersVo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UsersDao extends SQL_Controller_Conexion {
 
-    public List<UsersVo> listar() throws Exception{
+    public ArrayList<UsersVo> listar() throws Exception{
 
         ArrayList<UsersVo> listaUsuarios = new ArrayList<UsersVo>();
         try{

@@ -1,21 +1,27 @@
 package controller;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.DialogPane;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.dao.UsersDao;
 import model.vo.UsersVo;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ListenerClientsUI {
@@ -27,23 +33,46 @@ public class ListenerClientsUI {
     private Button buttonAddUser;
 
     @FXML
-    private TableColumn tableShowClients;
+    private TableView<UsersVo> tableShowClients;
+
+    /*Table columns*/
+    @FXML
+    private TableColumn<UsersVo, Integer> idUserColumn;
+    @FXML
+    private TableColumn<UsersVo, String> nameColumn;
+    @FXML
+    private TableColumn<UsersVo, String> allNameColumn;
+    @FXML
+    private TableColumn<UsersVo, Date> dateColumn;
+    //@FXML
+    //private TableColumn<UsersVo, Integer> rateColumn;
 
     @FXML
     private Stage primaryStage;
 
 
 
-    public void initialize(){
+    public void initialize() throws Exception {
 
         this.showListClients();
 
     }
 
-    public void showListClients(){
+    public void showListClients() throws Exception {
 
-       //tableShowClients.
-        UsersVo usersVo = new UsersVo();
+        idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
+        allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
+
+
+        UsersDao usersDao = new UsersDao();
+        ArrayList<UsersVo> userArrayList = new ArrayList<UsersVo>();
+        userArrayList = usersDao.listar();
+
+        ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+
+        tableShowClients.setItems(userList);
 
     }
 

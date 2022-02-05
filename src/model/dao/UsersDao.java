@@ -42,6 +42,7 @@ public class UsersDao extends SQL_Controller_Conexion {
         return listaUsuarios;
     }
 
+
     public UsersVo buscar(int idUser) throws Exception {
 
         UsersVo user = new UsersVo();

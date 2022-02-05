@@ -27,7 +27,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="258.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rutinas">
+      <Text layoutX="276.0" layoutY="236.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rutinas">
          <font>
             <Font size="18.0" />
          </font>
@@ -38,21 +38,21 @@
          </font>
       </Text>
       <Button fx:id="buttonShowClients" layoutX="165.0" layoutY="92.0" mnemonicParsing="false" text="Acceder" />
-      <Button fx:id="buttonEmpleado" layoutX="165.0" layoutY="136.0" mnemonicParsing="false" text="Acceder" />
+      <Button fx:id="buttonShowEmployees" layoutX="165.0" layoutY="136.0" mnemonicParsing="false" onAction="#showEmployeesWindow" text="Acceder" />
       <Button fx:id="buttonActividades" layoutX="165.0" layoutY="178.0" mnemonicParsing="false" text="Acceder" />
       <Button fx:id="buttonDietas" layoutX="165.0" layoutY="217.0" mnemonicParsing="false" text="Acceder" />
       <Button fx:id="buttonRutinas" layoutX="361.0" layoutY="217.0" mnemonicParsing="false" text="Acceder" />
-      <Text layoutX="258.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material" wrappingWidth="84.845703125">
+      <Text layoutX="276.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Material" wrappingWidth="84.845703125">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="258.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salas" wrappingWidth="84.845703125">
+      <Text layoutX="276.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salas" wrappingWidth="84.845703125">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="258.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario" wrappingWidth="84.845703125">
+      <Text layoutX="276.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario" wrappingWidth="84.845703125">
          <font>
             <Font size="18.0" />
          </font>

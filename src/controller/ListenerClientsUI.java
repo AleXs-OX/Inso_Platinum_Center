@@ -21,6 +21,9 @@ import java.util.Optional;
 
 public class ListenerClientsUI {
 
+    Boolean filter = true; /* True = Filter Users*/
+                           /* False = Filter Employees*/
+
     @FXML
     private ListView<String> listViewClients;
 
@@ -32,6 +35,9 @@ public class ListenerClientsUI {
     private Button backButton;
     @FXML
     private Button buttonDelete;
+    @FXML
+    private Button buttonFilterBy;
+
 
     @FXML
     private TableView<UsersVo> tableShowClients;
@@ -54,10 +60,10 @@ public class ListenerClientsUI {
 
     public void initialize() throws Exception {
 
-        this.showListClients();
+        this.showListClients(this.filter);
     }
 
-    public void showListClients() throws Exception {
+    public void showListClients(Boolean filter) throws Exception {
 
         idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
         nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
@@ -96,6 +102,17 @@ public class ListenerClientsUI {
             stage.show();
 
     }
+    public void ButtonFilterByMethod() throws Exception {
+
+        this.filter = !this.filter;
+
+        if(this.filter)
+            this.buttonFilterBy.setText("Filtrar por: Clientes");
+        else
+            this.buttonFilterBy.setText("Filtrar por: Empleados");
+
+        this.showListClients(this.filter);
+    }
 
     public void buttonDeleteMethod(ActionEvent event) throws Exception {
 
@@ -107,7 +124,7 @@ public class ListenerClientsUI {
             if (areYouSureAlert(usersVoSelected)) {
                 UsersDao userDao = new UsersDao();
                 userDao.eliminar(usersVoSelected);
-                this.showListClients();
+                this.showListClients(this.filter);
             }
         }
     }
@@ -131,12 +148,15 @@ public class ListenerClientsUI {
     private void closeWindow() throws Exception {
         this.primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
         this.primaryStage.close();
-        this.showListClients();
+        this.showListClients(this.filter);
     }
 
     public void buttonReloadUsers() throws Exception {
-        this.showListClients();
+        this.showListClients(this.filter);
     }
+   // public Stage getStage(){
+       // return this.primaryStage.re;
+   // }
 
     private Boolean areYouSureAlert(UsersVo user){
 

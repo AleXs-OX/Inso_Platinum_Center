@@ -86,6 +86,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
 
             /*Recarga la tabla de nuevo para que el usuario creado sea visible*/
             /*Usa extends de ListenerClientsUI*/
+
             this.closeWindow();
         }
 
@@ -143,7 +144,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
     private void closeWindow() throws Exception {
         this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
         this.primaryStage.close();
-        //this.showListClients();
+
     }
 
 }

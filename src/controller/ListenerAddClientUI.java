@@ -96,6 +96,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
     }
 
     private Boolean compruebaDatos(){
+        /*FALTA COMPROBAR QUE EL ID SOLO SEA INT*/
 
         if(textField_ID_Cliente.getText() == null|| this.textFieldNombre.getText() == null|| this.textFieldApellidos.getText() == null
                 || this.textFieldPass.getText() == null || this.choiceBoxTarifas.getValue() == null){
@@ -142,7 +143,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
     private void closeWindow() throws Exception {
         this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
         this.primaryStage.close();
-        this.showListClients();
+        //this.showListClients();
     }
 
 }

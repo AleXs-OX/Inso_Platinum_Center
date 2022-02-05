@@ -8,10 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
@@ -19,6 +16,7 @@ import model.vo.UsersVo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class ListenerClientsUI {
@@ -28,16 +26,15 @@ public class ListenerClientsUI {
 
     @FXML
     private Button buttonAddUser;
-
     @FXML
     private Button buttonReload;
-
     @FXML
     private Button backButton;
+    @FXML
+    private Button buttonDelete;
 
     @FXML
     private TableView<UsersVo> tableShowClients;
-
 
     /*Table columns*/
     @FXML
@@ -89,7 +86,6 @@ public class ListenerClientsUI {
         //fxmlLoader.setLocation(getClass().getResource("/view/AddClient.fxml"));
         //DialogPane addClientPane = fxmlLoader.load();
 
-
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/view/AddClient.fxml"));
 
@@ -99,6 +95,17 @@ public class ListenerClientsUI {
             stage.setScene(scene);
             stage.show();
 
+    }
+
+    public void buttonDeleteMethod(ActionEvent event) throws Exception {
+
+        UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
+
+        if(areYouSureAlert(usersVoSelected)){
+            UsersDao userDao = new UsersDao();
+            userDao.eliminar(usersVoSelected);
+            this.showListClients();
+        }
     }
 
     public void backButtonMethod() throws Exception {
@@ -122,8 +129,24 @@ public class ListenerClientsUI {
         this.primaryStage.close();
         this.showListClients();
     }
+
     public void buttonReloadUsers() throws Exception {
         this.showListClients();
+    }
+
+    private Boolean areYouSureAlert(UsersVo user){
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion Eliminar");
+        alert.setHeaderText("Eliminar usuario: "+ user.getNombreCompleto()+".");
+        alert.setContentText("Pulse OK para confirmar");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 }
 

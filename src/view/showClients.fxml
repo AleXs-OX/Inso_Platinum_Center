@@ -15,17 +15,12 @@
             <Font name="Consolas Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="94.0" layoutY="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="66.0" text="Editar">
+      <Button fx:id="backButton" layoutX="194.0" layoutY="24.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" text="Salir">
          <font>
             <Font name="Consolas Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backButton" layoutX="270.0" layoutY="24.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" text="Salir">
-         <font>
-            <Font name="Consolas Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonDelete" layoutX="170.0" layoutY="24.0" mnemonicParsing="false" onAction="#buttonDeleteMethod" prefHeight="32.0" prefWidth="86.0" text="Eliminar">
+      <Button fx:id="buttonDelete" layoutX="94.0" layoutY="24.0" mnemonicParsing="false" onAction="#buttonDeleteMethod" prefHeight="32.0" prefWidth="86.0" text="Eliminar">
          <font>
             <Font name="Consolas Bold" size="14.0" />
          </font>
@@ -46,7 +41,7 @@
             <Font name="Consolas Bold" size="14.0" />
          </font>
       </Button>
-      <Text fill="#e05a3d" layoutX="362.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tabla de usuarios" wrappingWidth="258.0">
+      <Text fill="#e05a3d" layoutX="315.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tabla de usuarios" wrappingWidth="258.0">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

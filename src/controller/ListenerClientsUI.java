@@ -99,12 +99,16 @@ public class ListenerClientsUI {
 
     public void buttonDeleteMethod(ActionEvent event) throws Exception {
 
-        UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
+        if(this.tableShowClients.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert();
+        }else {
+            UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
 
-        if(areYouSureAlert(usersVoSelected)){
-            UsersDao userDao = new UsersDao();
-            userDao.eliminar(usersVoSelected);
-            this.showListClients();
+            if (areYouSureAlert(usersVoSelected)) {
+                UsersDao userDao = new UsersDao();
+                userDao.eliminar(usersVoSelected);
+                this.showListClients();
+            }
         }
     }
 
@@ -135,6 +139,7 @@ public class ListenerClientsUI {
     }
 
     private Boolean areYouSureAlert(UsersVo user){
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmacion Eliminar");
         alert.setHeaderText("Eliminar usuario: "+ user.getNombreCompleto()+".");
@@ -147,6 +152,15 @@ public class ListenerClientsUI {
             return false;
         }
 
+    }
+
+    private void errorDeleteAlert(){
+
+        Alert alert2 = new Alert(Alert.AlertType.WARNING);
+        alert2.setTitle("Usuario no seleccionado");
+        alert2.setHeaderText(null);
+        alert2.setContentText("Porfavor seleccione un usuario antes de pulsar ELIMINAR");
+        alert2.showAndWait();
     }
 }
 

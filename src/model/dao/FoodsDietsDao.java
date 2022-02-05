@@ -22,13 +22,13 @@ public class FoodsDietsDao extends SQL_Controller_Conexion{
 			
 			st.executeUpdate();
 		}catch(Exception e) {
-			throw new Exception("Error al añadir una comida a dieta: " + e.getMessage());
+			throw new Exception("Error al anadir una comida a dieta: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 				this.actualizar(dieta);
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión al añadir una comida a dieta: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexion al anadir una comida a dieta: " + e.getMessage());
 			}
 		}
 	}
@@ -50,7 +50,7 @@ public class FoodsDietsDao extends SQL_Controller_Conexion{
 				this.closeConnection();
 				this.actualizar(dieta);
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión eliminando una comida de dieta: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexion eliminando una comida de dieta: " + e.getMessage());
 			}
 		}
 	}
@@ -86,7 +86,7 @@ public class FoodsDietsDao extends SQL_Controller_Conexion{
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión actualizando dieta: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexion actualizando dieta: " + e.getMessage());
 			}
 		}
 	}
@@ -125,7 +125,7 @@ public class FoodsDietsDao extends SQL_Controller_Conexion{
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión listando las comidas: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexion listando las comidas: " + e.getMessage());
 			}
 		}
 		

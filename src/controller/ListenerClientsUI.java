@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -32,7 +33,11 @@ public class ListenerClientsUI {
     private Button buttonReload;
 
     @FXML
+    private Button backButton;
+
+    @FXML
     private TableView<UsersVo> tableShowClients;
+
 
     /*Table columns*/
     @FXML
@@ -96,6 +101,27 @@ public class ListenerClientsUI {
 
     }
 
+    public void backButtonMethod() throws Exception {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
+
+        primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
+
+        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        Stage stage = new Stage();
+        stage.setTitle("Administrador");
+        stage.setScene(scene);
+        stage.show();
+
+        primaryStage.close();
+    }
+
+    private void closeWindow() throws Exception {
+        this.primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
+        this.primaryStage.close();
+        this.showListClients();
+    }
     public void buttonReloadUsers() throws Exception {
         this.showListClients();
     }

@@ -4,10 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
+
+import java.io.IOException;
 
 
 public class ListenerAddClientUI extends ListenerClientsUI{
@@ -23,6 +27,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
     @FXML
     private DatePicker datePicker;
 
+    /*Buttons*/
     @FXML
     private Button buttonCreateClient;
     @FXML
@@ -117,6 +122,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
         return true;
 
     }
+
     private void mensajeCreacionExitoso(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Informacion");

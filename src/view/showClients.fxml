@@ -19,7 +19,7 @@
             <Font name="Consolas Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="287.0" layoutY="24.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="66.0" text="Salir">
+      <Button fx:id="backButton" layoutX="287.0" layoutY="24.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" text="Salir">
          <font>
             <Font name="Consolas Bold" size="14.0" />
          </font>

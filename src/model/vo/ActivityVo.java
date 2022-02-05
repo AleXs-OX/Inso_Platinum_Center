@@ -9,6 +9,7 @@ public class ActivityVo {
 	private Date fecha;
 	private int idEmpleado;
 	private int idSala;
+	private int idRutina;
 	private String descripcion;
 	private Time duracion;
 	
@@ -70,6 +71,14 @@ public class ActivityVo {
 
 	public void setDuracion(Time duracion) {
 		this.duracion = duracion;
+	}
+
+	public int getIdRutina() {
+		return idRutina;
+	}
+
+	public void setIdRutina(int idRutina) {
+		this.idRutina = idRutina;
 	}
 	
 }

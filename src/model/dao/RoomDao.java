@@ -22,7 +22,7 @@ public class RoomDao extends SQL_Controller_Conexion{
 
             st.executeUpdate();
         }catch(Exception e) {
-            throw new Exception("Anadiendo sala: " + e.getMessage());
+            throw new Exception("Error anadiendo sala: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
@@ -37,16 +37,17 @@ public class RoomDao extends SQL_Controller_Conexion{
             this.openConnection();
 
             PreparedStatement st = this.getConnection().prepareStatement("UPDATE SALAS SET "
-                    + "nombreSala=?, aforo=?, apertura=?, cierre=?");
+                    + "nombreSala=?, aforo=?, apertura=?, cierre=? WHERE idSala=?");
 
             st.setString(1, sala.getNombreSala());
             st.setInt(2, sala.getAforo());
             st.setTime(3, sala.getApertura());
-            st.setTime(5, sala.getCierre());
+            st.setTime(4, sala.getCierre());
+            st.setInt(5, sala.getIdSala());
 
             st.executeUpdate();
         }catch(Exception e) {
-            throw new Exception("Actualizar Sala: " + e.getMessage());
+            throw new Exception("Error al actualizar sala: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
@@ -78,7 +79,7 @@ public class RoomDao extends SQL_Controller_Conexion{
             }
 
         }catch (Exception e){
-            throw new Exception("Buscar Sala: " + e.getMessage());
+            throw new Exception("Error al buscar sala: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
@@ -110,7 +111,7 @@ public class RoomDao extends SQL_Controller_Conexion{
                 listaSalas.add(sala);
             }
         }catch(Exception e) {
-            throw new Exception("Listar Sala: " + e.getMessage());
+            throw new Exception("Error al listar salas: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();

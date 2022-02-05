@@ -16,7 +16,6 @@ public class SQL_Controller_Conexion {
     private Connection connection = null;
 
     public SQL_Controller_Conexion(){
-    	//TODO
     	this.url = "jdbc:mysql://localhost:3306/platinumcenter";
     	this.user = "root";
     	this.password = "ordenador123";

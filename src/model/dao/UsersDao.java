@@ -75,6 +75,40 @@ public class UsersDao extends SQL_Controller_Conexion {
         return user;
     }
     
+    public UsersVo buscar(String usuario, String pass) throws Exception {
+        UsersVo user = new UsersVo();
+
+        try {
+            this.openConnection();
+
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM USUARIOS "
+            		+ "WHERE nombreUsuario=? AND contrasena=?");
+            st.setString(1, usuario);
+            st.setString(2, pass);
+            ResultSet result = st.executeQuery();
+
+            while(result.next()) {
+                user.setIdUsuario(result.getInt("idUsuario"));
+                user.setNombreCompleto(result.getString("nombreCompleto"));
+                user.setNombreUsuario(result.getString("nombreUsuario"));
+                user.setContrasena(result.getString("contrasena"));
+                user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+            }
+
+        }catch (Exception e){
+            throw new Exception("Error al buscar usuario: " + e.getMessage());
+        }finally {
+            try {
+                this.closeConnection();
+            }catch(Exception e) {
+                throw new Exception("Error al cerrar la conexion buscando usuario: " + e.getMessage());
+            }
+        }
+
+        return user;
+    }
+    
     public List<UsersVo> buscar(String termino) throws Exception {
     	ArrayList<UsersVo> listaUsuarios = new ArrayList<UsersVo>();
         String criterioBusqueda = '%' + termino + '%';

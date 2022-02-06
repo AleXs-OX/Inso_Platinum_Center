@@ -1,6 +1,20 @@
 CREATE DATABASE platinumcenter;
 USE platinumcenter;
 
+CREATE TABLE TARIFAS(
+	idTarifa INT(2) NOT NULL PRIMARY KEY,
+    nombreTarifa VARCHAR(50) NOT NULL UNIQUE,
+	importe	FLOAT(3,2) NOT NULL,
+	descripcion VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE SALARIOS(
+	idSalario INT(2) NOT NULL PRIMARY KEY,
+    nombreSalario VARCHAR(50) NOT NULL UNIQUE,
+    cantidad FLOAT(3,2) NOT NULL,
+    descripcion VARCHAR(500) NOT NULL
+);
+
 CREATE TABLE USUARIOS(
 	idUsuario INT(6) NOT NULL PRIMARY KEY,
 	nombreCompleto VARCHAR(100) NOT NULL,
@@ -18,20 +32,6 @@ CREATE TABLE USUARIOS(
 	tipoUsuario INT(1) NOT NULL,
     FOREIGN KEY(idTarifa) REFERENCES TARIFAS(idTarifa),	
     FOREIGN KEY(idSalario) REFERENCES SALARIOS (idSalario)
-);
-
-CREATE TABLE TARIFAS(
-	idTarifa INT(2) NOT NULL PRIMARY KEY,
-    nombreTarifa VARCHAR(50) NOT NULL UNIQUE,
-	importe	FLOAT(3,2) NOT NULL,
-	descripcion VARCHAR(500) NOT NULL
-);
-
-CREATE TABLE SALARIOS(
-	idSalario INT(2) NOT NULL PRIMARY KEY,
-    nombreSalario VARCHAR(50) NOT NULL UNIQUE,
-    cantidad FLOAT(3,2) NOT NULL,
-    descripcion VARCHAR(500) NOT NULL
 );
 
 CREATE TABLE ALIMENTOS(

@@ -48,6 +48,48 @@ public class UsersDao extends SQL_Controller_Conexion {
         
         return listaUsuarios;
     }
+    
+    public List<UsersVo> buscarPorTipo(int tipoUsuario) throws Exception{
+        ArrayList<UsersVo> listaUsuarios = new ArrayList<UsersVo>();
+        
+        try{
+            this.openConnection();
+
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM USUARIOS"
+            		+ "WHERE tipoDeUsuario=?");
+            st.setInt(1, tipoUsuario);
+            ResultSet result = st.executeQuery();
+
+            while (result.next()){
+                UsersVo user = new UsersVo();
+                user.setIdUsuario(result.getInt("idUsuario"));
+                user.setNombreCompleto(result.getString("nombreCompleto"));
+                user.setNombreUsuario(result.getString("nombreUsuario"));
+                user.setContrasena(result.getString("contrasena"));
+                user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setCIF(result.getString("CIF"));
+                user.setEmail(result.getString("email"));
+                user.setTelefono(result.getInt("telefono"));
+                user.setIBAN(result.getString("IBAN"));
+                user.setDireccion(result.getString("direccion"));
+                user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+                user.setIdSalario(result.getInt("idSalario"));
+                user.setIdTarifa(result.getInt("idTarifa"));
+                listaUsuarios.add(user);
+            }
+        }
+        catch(Exception e){
+            throw new Exception("Error listando usuarios por tipo: " + e.getMessage());
+        }finally {
+            try {
+                this.closeConnection();
+            } catch (Exception e) {
+                throw new Exception("Error al cerrar la conexion listando usuarios por tipo: " + e.getMessage());
+            }
+        }
+        
+        return listaUsuarios;
+    }
 
     public UsersVo buscar(int idUser) throws Exception {
         UsersVo user = new UsersVo();

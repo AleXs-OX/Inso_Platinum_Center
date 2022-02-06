@@ -98,4 +98,34 @@ public class ExerciseDao extends SQL_Controller_Conexion{
 		
 		return listaEjercicios;
 	}
+	
+	public ExerciseVo buscar(int idEjercicio) throws Exception{
+		ExerciseVo ejercicio = new ExerciseVo();
+		
+		try {
+			this.openConnection();
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM EJERCICIOS "
+					+ "WHERE idEjercicio=?");
+			st.setInt(1, idEjercicio);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				ejercicio.setIdEjercicio(rs.getInt("idEjercicio"));
+				ejercicio.setNombreEjercicio(rs.getString("nombreEjercicio"));
+				ejercicio.setDescripcion(rs.getString("descripcion"));
+				ejercicio.setCalorias(rs.getInt("calorias"));
+				ejercicio.setImage(rs.getString("image"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar ejercicios: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando ejercicios: " + e.getMessage());
+			}
+		}
+		
+		return ejercicio;
+	}
 }

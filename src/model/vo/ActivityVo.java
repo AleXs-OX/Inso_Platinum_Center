@@ -1,12 +1,12 @@
 package model.vo;
 
-import java.sql.Date;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 public class ActivityVo {
 	
 	private String nombreActividad;
-	private Date fecha;
+	private Timestamp fecha;
 	private int idEmpleado;
 	private int idSala;
 	private int idRutina;
@@ -25,12 +25,12 @@ public class ActivityVo {
 		this.nombreActividad = nombreActividad;
 	}
 	
-	public Date getFecha() {
+	public Timestamp getFecha() {
 		return fecha;
 	}
 	
 	public void setFecha(String fecha) {
-		this.fecha = Date.valueOf(fecha);
+		this.fecha = Timestamp.valueOf(fecha);
 	}
 	
 	public int getIdEmpleado() {
@@ -65,7 +65,7 @@ public class ActivityVo {
 		this.duracion = Time.valueOf(duracion);
 	}
 
-	public void setFecha(Date fecha) {
+	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
 	}
 

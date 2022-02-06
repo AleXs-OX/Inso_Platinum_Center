@@ -10,16 +10,15 @@ import java.util.List;
 public class EmployeeDao extends SQL_Controller_Conexion{
 
     public List<EmployeeVo> listar() throws Exception{
-
         ArrayList<EmployeeVo> listaEmpleados = new ArrayList<EmployeeVo>();
+        
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * from empleados");
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM EMPLEADOS");
             ResultSet result = st.executeQuery();
 
             while (result.next()){
-
                 EmployeeVo empleado = new EmployeeVo();
                 empleado.setIdEmpleado(result.getInt("idEmpleado"));
                 empleado.setFechaContratacion(result.getDate("fechaContratacion"));
@@ -30,28 +29,27 @@ public class EmployeeDao extends SQL_Controller_Conexion{
             }
         }
         catch(Exception e){
-            throw new Exception("Listar Empleados "+e.getMessage());
+            throw new Exception("Error listando empleados: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion listar empleados: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion listando empleados: " + e.getMessage());
             }
         }
+        
         return listaEmpleados;
     }
 
     public EmployeeVo buscar(int idEmpleado) throws Exception {
-
         EmployeeVo empleado = new EmployeeVo();
-        String criterioBusqueda = '%' + Integer.toString(idEmpleado) + '%';
 
         try {
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM empleados WHERE idEmpleado "
-                    + "LIKE ?");
-            st.setString(1, criterioBusqueda);
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM EMPLEADOS "
+            		+ "WHERE idEmpleado=?");
+            st.setInt(1, idEmpleado);
             ResultSet result = st.executeQuery();
 
             while(result.next()) {
@@ -60,58 +58,81 @@ public class EmployeeDao extends SQL_Controller_Conexion{
                 empleado.setFechaDespido(result.getDate("fechaDespido"));
                 empleado.setIdSalario(result.getInt("idSalario"));
             }
-
         }catch (Exception e){
             throw new Exception("Error al buscar empleado: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             }catch(Exception e) {
-                throw new Exception("Error al cerrar la conexion buscar empleado: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion buscando empleado: " + e.getMessage());
             }
         }
 
         return empleado;
     }
 
-    public void eliminar(EmployeeVo empleado) throws Exception{
+    public void anadir(EmployeeVo empleado) throws Exception{
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM empleados WHERE idEmpleado=?");
+            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO empleados"
+            		+ "(idEmpleado, fechaContratacion, idSalario) VALUES (?,?,?)");
             st.setInt(1, empleado.getIdEmpleado());
+            st.setDate(2, empleado.getFechaContratacion());
+            st.setInt(3, empleado.getIdSalario());
+            
             st.executeUpdate();
         }
         catch(Exception e){
-            throw new Exception("Eliminar Empleado "+e.getMessage());
+            throw new Exception("Error registrando empleado: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion eliminar empleado: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion registrando empleado: " + e.getMessage());
             }
         }
     }
-
-    public void registrar(EmployeeVo empleado) throws Exception{
-        try{
-            this.openConnection();
-
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO empleados (idEmpleado, fechaContratacion, fechaDespido, idSalario)" +
-                    "VALUES (?,?,?,?)");
-            st.setInt(1, empleado.getIdEmpleado());
-            st.setDate(2, empleado.getFechaContratacion());
-            st.setDate(3, empleado.getFechaDespido());
-            st.setInt(4, empleado.getIdSalario());
-        }
-        catch(Exception e){
-            throw new Exception("Registrar Empleado "+e.getMessage());
-        }finally {
-            try {
-                this.closeConnection();
-            } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion registrar empleado: " + e.getMessage());
-            }
-        }
+    
+    public void actualizarSalario(EmployeeVo empleado) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE EMPLEADOS SET "
+    				+ "idSalario=? WHERE idEmpleado=?");
+    		st.setInt(1, empleado.getIdSalario());
+    		st.setInt(2, empleado.getIdEmpleado());    		
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error al actualizar salario empleado: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando salario empleado: " + e.getMessage());
+    		}
+    	}
+    }
+    
+    public void actualizarDespido(EmployeeVo empleado) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE EMPLEADOS SET "
+    				+ "fechaDespido=? WHERE idEmpleado=?");
+    		st.setDate(1, empleado.getFechaDespido());
+    		st.setInt(2, empleado.getIdEmpleado());    		
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error al actualizar despido empleado: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando despido empleado: " + e.getMessage());
+    		}
+    	}
     }
 }

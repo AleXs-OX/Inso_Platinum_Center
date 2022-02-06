@@ -15,12 +15,11 @@ public class MaterialDao extends SQL_Controller_Conexion{
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO MATERIALES"
-					+ "(idMaterial, nombreMaterial, fechaAlta, fechaBaja, idSala) VALUES (?, ?, ?, ?, ?)");
+					+ "(idMaterial, nombreMaterial, fechaAlta, idSala) VALUES (?, ?, ?, ?)");
 			st.setInt(1, material.getIdMaterial());
 			st.setString(2, material.getNombreMaterial());
 			st.setDate(3, material.getFechaAlta());
-			st.setNull(4, java.sql.Types.DATE);
-			st.setInt(5, material.getIdSala());
+			st.setInt(4, material.getIdSala());
 			
 			st.executeUpdate();
 		}catch(Exception e) {
@@ -34,24 +33,44 @@ public class MaterialDao extends SQL_Controller_Conexion{
 		}
 	}
 	
-	public void actualizar(MaterialVo material) throws Exception{
+	public void actualizarSala(MaterialVo material) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("UPDATE MATERIALES SET "
-					+ "nombreMaterial=?, fechaBaja=?, idSala=?");
-			st.setString(1, material.getNombreMaterial());
-			st.setDate(2, material.getFechaBaja());
-			st.setInt(3, material.getIdSala());
+					+ "idSala=? WHERE idMaterial=?");
+			st.setInt(1, material.getIdSala());
+			st.setInt(2, material.getIdMaterial());
 			
 			st.executeUpdate();
 		}catch(Exception e) {
-			throw new Exception("Error añadiendo material: " + e.getMessage());
+			throw new Exception("Error actualizando sala material: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión añadiendo material: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexión actualizando sala material: " + e.getMessage());
+			}
+		}
+	}
+	
+	public void actualizarBaja(MaterialVo material) throws Exception{
+		try {
+			this.openConnection();
+			
+			PreparedStatement st = this.getConnection().prepareStatement("UPDATE MATERIALES SET "
+					+ "fechaBaja=? WHERE idMaterial=?");
+			st.setDate(1, material.getFechaBaja());
+			st.setInt(2, material.getIdMaterial());
+			
+			st.executeUpdate();
+		}catch(Exception e) {
+			throw new Exception("Error actualizando baja material: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión actualizando baja material: " + e.getMessage());
 			}
 		}
 	}
@@ -76,7 +95,7 @@ public class MaterialDao extends SQL_Controller_Conexion{
 				listaMateriales.add(material);
 			}
 		}catch(Exception e) {
-			throw new Exception("Errro listando materiales: " + e.getMessage());
+			throw new Exception("Error listando materiales: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
@@ -95,8 +114,8 @@ public class MaterialDao extends SQL_Controller_Conexion{
 		try {
 			this.openConnection();
 			
-			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM MATERIALES"
-					+ "WHERE nombreMaterial=?");
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM MATERIALES "
+					+ "WHERE nombreMaterial LIKE ?");
 			st.setString(1, criterioBusqueda);
 			ResultSet rs = st.executeQuery();
 			
@@ -121,5 +140,36 @@ public class MaterialDao extends SQL_Controller_Conexion{
 		}
 		
 		return listaMateriales;
+	}
+	
+	public MaterialVo buscar(int idMaterial) throws Exception{
+		MaterialVo material = new MaterialVo();
+		
+		try {
+			this.openConnection();
+			
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM MATERIALES "
+					+ "WHERE idMaterial=?");
+			st.setInt(1, idMaterial);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				material.setIdMaterial(rs.getInt("idMaterial"));
+				material.setNombreMaterial(rs.getString("nombreMaterial"));
+				material.setFechaAlta(rs.getDate("fechaAlta"));
+				material.setFechaBaja(rs.getDate("fechaBaja"));
+				material.setIdSala(rs.getInt("idSala"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error buscando materiales: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e){
+				throw new Exception("Error al cerrar la conexión buscando materiales: " + e.getMessage());
+			}
+		}
+		
+		return material;
 	}
 }

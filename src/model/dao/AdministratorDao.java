@@ -11,10 +11,11 @@ public class AdministratorDao extends SQL_Controller_Conexion{
 
     public List<AdministratorVo> listar() throws Exception{
         ArrayList<AdministratorVo> listaAdmins = new ArrayList<AdministratorVo>();
+        
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * from admins");
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM ADMINS");
             ResultSet result = st.executeQuery();
 
             while (result.next()){
@@ -26,28 +27,27 @@ public class AdministratorDao extends SQL_Controller_Conexion{
             }
         }
         catch(Exception e){
-            throw new Exception("Listar Admins "+e.getMessage());
+            throw new Exception("Error listando admins: "+ e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion listar admins: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion listando admins: " + e.getMessage());
             }
         }
+        
         return listaAdmins;
     }
 
     public AdministratorVo buscar(int idAdmin) throws Exception {
-
         AdministratorVo admin = new AdministratorVo();
-        String criterioBusqueda = '%' + Integer.toString(idAdmin) + '%';
 
         try {
             this.openConnection();
 
             PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM admins WHERE idAdmin "
                     + "LIKE ?");
-            st.setString(1, criterioBusqueda);
+            st.setInt(1, idAdmin);
             ResultSet result = st.executeQuery();
 
             while(result.next()) {
@@ -61,49 +61,10 @@ public class AdministratorDao extends SQL_Controller_Conexion{
             try {
                 this.closeConnection();
             }catch(Exception e) {
-                throw new Exception("Error al cerrar la conexion buscar admin: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion buscando admin: " + e.getMessage());
             }
         }
 
         return admin;
-    }
-
-    public void eliminar(AdministratorVo admin) throws Exception{
-        try{
-            this.openConnection();
-
-            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM admins WHERE idAdmin=?");
-            st.setInt(1, admin.getIdAdmin());
-            st.executeUpdate();
-        }
-        catch(Exception e){
-            throw new Exception("Eliminar Admin "+e.getMessage());
-        }finally {
-            try {
-                this.closeConnection();
-            } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion eliminar admin: " + e.getMessage());
-            }
-        }
-    }
-
-    public void registrar(AdministratorVo admin) throws Exception{
-        try{
-            this.openConnection();
-
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO admins (idAdmin, idSalario)" +
-                    "VALUES (?,?)");
-            st.setInt(1, admin.getIdAdmin());
-            st.setInt(2, admin.getIdSalario());
-        }
-        catch(Exception e){
-            throw new Exception("Registrar Admin "+e.getMessage());
-        }finally {
-            try {
-                this.closeConnection();
-            } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion registrar admin: " + e.getMessage());
-            }
-        }
     }
 }

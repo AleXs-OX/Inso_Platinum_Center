@@ -120,6 +120,37 @@ public class RoutineDao extends SQL_Controller_Conexion{
 		return listaRutinas;
 	}
 	
+	public RoutineVo buscar(int idRutina) throws Exception{
+		RoutineVo rutina = new RoutineVo();
+		
+		try {
+			this.openConnection();
+			
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM RUTINAS WHERE "
+					+ "idRutina=?");
+			st.setInt(1, idRutina);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				rutina.setIdRutina(rs.getInt("idRutina"));
+				rutina.setIdCreador(rs.getInt("idCreador"));
+				rutina.setNombreRutina(rs.getString("nombreRutina"));
+				rutina.setDescripcion(rs.getString("descripcion"));
+				rutina.setCalorias(rs.getInt("calorias"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar rutinas: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando rutinas: " + e.getMessage());
+			}
+		}
+		
+		return rutina;
+	}
+	
 	public void actualizar(RoutineVo rutina) throws Exception{
 		try {
 			this.openConnection();

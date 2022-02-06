@@ -10,12 +10,12 @@ import java.util.List;
 public class ClientDao extends SQL_Controller_Conexion {
 
     public List<ClientVo> listar() throws Exception{
-
         ArrayList<ClientVo> listaClientes = new ArrayList<ClientVo>();
+        
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * from clientes");
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM CLIENTES");
             ResultSet result = st.executeQuery();
 
             while (result.next()){
@@ -29,47 +29,27 @@ public class ClientDao extends SQL_Controller_Conexion {
             }
         }
         catch(Exception e){
-            throw new Exception("Listar Clientes "+e.getMessage());
+            throw new Exception("Error listando clientes " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
-            } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion listar clientes: " + e.getMessage());
+            }catch (Exception e) {
+                throw new Exception("Error al cerrar la conexion listando clientes: " + e.getMessage());
             }
         }
+        
         return listaClientes;
     }
 
-    public void eliminar(ClientVo cliente) throws Exception{
-        try{
-            this.openConnection();
-
-            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM clientes WHERE idCliente=?");
-            st.setInt(1, cliente.getIdCliente());
-            st.executeUpdate();
-        }
-        catch(Exception e){
-            throw new Exception("Eliminar Cliente "+e.getMessage());
-        }finally {
-            try {
-                this.closeConnection();
-            } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion eliminar cliente: " + e.getMessage());
-            }
-        }
-    }
-
     public ClientVo buscar(int idCliente) throws Exception {
-
         ClientVo client = new ClientVo();
-        String criterioBusqueda = '%' + Integer.toString(idCliente) + '%';
 
         try {
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM clientes WHERE idCliente "
-                    + "LIKE ?");
-            st.setString(1, criterioBusqueda);
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM CLIENTES"
+            		+ " WHERE idCliente=?");
+            st.setInt(1, idCliente);
             ResultSet result = st.executeQuery();
 
             while(result.next()) {
@@ -85,32 +65,75 @@ public class ClientDao extends SQL_Controller_Conexion {
             try {
                 this.closeConnection();
             }catch(Exception e) {
-                throw new Exception("Error al cerrar la conexion buscar cliente: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion buscando cliente: " + e.getMessage());
             }
         }
 
         return client;
     }
 
-    public void registrar(ClientVo cliente) throws Exception{
+    public void anadir(ClientVo cliente) throws Exception{
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO clientes (idCliente, fechaAlta, fechaBaja, tarifaContratada)" +
-                    "VALUES (?,?,?,?)");
+            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO CLIENTES"
+            		+ "(idCliente, fechaAlta, tarifaContratada) VALUES (?,?,?)");
             st.setInt(1, cliente.getIdCliente());
             st.setDate(2, cliente.getFechaAlta());
-            st.setDate(3, cliente.getFechaBaja());
-            st.setInt(4, cliente.getTarifaContratada());
+            st.setInt(3, cliente.getTarifaContratada());
+            
+            st.executeUpdate();
         }
         catch(Exception e){
-            throw new Exception("Registrar Cliente "+e.getMessage());
+            throw new Exception("Error registrando cliente: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion registrar cliente: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion registrando cliente: " + e.getMessage());
             }
         }
+    }
+    
+    public void actualizarBaja(ClientVo cliente) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE CLIENTES SET "
+    				+ "fechaBaja=? WHERE idCliente=?");
+    		st.setDate(1, cliente.getFechaBaja());
+    		st.setInt(2, cliente.getIdCliente());
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error actualizando baja cliente: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando baja cliente: " + e.getMessage());
+    		}
+    	}
+    }
+    
+    public void actualizarTarifa(ClientVo cliente) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE CLIENTES SET "
+    				+ "tarifaContratado=? WHERE idCliente=?");
+    		st.setInt(1, cliente.getTarifaContratada());
+    		st.setInt(2, cliente.getIdCliente());
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error actualizando tarifa cliente: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando tarifa cliente: " + e.getMessage());
+    		}
+    	}
     }
 }

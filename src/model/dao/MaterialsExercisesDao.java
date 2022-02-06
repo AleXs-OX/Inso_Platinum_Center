@@ -31,27 +31,6 @@ public class MaterialsExercisesDao extends SQL_Controller_Conexion{
 		}
 	}
 	
-	public void eliminar(MaterialVo material, ExerciseVo ejercicio) throws Exception{
-		try {
-			this.openConnection();
-			
-			PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM MATERIALESEJERCICIOS WHERE "
-					+ "idMaterial=? AND idEjercicio=?");
-			st.setInt(1, material.getIdMaterial());
-			st.setInt(2, ejercicio.getIdEjercicio());
-			
-			st.executeUpdate();
-		}catch(Exception e) {
-			throw new Exception("Error al eliminar un material de ejercicio: " + e.getMessage());
-		}finally {
-			try {
-				this.closeConnection();
-			}catch(Exception e) {
-				throw new Exception("Error cerrando la conexi�n al eliminar un material de ejercicio: " + e.getMessage());
-			}
-		}
-	}
-	
 	public List<MaterialVo> listar(ExerciseVo ejercicio) throws Exception{
 		ArrayList<MaterialVo> listaMateriales = new ArrayList<MaterialVo>();
 		

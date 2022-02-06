@@ -51,12 +51,12 @@ public class TariffsDao extends SQL_Controller_Conexion{
 				listaTarifas.add(tarifa);
 			}
 		}catch(Exception e) {
-			throw new Exception("Error al listar los ejercicios: " + e.getMessage());
+			throw new Exception("Error al listar las tarifas: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión listando los ejercicios: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexión listando tarifas: " + e.getMessage());
 			}
 		}
 		
@@ -84,15 +84,44 @@ public class TariffsDao extends SQL_Controller_Conexion{
 				listaTarifas.add(tarifa);
 			}
 		}catch(Exception e) {
-			throw new Exception("Error al listar los ejercicios: " + e.getMessage());
+			throw new Exception("Error al buscar tarifas: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión listando los ejercicios: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexión buscando tarifas: " + e.getMessage());
 			}
 		}
 		
 		return listaTarifas;
+	}
+	
+	public TariffsVo buscar(int idTarifa) throws Exception{
+		TariffsVo tarifa = new TariffsVo();
+		
+		try {
+			this.openConnection();
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM TARIFAS WHERE "
+					+ "idTarifa=?");
+			st.setInt(1, idTarifa);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				tarifa.setIdTarifa(rs.getInt("idTarifa"));
+				tarifa.setNombreTarifa(rs.getString("nombreTarifa"));
+				tarifa.setDescripcion(rs.getString("descripcion"));
+				tarifa.setImporte(rs.getInt("importe"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar tarifas: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando tarifas: " + e.getMessage());
+			}
+		}
+		
+		return tarifa;
 	}
 }

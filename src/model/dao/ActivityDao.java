@@ -17,7 +17,7 @@ public class ActivityDao extends SQL_Controller_Conexion{
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO ACTIVIDADES"
                     + "(nombreActividad, fecha, idEmpleado, idSala, descripcion, duracion, idRutina) VALUES (?, ?, ?, ?, ?, ?, ?)");
             st.setString(1, actividad.getNombreActividad());
-            st.setDate(2, actividad.getFecha());
+            st.setTimestamp(2, actividad.getFecha());
             st.setInt(3, actividad.getIdEmpleado());
             st.setInt(4, actividad.getIdSala());
             st.setString(5, actividad.getDescripcion());
@@ -63,7 +63,7 @@ public class ActivityDao extends SQL_Controller_Conexion{
             PreparedStatement st = this.getConnection().prepareStatement("UPDATE ACTIVIDADES SET "
                     + "fecha=?, idSala=?, descripcion=?, duracion=?, idRutina=? WHERE nombreActividad=?");
 
-            st.setDate(1, actividad.getFecha());
+            st.setTimestamp(1, actividad.getFecha());
             st.setInt(2, actividad.getIdSala());
             st.setString(3, actividad.getDescripcion());
             st.setTime(4, actividad.getDuracion());
@@ -94,7 +94,7 @@ public class ActivityDao extends SQL_Controller_Conexion{
             while(rs.next()) {
                 ActivityVo actividad = new ActivityVo();
                 actividad.setNombreActividad(rs.getString("nombreActividad"));
-                actividad.setFecha(rs.getDate("fecha"));
+                actividad.setFecha(rs.getTimestamp("fecha"));
                 actividad.setIdEmpleado(rs.getInt("idEmpleado"));
                 actividad.setIdSala(rs.getInt("idSala"));
                 actividad.setDescripcion(rs.getString("descripcion"));
@@ -131,7 +131,7 @@ public class ActivityDao extends SQL_Controller_Conexion{
             while(rs.next()) {
                 ActivityVo actividad = new ActivityVo();
                 actividad.setNombreActividad(rs.getString("nombreActividad"));
-                actividad.setFecha(rs.getDate("fecha"));
+                actividad.setFecha(rs.getTimestamp("fecha"));
                 actividad.setIdEmpleado(rs.getInt("idEmpleado"));
                 actividad.setIdSala(rs.getInt("idSala"));
                 actividad.setDescripcion(rs.getString("descripcion"));

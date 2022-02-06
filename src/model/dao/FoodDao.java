@@ -87,15 +87,45 @@ public class FoodDao extends SQL_Controller_Conexion{
 				listaComidas.add(comida);
 			}
 		}catch(Exception e) {
-			throw new Exception("Error al listar los alimentos: " + e.getMessage());
+			throw new Exception("Error al buscar alimentos: " + e.getMessage());
 		}finally {
 			try {
 				this.closeConnection();
 			}catch(Exception e) {
-				throw new Exception("Error al cerrar la conexión listando alimentos: " + e.getMessage());
+				throw new Exception("Error al cerrar la conexión buscando alimentos: " + e.getMessage());
 			}
 		}
 		
 		return listaComidas;
+	}
+	
+	public FoodVo buscar(int idAlimento) throws Exception{
+		FoodVo comida = new FoodVo();
+		
+		try {
+			this.openConnection();
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM ALIMENTOS "
+					+ "WHERE idAlimento=?");
+			st.setInt(1, idAlimento);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				comida.setIdAlimento(rs.getInt("idAlimento"));
+				comida.setNombreAlimento(rs.getString("nombreAlimento"));
+				comida.setDescripcion(rs.getString("descripcion"));
+				comida.setCalorias(rs.getInt("calorias"));
+				comida.setImage(rs.getString("image"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar alimentos: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando alimentos: " + e.getMessage());
+			}
+		}
+		
+		return comida;
 	}
 }

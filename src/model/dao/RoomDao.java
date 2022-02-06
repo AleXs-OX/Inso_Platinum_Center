@@ -58,16 +58,14 @@ public class RoomDao extends SQL_Controller_Conexion{
     }
 
     public RoomVo buscar(int idSala) throws Exception {
-
         RoomVo sala = new RoomVo();
-        String criterioBusqueda = '%' + Integer.toString(idSala) + '%';
 
         try {
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM SALAS WHERE idSala "
-                    + "LIKE ?");
-            st.setString(1, criterioBusqueda);
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM SALAS WHERE "
+            		+ "idSala=?");
+            st.setInt(1, idSala);
             ResultSet result = st.executeQuery();
 
             while(result.next()) {
@@ -90,7 +88,7 @@ public class RoomDao extends SQL_Controller_Conexion{
 
         return sala;
     }
-
+    
     public List<RoomVo> listar() throws Exception{
         ArrayList<RoomVo> listaSalas = new ArrayList<>();
 
@@ -117,6 +115,41 @@ public class RoomDao extends SQL_Controller_Conexion{
                 this.closeConnection();
             }catch(Exception e){
                 throw new Exception("Error al cerrar la conexion listando salas: " + e.getMessage());
+            }
+        }
+
+        return listaSalas;
+    }
+
+    public List<RoomVo> buscar(String termino) throws Exception{
+        ArrayList<RoomVo> listaSalas = new ArrayList<>();
+        String criterioBusqueda = '%' + termino + '%';
+
+        try {
+            this.openConnection();
+
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM SALAS WHERE "
+            		+ "nombreSala LIKE ?");
+            st.setString(1, criterioBusqueda);
+            ResultSet rs = st.executeQuery();
+
+            while(rs.next()) {
+                RoomVo sala = new RoomVo();
+                sala.setIdSala(rs.getInt("idSala"));
+                sala.setNombreSala(rs.getString("nombreSala"));
+                sala.setAforo(rs.getInt("aforo"));
+                sala.setApertura(rs.getTime("apertura"));
+                sala.setCierre(rs.getTime("cierre"));
+
+                listaSalas.add(sala);
+            }
+        }catch(Exception e) {
+            throw new Exception("Error al buscar salas: " + e.getMessage());
+        }finally {
+            try {
+                this.closeConnection();
+            }catch(Exception e){
+                throw new Exception("Error al cerrar la conexion buscando salas: " + e.getMessage());
             }
         }
 

@@ -79,7 +79,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
             UsersDao userDao = new UsersDao();
             UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoDeUsuario);
             /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
-            userDao.registrar(userVo);
+            userDao.anadir(userVo);
 
             this.resetEspaciosBlanco();
             this.mensajeCreacionExitoso();

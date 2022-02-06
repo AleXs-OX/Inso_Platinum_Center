@@ -120,6 +120,37 @@ public class DietDao extends SQL_Controller_Conexion{
 		return listaDietas;
 	}
 	
+	public DietVo buscar(int idDieta) throws Exception{
+		DietVo dieta = new DietVo();
+		
+		try {
+			this.openConnection();
+			
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM DIETAS "
+					+ "WHERE idDieta=?");
+			st.setInt(1, idDieta);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				dieta.setIdDieta(rs.getInt("idDieta"));
+				dieta.setIdCreador(rs.getInt("idCreador"));
+				dieta.setNombreDieta(rs.getString("nombreDieta"));
+				dieta.setDescripcion(rs.getString("descripcion"));
+				dieta.setCalorias(rs.getInt("calorias"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar dietas: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando dietas: " + e.getMessage());
+			}
+		}
+		
+		return dieta;
+	}
+	
 	public void actualizar(DietVo dieta) throws Exception{
 		try {
 			this.openConnection();

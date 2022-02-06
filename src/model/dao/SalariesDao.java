@@ -95,4 +95,33 @@ public class SalariesDao extends SQL_Controller_Conexion{
 		
 		return listaSalarios;
 	}
+	
+	public SalariesVo buscar(int idSalario) throws Exception{
+		SalariesVo salario = new SalariesVo();
+		
+		try {
+			this.openConnection();
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM SALARIOS "
+					+ "WHERE idSalario=?");
+			st.setInt(1, idSalario);
+			ResultSet rs = st.executeQuery();
+			
+			while(rs.next()) {
+				salario.setIdSalario(rs.getInt("idSalario"));
+				salario.setNombreSalario(rs.getString("nombreSalario"));
+				salario.setDescripcion(rs.getString("descripcion"));
+				salario.setCantidad(rs.getInt("cantidad"));
+			}
+		}catch(Exception e) {
+			throw new Exception("Error al buscar salario: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e) {
+				throw new Exception("Error al cerrar la conexión buscando salarios: " + e.getMessage());
+			}
+		}
+		
+		return salario;
+	}
 }

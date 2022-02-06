@@ -13,7 +13,7 @@ public class loginLogic {
 	public int iniciarSesion(String usuario, String password) throws Exception{
 		int tipoUsuario = -1;
 		
-		if(usuario.length() == 0 || password.length() == 0) {
+		if(usuario == null || password == null || usuario == "" || password == "" ) {
 			throw new Exception("Alguno de los campos está vacío. Rellénalos.");
 		}else {
 			try {

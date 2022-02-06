@@ -6,18 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.connection.SQL_Controller_Conexion;
-import model.vo.ClientVo;
+import model.vo.UsersVo;
 import model.vo.DietVo;
 
 public class DietsClientsDao extends SQL_Controller_Conexion {
 	
-	public void anadir(DietVo dieta, ClientVo cliente) throws Exception{
+	public void anadir(DietVo dieta, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO DIETASCLIENTES"
 					+ "(idCliente, idDieta) VALUES (?, ?)");
-			st.setInt(1, cliente.getIdCliente());
+			st.setInt(1, cliente.getIdUsuario());
 			st.setInt(2, dieta.getIdDieta());
 			
 			st.executeUpdate();
@@ -32,14 +32,14 @@ public class DietsClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public void eliminar(DietVo dieta, ClientVo cliente) throws Exception{
+	public void eliminar(DietVo dieta, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM DIETASCLIENTES "
 					+ "WHERE idDieta=? AND idCliente=?");
 			st.setInt(1, dieta.getIdDieta());
-			st.setInt(2, cliente.getIdCliente());
+			st.setInt(2, cliente.getIdUsuario());
 			
 			st.executeUpdate();
 		}catch(Exception e) {
@@ -53,7 +53,7 @@ public class DietsClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public List<DietVo> listar(ClientVo cliente) throws Exception{
+	public List<DietVo> listar(UsersVo cliente) throws Exception{
 		ArrayList<DietVo> listaDietas = new ArrayList<DietVo>();
 		
 		try {
@@ -64,7 +64,7 @@ public class DietsClientsDao extends SQL_Controller_Conexion {
 			PreparedStatement st2 = this.getConnection().prepareStatement("SELECT * FROM DIETAS "
 					+ "WHERE idDieta=?");
 			
-			st1.setInt(1, cliente.getIdCliente());
+			st1.setInt(1, cliente.getIdUsuario());
 			ResultSet rs1 = st1.executeQuery();
 			
 			while(rs1.next()) {

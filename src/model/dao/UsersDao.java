@@ -25,7 +25,14 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setCIF(result.getString("CIF"));
+                user.setEmail(result.getString("email"));
+                user.setTelefono(result.getInt("telefono"));
+                user.setIBAN(result.getString("IBAN"));
+                user.setDireccion(result.getString("direccion"));
                 user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+                user.setIdSalario(result.getInt("idSalario"));
+                user.setIdTarifa(result.getInt("idTarifa"));
                 listaUsuarios.add(user);
             }
         }
@@ -59,7 +66,14 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setCIF(result.getString("CIF"));
+                user.setEmail(result.getString("email"));
+                user.setTelefono(result.getInt("telefono"));
+                user.setIBAN(result.getString("IBAN"));
+                user.setDireccion(result.getString("direccion"));
                 user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+                user.setIdSalario(result.getInt("idSalario"));
+                user.setIdTarifa(result.getInt("idTarifa"));
             }
 
         }catch (Exception e){
@@ -93,7 +107,14 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setCIF(result.getString("CIF"));
+                user.setEmail(result.getString("email"));
+                user.setTelefono(result.getInt("telefono"));
+                user.setIBAN(result.getString("IBAN"));
+                user.setDireccion(result.getString("direccion"));
                 user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+                user.setIdSalario(result.getInt("idSalario"));
+                user.setIdTarifa(result.getInt("idTarifa"));
             }
 
         }catch (Exception e){
@@ -128,7 +149,14 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setCIF(result.getString("CIF"));
+                user.setEmail(result.getString("email"));
+                user.setTelefono(result.getInt("telefono"));
+                user.setIBAN(result.getString("IBAN"));
+                user.setDireccion(result.getString("direccion"));
                 user.setTipoDeUsuario(result.getInt("tipoUsuario"));
+                user.setIdSalario(result.getInt("idSalario"));
+                user.setIdTarifa(result.getInt("idTarifa"));
                 
                 listaUsuarios.add(user);
             }
@@ -146,22 +174,22 @@ public class UsersDao extends SQL_Controller_Conexion {
         return listaUsuarios;
     }
 
-    //TODO PLANTEARSE SI SE PUEDEN ELIMINAR USUARIOS (fechaBaja, fechaDespido, etc)
     public void eliminar(UsersVo user) throws Exception{
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM usuarios WHERE IdUsuario=?");
+            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM USUARIOS WHERE idUsuario=?");
             st.setInt(1, user.getIdUsuario());
+            
             st.executeUpdate();
         }
         catch(Exception e){
-            throw new Exception("Eliminar Usuario "+e.getMessage());
+            throw new Exception("Error eliminando usuarios: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
             } catch (Exception e) {
-                throw new Exception("Error al cerrar la conexion eliminar usuario: " + e.getMessage());
+                throw new Exception("Error al cerrar la conexion eliminando usuario: " + e.getMessage());
             }
         }
     }
@@ -170,15 +198,20 @@ public class UsersDao extends SQL_Controller_Conexion {
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios (idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoUsuario)" +
-                    "VALUES (?,?,?,?,?,?)");
+            PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios "
+            		+ "(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, CIF, email, telefono, IBAN, direccion, tipoDeUsuario) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
             st.setInt(1, user.getIdUsuario());
             st.setString(2, user.getNombreCompleto());
             st.setString(3, user.getNombreUsuario());
             st.setString(4, user.getContrasena());
             st.setDate(5, user.getFechaNacimiento());
-            st.setInt(6, user.getTipoDeUsuario());
+            st.setString(6, user.getCIF());
+            st.setString(7, user.getEmail());
+            st.setInt(8, user.getTelefono());
+            st.setString(9, user.getIBAN());
+            st.setString(10, user.getDireccion());
+            st.setInt(11, user.getTipoDeUsuario());
 
             st.executeUpdate();
         }
@@ -198,9 +231,13 @@ public class UsersDao extends SQL_Controller_Conexion {
     		this.openConnection();
     		
     		PreparedStatement st = this.getConnection().prepareStatement("UPDATE USUARIOS SET "
-    				+ "contrasena=? WHERE idUsuario=?");
+    				+ "contrasena=?, email=?, telefono=?, IBAN=?, direccion=? WHERE idUsuario=?");
     		st.setString(1, usuario.getContrasena());
-    		st.setInt(2, usuario.getIdUsuario());
+    		st.setString(2, usuario.getEmail());
+    		st.setInt(3, usuario.getTelefono());
+    		st.setString(4, usuario.getIBAN());
+    		st.setString(5, usuario.getDireccion());
+    		st.setInt(6, usuario.getIdUsuario());
     		
     		st.executeUpdate();
     	}catch(Exception e) {
@@ -210,6 +247,48 @@ public class UsersDao extends SQL_Controller_Conexion {
     			this.closeConnection();
     		}catch(Exception e) {
     			throw new Exception("Error al cerrar la conexion actualizando usuario: " + e.getMessage());
+    		}
+    	}
+    }
+    
+    public void actualizarSalario(UsersVo usuario) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE USUARIOS SET "
+    				+ "idSalario=? WHERE idUsuario=?");
+    		st.setInt(1, usuario.getIdSalario());
+    		st.setInt(2, usuario.getIdUsuario());
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error al actualizar salario de usuario: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando salario de usuario: " + e.getMessage());
+    		}
+    	}
+    }
+    
+    public void actualizarTarifa(UsersVo usuario) throws Exception{
+    	try {
+    		this.openConnection();
+    		
+    		PreparedStatement st = this.getConnection().prepareStatement("UPDATE USUARIOS SET "
+    				+ "idTarifa=? WHERE idUsuario=?");
+    		st.setInt(1, usuario.getIdTarifa());
+    		st.setInt(2, usuario.getIdUsuario());
+    		
+    		st.executeUpdate();
+    	}catch(Exception e) {
+    		throw new Exception("Error al actualizar tarifa de usuario: " + e.getMessage());
+    	}finally {
+    		try {
+    			this.closeConnection();
+    		}catch(Exception e) {
+    			throw new Exception("Error al cerrar la conexion actualizando tarifa de usuario: " + e.getMessage());
     		}
     	}
     }

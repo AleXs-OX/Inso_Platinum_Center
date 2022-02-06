@@ -6,19 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.connection.SQL_Controller_Conexion;
-import model.vo.ClientVo;
+import model.vo.UsersVo;
 import model.vo.RoutineVo;
 
 public class RoutinesClientsDao extends SQL_Controller_Conexion {
 	
-	public void anadir(RoutineVo rutina, ClientVo cliente) throws Exception{
+	public void anadir(RoutineVo rutina, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO RUTINASCLIENTES"
 					+ "(idRutina, idCliente) VALUES (?,?)");
 			st.setInt(1, rutina.getIdRutina());
-			st.setInt(2, cliente.getIdCliente());
+			st.setInt(2, cliente.getIdUsuario());
 			
 			st.executeUpdate();
 		}catch(Exception e) {
@@ -32,14 +32,14 @@ public class RoutinesClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public void eliminar(RoutineVo rutina, ClientVo cliente) throws Exception{
+	public void eliminar(RoutineVo rutina, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM RUTINASCLIENTES WHERE "
 					+ "idRutina=? AND idCliente=?");
 			st.setInt(1, rutina.getIdRutina());
-			st.setInt(2, cliente.getIdCliente());
+			st.setInt(2, cliente.getIdUsuario());
 			
 			st.executeUpdate();
 		}catch(Exception e) {
@@ -53,7 +53,7 @@ public class RoutinesClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public List<RoutineVo> listar(ClientVo cliente) throws Exception{
+	public List<RoutineVo> listar(UsersVo cliente) throws Exception{
 		ArrayList<RoutineVo> listaRutinas = new ArrayList<RoutineVo>();
 		
 		try {
@@ -64,7 +64,7 @@ public class RoutinesClientsDao extends SQL_Controller_Conexion {
 			PreparedStatement st2 = this.getConnection().prepareStatement("SELECT * FROM RUTINAS "
 					+ "WHERE idRutina=?");
 			
-			st1.setInt(1, cliente.getIdCliente());
+			st1.setInt(1, cliente.getIdUsuario());
 			ResultSet rs1 = st1.executeQuery();
 			
 			while(rs1.next()) {

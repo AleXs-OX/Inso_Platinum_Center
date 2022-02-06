@@ -12,8 +12,16 @@ public class UsersVo {
 	private String nombreUsuario;
 	private String contrasena;
 	private Date fechaNacimiento;
+	private String CIF;
+	private String email;
+	private int telefono;
+	private String IBAN;
+	private String direccion;
 	private int tipoDeUsuario;
+	private int idSalario;
+	private int idTarifa;
 
+	//TODO deprecate
 	/*Constructor principal*/
 	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, int tipoDeUsuario) {
 		super();
@@ -85,6 +93,61 @@ public class UsersVo {
 
 	public void setTipoDeUsuario(int tipo) {
 		this.tipoDeUsuario = tipo;
+	}
+	
+	public String getCIF() {
+		return CIF;
+	}
+	
+	public void setCIF(String cIF) {
+		this.CIF = cIF;
+	}
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public int getTelefono() {
+		return telefono;
+	}
+	
+	public void setTelefono(int telefono) {
+		this.telefono = telefono;
+	}
+	
+	public String getIBAN() {
+		return IBAN;
+	}
+	
+	public void setIBAN(String iBAN) {
+		this.IBAN = iBAN;
+	}
+	
+	public String getDireccion() {
+		return direccion;
+	}
+	
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	
+	public int getIdSalario() {
+		return idSalario;
+	}
+	
+	public void setIdSalario(int idSalario) {
+		this.idSalario = idSalario;
+	}
+	
+	public int getIdTarifa() {
+		return idTarifa;
+	}
+	
+	public void setIdTarifa(int idTarifa) {
+		this.idTarifa = idTarifa;
 	}
 	
 }

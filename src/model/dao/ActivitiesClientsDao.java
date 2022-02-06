@@ -7,17 +7,17 @@ import java.util.List;
 
 import model.connection.SQL_Controller_Conexion;
 import model.vo.ActivityVo;
-import model.vo.ClientVo;
+import model.vo.UsersVo;
 
 public class ActivitiesClientsDao extends SQL_Controller_Conexion {
 
-	public void anadir(ActivityVo actividad, ClientVo cliente) throws Exception{
+	public void anadir(ActivityVo actividad, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO ACTIVIDADESCLIENTES"
 					+ "(idCliente, nombreActividad, fecha) VALUES (?, ?, ?)");
-			st.setInt(1, cliente.getIdCliente());
+			st.setInt(1, cliente.getIdUsuario());
 			st.setString(2, actividad.getNombreActividad());
 			st.setTimestamp(3, actividad.getFecha());
 			
@@ -33,13 +33,13 @@ public class ActivitiesClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public void eliminar(ActivityVo actividad, ClientVo cliente) throws Exception{
+	public void eliminar(ActivityVo actividad, UsersVo cliente) throws Exception{
 		try {
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM ACTIVIDADESCLIENTES "
 					+ "WHERE idCliente=? AND nombreActividad=? AND fecha=?");
-			st.setInt(1, cliente.getIdCliente());
+			st.setInt(1, cliente.getIdUsuario());
 			st.setString(2, actividad.getNombreActividad());
 			st.setTimestamp(3, actividad.getFecha());
 			
@@ -54,7 +54,7 @@ public class ActivitiesClientsDao extends SQL_Controller_Conexion {
 		}
 	}
 	
-	public List<ActivityVo> listar(ClientVo cliente) throws Exception{
+	public List<ActivityVo> listar(UsersVo cliente) throws Exception{
 		ArrayList<ActivityVo> listaActividades = new ArrayList<ActivityVo>();
 		
 		try {
@@ -65,7 +65,7 @@ public class ActivitiesClientsDao extends SQL_Controller_Conexion {
 			PreparedStatement st2 = this.getConnection().prepareStatement("SELECT * FROM ACTIVIDADES "
 					+ "WHERE nombreActividad=? AND fecha=?");
 			
-			st1.setInt(1, cliente.getIdCliente());
+			st1.setInt(1, cliente.getIdUsuario());
 			ResultSet rs1 = st1.executeQuery();
 			
 			while(rs1.next()) {

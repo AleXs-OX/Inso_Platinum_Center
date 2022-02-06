@@ -71,9 +71,7 @@ public class ListenerClientsUI {
         dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
 
         UsersDao usersDao = new UsersDao();
-        ArrayList<UsersVo> userArrayList;
-        userArrayList = usersDao.listar();
-
+        ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
         ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
 
         tableShowClients.setItems(userList);

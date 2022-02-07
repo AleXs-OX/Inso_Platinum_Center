@@ -32,9 +32,6 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
     private Button buttonCancel;
     private Stage primaryStage;
 
-    @FXML
-    private ChoiceBox<String> choiceBoxTarifas;
-
     /*Variables*/
     private int idUsuario;
     private String nombreUsuario;

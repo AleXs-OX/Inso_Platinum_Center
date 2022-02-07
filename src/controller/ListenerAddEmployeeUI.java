@@ -27,7 +27,7 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
 
     /*Buttons*/
     @FXML
-    private Button buttonCreateClient;
+    private Button buttonCreateEmployee;
     @FXML
     private Button buttonCancel;
     private Stage primaryStage;

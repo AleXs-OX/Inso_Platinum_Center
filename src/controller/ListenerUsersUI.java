@@ -81,19 +81,17 @@ public class ListenerUsersUI {
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
             dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
             //rateColumn.setCellValueFactory(new PropertyValueFactory("tipoUsuario"));
-            if(!userList.isEmpty() && userList.get(1).getTipoDeUsuario() == 0){
+            if(!userList.isEmpty() && userList.get(0).getTipoDeUsuario() == 0){
 
-                rateColumn.setText("Cliente");
                 System.out.println("Filtrando busqueda por [Clientes]");
 
             }else{
-                rateColumn.setText("Empleado");
+                //rateColumn.setText("Empleado");
                 System.out.println("Filtrando busqueda por [Empleados]");
 
             }
 
             tableShowClients.setItems(userList);
-
 
     }
 
@@ -119,6 +117,24 @@ public class ListenerUsersUI {
             stage.show();
 
     }
+
+    public void buttonInformationMethod() {
+
+        if(this.tableShowClients.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert("MAS INFORMACION");
+        }else {
+            UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informacion completa");
+            alert.setHeaderText(null);
+            alert.setContentText("Hola \n"+ "hola");
+
+            alert.showAndWait();
+
+        }
+    }
+
     public void ButtonFilterByMethod() throws Exception {
 
         this.filter = !this.filter;
@@ -134,15 +150,10 @@ public class ListenerUsersUI {
     public void buttonDeleteMethod(ActionEvent event) throws Exception {
 
         if(this.tableShowClients.getSelectionModel().getSelectedItem() == null){
-            this.errorDeleteAlert();
+            this.errorDeleteAlert("ELIMINAR");
         }else {
             UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
 
-            if (areYouSureAlert(usersVoSelected)) {
-                UsersDao userDao = new UsersDao();
-                userDao.eliminar(usersVoSelected);
-                this.showListClients(this.filter);
-            }
         }
     }
 
@@ -191,12 +202,12 @@ public class ListenerUsersUI {
 
     }
 
-    private void errorDeleteAlert(){
+    private void errorDeleteAlert(String message){
 
         Alert alert2 = new Alert(Alert.AlertType.WARNING);
         alert2.setTitle("Usuario no seleccionado");
         alert2.setHeaderText(null);
-        alert2.setContentText("Porfavor seleccione un usuario antes de pulsar ELIMINAR");
+        alert2.setContentText("Porfavor seleccione un usuario antes de pulsar " + message);
         alert2.showAndWait();
     }
 }

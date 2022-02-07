@@ -44,7 +44,7 @@ public class ListenerProfileAdmin {
 
         primaryStage = (Stage) this.buttonShowClients.getScene().getWindow();
 
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
         Stage stage = new Stage();
         stage.setTitle("Show Users");
         stage.setScene(scene);

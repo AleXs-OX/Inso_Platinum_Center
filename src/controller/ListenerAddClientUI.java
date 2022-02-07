@@ -12,7 +12,7 @@ import model.vo.UsersVo;
 
 import java.io.IOException;
 
-public class ListenerAddClientUI extends ListenerEmployeesUI {
+public class ListenerAddClientUI {
 
     @FXML
     private TextField textFieldNombre;

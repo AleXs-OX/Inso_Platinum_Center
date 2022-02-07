@@ -50,8 +50,8 @@ public class ListenerUsersUI {
     private TableColumn<UsersVo, String> allNameColumn;
     @FXML
     private TableColumn<UsersVo, Date> dateColumn;
-    //@FXML
-    //private TableColumn<UsersVo, Integer> rateColumn;
+    @FXML
+    private TableColumn<UsersVo, Integer> rateColumn;
 
     @FXML
     private Stage primaryStage;
@@ -68,7 +68,7 @@ public class ListenerUsersUI {
         ArrayList<UsersVo> userArrayList;
 
         if(filter) {
-            userArrayList = new ArrayList<>(usersDao.listar());
+            userArrayList = new ArrayList<>(usersDao.listarPorTipo(0));
         }
         else {
             userArrayList = new ArrayList<>(usersDao.listarPorTipo(1));
@@ -80,6 +80,17 @@ public class ListenerUsersUI {
             nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
             dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
+            //rateColumn.setCellValueFactory(new PropertyValueFactory("tipoUsuario"));
+            if(userList.get(1).getTipoDeUsuario() == 0){
+
+                rateColumn.setText("Cliente");
+                System.out.println("Filtrando busqueda por [Clientes]");
+
+            }else{
+                rateColumn.setText("Empleado");
+                System.out.println("Filtrando busqueda por [Empleados]");
+
+            }
 
             tableShowClients.setItems(userList);
 
@@ -101,9 +112,9 @@ public class ListenerUsersUI {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/view/addEmployee.fxml"));
 
-            Scene scene = new Scene(fxmlLoader.load(), 500, 350);
+            Scene scene = new Scene(fxmlLoader.load(), 450, 700);
             Stage stage = new Stage();
-            stage.setTitle("Add New Client");
+            stage.setTitle("Add New Employee");
             stage.setScene(scene);
             stage.show();
 

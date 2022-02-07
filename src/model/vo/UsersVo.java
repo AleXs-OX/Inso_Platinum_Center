@@ -12,6 +12,7 @@ public class UsersVo {
 	private String nombreUsuario;
 	private String contrasena;
 	private Date fechaNacimiento;
+	private Date fechaContratacion;
 	private String CIF;
 	private String email;
 	private int telefono;
@@ -23,7 +24,7 @@ public class UsersVo {
 
 	//TODO deprecate
 	/*Constructor principal*/
-	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, int tipoDeUsuario) {
+	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, Date fechaContratacion, int tipoDeUsuario) {
 		super();
 
 		this.idUsuario = idUsuario;
@@ -31,6 +32,7 @@ public class UsersVo {
 		this.nombreUsuario = nombreUsuario;
 		this.contrasena = contrasena;
 		this.fechaNacimiento = fechaNacimiento;
+		this.fechaContratacion = fechaContratacion;
 		this.tipoDeUsuario = tipoDeUsuario;
 
 	}
@@ -81,6 +83,18 @@ public class UsersVo {
 	
 	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = Date.valueOf(fechaNacimiento);
+	}
+
+	public Date getFechaContratacion(){
+		return fechaContratacion;
+	}
+
+	public void setFechaContratacion (Date fechaContratacion){
+		this.fechaContratacion = fechaContratacion;
+	}
+
+	public void setFechaContratacion(String fechaContratacion){
+		this.fechaContratacion = Date.valueOf(fechaContratacion);
 	}
 	
 	public int getTipoDeUsuario() {

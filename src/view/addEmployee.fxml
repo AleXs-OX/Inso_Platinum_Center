@@ -38,7 +38,7 @@
       </Text>
       <TextField fx:id="textFieldNombre" layoutX="256.0" layoutY="63.0" />
       <TextField fx:id="textFieldApellidos" layoutX="256.0" layoutY="106.0" />
-      <TextField fx:id="texteFieldIdEmpleado" layoutX="256.0" layoutY="189.0" />
+      <TextField fx:id="textFieldIdEmpleado" layoutX="256.0" layoutY="189.0" />
       <Text layoutX="76.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario">
          <font>
             <Font size="18.0" />

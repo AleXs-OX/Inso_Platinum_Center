@@ -25,6 +25,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setFechaContratacion(result.getDate("fechaContratacion"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -67,6 +68,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setFechaContratacion(result.getDate("fechaContratacion"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -108,6 +110,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setFechaContratacion(result.getDate("fechaContratacion"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -149,6 +152,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setFechaContratacion(result.getDate("fechaContratacion"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -191,6 +195,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
+                user.setFechaContratacion(result.getDate("fechaContratacion"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -241,19 +246,20 @@ public class UsersDao extends SQL_Controller_Conexion {
             this.openConnection();
 
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios "
-            		+ "(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, CIF, email, telefono, IBAN, direccion, tipoDeUsuario) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+            		+ "(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, fechaContratacion, CIF, email, telefono, IBAN, direccion, tipoDeUsuario) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
             st.setInt(1, user.getIdUsuario());
             st.setString(2, user.getNombreCompleto());
             st.setString(3, user.getNombreUsuario());
             st.setString(4, user.getContrasena());
             st.setDate(5, user.getFechaNacimiento());
-            st.setString(6, user.getCIF());
-            st.setString(7, user.getEmail());
-            st.setInt(8, user.getTelefono());
-            st.setString(9, user.getIBAN());
-            st.setString(10, user.getDireccion());
-            st.setInt(11, user.getTipoDeUsuario());
+            st.setDate(6, user.getFechaContratacion());
+            st.setString(7, user.getCIF());
+            st.setString(8, user.getEmail());
+            st.setInt(9, user.getTelefono());
+            st.setString(10, user.getIBAN());
+            st.setString(11, user.getDireccion());
+            st.setInt(12, user.getTipoDeUsuario());
 
             st.executeUpdate();
         }

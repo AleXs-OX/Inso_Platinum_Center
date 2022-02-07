@@ -96,7 +96,7 @@ public class ListenerAddClientUI extends ListenerClientsUI{
 
             /*Crea objeto userDao*/
             UsersDao userDao = new UsersDao();
-            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento,
+            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento,fechaContratacion,
                     tipoDeUsuario,cif,email,telefono,iban,direccion,idSalario,idTarifa);
             /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
             userDao.anadir(userVo);

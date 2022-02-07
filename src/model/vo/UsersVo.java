@@ -22,7 +22,8 @@ public class UsersVo {
 
 
 	/*Constructor principal*/
-	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, int tipoDeUsuario, String cif, String email, int telefono, String iban, String direccion, int idSalario, int idTarifa) {
+	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, Date fechaContratacion,
+				   int tipoDeUsuario, String cif, String email, int telefono, String iban, String direccion, int idSalario, int idTarifa) {
 
 		super();
 
@@ -36,7 +37,7 @@ public class UsersVo {
 		this.CIF = cif;
 		this.email = email;
 		this.telefono = telefono;
-		this.IBAN = IBAN;
+		this.IBAN = iban;
 		this.direccion = direccion;
 		this.idSalario = idSalario;
 		this.idTarifa = idTarifa;

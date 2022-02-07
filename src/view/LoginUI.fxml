@@ -31,12 +31,12 @@
       </Button>
       <ImageView fitHeight="128.0" fitWidth="231.0" layoutX="397.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/platinum_center_logo_blanco.png" />
+            <Image url="@../images/platinum_center_logo_blanco.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="472.0" fitWidth="348.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/weights.jpg" />
+            <Image url="@../images/weights.jpg" />
          </image>
       </ImageView>
    </children>

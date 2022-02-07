@@ -4,18 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
 
-import java.io.IOException;
 import java.sql.Date;
 
 
-public class ListenerAddEmployeeUI extends ListenerClientsUI{
+public class ListenerAddEmployeeUI extends ListenerUsersUI {
 
     @FXML
     private TextField textFieldNombre;

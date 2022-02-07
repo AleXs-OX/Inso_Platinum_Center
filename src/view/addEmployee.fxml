@@ -1,49 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="322.0" prefWidth="476.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddClientUI">
    <children>
-      <Button fx:id="buttonGuardar" layoutX="388.0" layoutY="271.0" mnemonicParsing="false" text="Guardar" />
-      <Text fx:id="textFieldClienteNuevo" layoutX="133.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMPLEADO" textAlignment="CENTER" wrappingWidth="210.41015625">
+      <GridPane hgap="5.0" layoutX="10.0" layoutY="10.0" prefHeight="569.0" prefWidth="422.0" vgap="5.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="258.0" minWidth="10.0" prefWidth="176.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="378.0" minWidth="10.0" prefWidth="180.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.5126953125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IdCliente" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField id="textFieldUser" fx:id="textFieldNombre" GridPane.columnIndex="1" />
+            <TextField id="textFieldUser" fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField id="textFieldUser" fx:id="textField_ID_Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" GridPane.rowIndex="9">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" wrappingWidth="107.59808349609375" GridPane.rowIndex="8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="choiceBoxTarifas" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField id="textFieldUser" fx:id="textFieldPass" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="CIF" wrappingWidth="61.998046875" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" wrappingWidth="80.3980712890625" GridPane.rowIndex="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tarifa" wrappingWidth="61.998046875" GridPane.rowIndex="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField id="textFieldUser" fx:id="textFieldCIF" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="80.3980712890625" GridPane.rowIndex="7">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="idSalario" wrappingWidth="80.3980712890625" GridPane.rowIndex="12">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField id="textFieldUser" fx:id="textFieldTelefono" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField id="textFieldUser" fx:id="textFieldSalario" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField id="textFieldUser" fx:id="textFieldDireccion" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField id="textFieldUser" fx:id="textFieldEmail" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de contratacion" GridPane.rowIndex="5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <DatePicker fx:id="datePickerContrata" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Iban" wrappingWidth="80.3980712890625" GridPane.rowIndex="11">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField id="textFieldUser" fx:id="textFieldIban" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </GridPane>
+      <Button fx:id="buttonCancel" layoutX="231.0" layoutY="594.0" mnemonicParsing="false" onAction="#buttonCancelMethod" prefHeight="32.0" prefWidth="85.0" text="Cancelar">
          <font>
-            <Font size="18.0" />
+            <Font name="Consolas Bold" size="14.0" />
          </font>
-      </Text>
-      <Text layoutX="76.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.845703125">
+      </Button>
+      <Button fx:id="buttonCreateClient" layoutX="340.0" layoutY="594.0" mnemonicParsing="false" onAction="#buttonCreateClientMethod" prefHeight="32.0" prefWidth="66.0" text="Crear">
          <font>
-            <Font size="18.0" />
+            <Font name="Consolas Bold" size="14.0" />
          </font>
-      </Text>
-      <Text layoutX="74.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="76.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de contratación">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <DatePicker fx:id="datePickerFechaContratacion" layoutX="256.0" layoutY="147.0" />
-      <Text layoutX="76.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID empleado ">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="textFieldNombre" layoutX="256.0" layoutY="63.0" />
-      <TextField fx:id="textFieldApellidos" layoutX="256.0" layoutY="106.0" />
-      <TextField fx:id="textFieldIdEmpleado" layoutX="256.0" layoutY="189.0" />
-      <Text layoutX="76.0" layoutY="251.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Salario">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField fx:id="texteFieldIdSalario" layoutX="256.0" layoutY="232.0" />
+      </Button>
    </children>
 </AnchorPane>

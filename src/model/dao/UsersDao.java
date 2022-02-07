@@ -50,7 +50,7 @@ public class UsersDao extends SQL_Controller_Conexion {
         return listaUsuarios;
     }
     
-    public List<UsersVo> buscarPorTipo(int tipoUsuario) throws Exception{
+    public List<UsersVo> listarPorTipo(int tipoUsuario) throws Exception{
         ArrayList<UsersVo> listaUsuarios = new ArrayList<UsersVo>();
         
         try{

@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
-public class ListenerClientsUI {
+public class ListenerUsersUI {
 
     Boolean filter = true; /* True = Filter Users*/
                            /* False = Filter Employees*/
@@ -65,16 +64,23 @@ public class ListenerClientsUI {
 
     public void showListClients(Boolean filter) throws Exception {
 
-        idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
-        allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
-
         UsersDao usersDao = new UsersDao();
-        ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
-        ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
 
-        tableShowClients.setItems(userList);
+        if(filter) {
+            ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
+            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+        }
+        else {
+            ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
+            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+        }
+            idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
+            allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
+
+            tableShowClients.setItems(userList);
+
 
     }
 
@@ -91,7 +97,7 @@ public class ListenerClientsUI {
         //DialogPane addClientPane = fxmlLoader.load();
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/AddEmployeeUI.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/addEmployee.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 500, 350);
             Stage stage = new Stage();

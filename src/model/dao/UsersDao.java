@@ -56,8 +56,9 @@ public class UsersDao extends SQL_Controller_Conexion {
         try{
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM USUARIOS"
-            		+ "WHERE tipoUsuario=?");
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM USUARIOS "
+                    + "WHERE tipoUsuario=?");
+
             st.setInt(1, tipoUsuario);
             ResultSet result = st.executeQuery();
 

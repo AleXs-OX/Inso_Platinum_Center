@@ -81,7 +81,7 @@ public class ListenerUsersUI {
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
             dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
             //rateColumn.setCellValueFactory(new PropertyValueFactory("tipoUsuario"));
-            if(userList.get(1).getTipoDeUsuario() == 0){
+            if(!userList.isEmpty() && userList.get(1).getTipoDeUsuario() == 0){
 
                 rateColumn.setText("Cliente");
                 System.out.println("Filtrando busqueda por [Clientes]");

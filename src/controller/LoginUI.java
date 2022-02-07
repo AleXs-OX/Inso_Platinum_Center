@@ -65,8 +65,9 @@ public class LoginUI {
 					//TODO
 					System.out.println("Por implementar: empleado");
 				}else if(vo.getTipoDeUsuario() == 0 && vo.getNombreUsuario() != null){
-					///TODO
-					System.out.println("Por implementar: cliente");
+					Parent newRoot = FXMLLoader.load(getClass().getResource("/view/Client.fxml"));
+					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
+					primaryStage.getScene().setRoot(newRoot);
 				}else {
 					error("Usuario y/o contraseña incorrectos. Revisa los campos.");
 				}

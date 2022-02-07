@@ -132,8 +132,10 @@ public class ListenerAddEmployeeUI extends ListenerUsersUI {
     private Boolean compruebaDatos(){
         /*FALTA COMPROBAR QUE EL ID SOLO SEA INT*/
 
-        if(textField_ID_Cliente.getText() == null|| this.textFieldNombre.getText() == null|| this.textFieldApellidos.getText() == null
-                || this.textFieldPass.getText() == null || this.choiceBoxTarifas.getValue() == null){
+        if(this.textField_ID_Cliente.getText() == ""|| this.textFieldNombre.getText() == ""|| this.textFieldApellidos.getText() == ""
+                || this.textFieldPass.getText() == "" || this.choiceBoxTarifas.getValue() == ""
+        || this.textFieldCIF.getText() == "" || this.textFieldIban.getText() == "" || this.textFieldEmail.getText() == "" ||
+                this.textFieldTelefono.getText() == "" || this.textFieldSalario.getText() == "" || this.textFieldDireccion.getText() == ""){
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Datos incorrectos");
@@ -144,12 +146,12 @@ public class ListenerAddEmployeeUI extends ListenerUsersUI {
 
         }else{
 
-            if(datePicker.getValue() == null){
+            if(this.datePicker.getValue() == null || this.datePickerContrata.getValue() == null){
                 Alert alert2 = new Alert(Alert.AlertType.WARNING);
                 alert2.setTitle("Fecha incorrecta");
                 alert2.setHeaderText(null);
                 alert2.setContentText("La fecha introducida es incorrecta");
-                alert2.setContentText("Porfavor pulse "+"enter"+ "cuando termine de escribirla o seleccione el selector de fecha");
+                alert2.setContentText("Porfavor pulse "+"enter"+ " cuando termine de escribirla o seleccione el selector de fecha");
                 alert2.showAndWait();
                 return false;
             }

@@ -24,7 +24,8 @@ public class UsersVo {
 
 	//TODO deprecate
 	/*Constructor principal*/
-	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, Date fechaContratacion, int tipoDeUsuario) {
+	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, Date fechaContratacion,
+				   int tipoDeUsuario, String cif, String email, int telefono, String IBAN, String direccion, int idSalario, int idTarifa) {
 		super();
 
 		this.idUsuario = idUsuario;
@@ -34,6 +35,13 @@ public class UsersVo {
 		this.fechaNacimiento = fechaNacimiento;
 		this.fechaContratacion = fechaContratacion;
 		this.tipoDeUsuario = tipoDeUsuario;
+		this.CIF = cif;
+		this.email = email;
+		this.telefono = telefono;
+		this.IBAN = IBAN;
+		this.direccion = direccion;
+		this.idSalario = idSalario;
+		this.idTarifa = idTarifa;
 
 	}
 	/*Constructor vacio*/

@@ -25,7 +25,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
-                user.setFechaContratacion(result.getDate("fechaContratacion"));
+                user.setFechaContratacion(result.getDate("fechaAlta"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -68,7 +68,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
-                user.setFechaContratacion(result.getDate("fechaContratacion"));
+                user.setFechaContratacion(result.getDate("fechaAlta"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -110,7 +110,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
-                user.setFechaContratacion(result.getDate("fechaContratacion"));
+                user.setFechaContratacion(result.getDate("fechaAlta"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -152,7 +152,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
-                user.setFechaContratacion(result.getDate("fechaContratacion"));
+                user.setFechaContratacion(result.getDate("fechaAlta"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -195,7 +195,7 @@ public class UsersDao extends SQL_Controller_Conexion {
                 user.setNombreUsuario(result.getString("nombreUsuario"));
                 user.setContrasena(result.getString("contrasena"));
                 user.setFechaNacimiento(result.getDate("fechaNacimiento"));
-                user.setFechaContratacion(result.getDate("fechaContratacion"));
+                user.setFechaContratacion(result.getDate("fechaAlta"));
                 user.setCIF(result.getString("CIF"));
                 user.setEmail(result.getString("email"));
                 user.setTelefono(result.getInt("telefono"));
@@ -246,7 +246,7 @@ public class UsersDao extends SQL_Controller_Conexion {
             this.openConnection();
 
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO usuarios "
-            		+ "(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, fechaContratacion, CIF, email, telefono, IBAN, direccion, tipoDeUsuario) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            		+ "(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, fechaAlta, CIF, email, telefono, IBAN, direccion, tipoDeUsuario) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
             st.setInt(1, user.getIdUsuario());
             st.setString(2, user.getNombreCompleto());

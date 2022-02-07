@@ -1,4 +1,5 @@
 package controller;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,35 +12,77 @@ import model.dao.UsersDao;
 import model.vo.UsersVo;
 
 import java.io.IOException;
+import java.sql.Date;
 
-public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
+
+public class ListenerAddEmployeeUI extends ListenerClientsUI{
 
     @FXML
     private TextField textFieldNombre;
     @FXML
     private TextField textFieldApellidos;
     @FXML
-    private TextField textFieldIdEmpleado;
+    private TextField textField_ID_Cliente;
     @FXML
     private TextField textFieldPass;
     @FXML
     private DatePicker datePicker;
+    @FXML
+    private DatePicker datePickerContrata;
+    @FXML
+    private TextField textFieldCIF;
+    @FXML
+    private TextField textFieldTelefono;
+    @FXML
+    private TextField textFieldDireccion;
+    @FXML
+    private TextField textFieldEmail;
+    @FXML
+    private TextField textFieldIban;
+    @FXML
+    private TextField textFieldSalario;
+
 
     /*Buttons*/
     @FXML
-    private Button buttonCreateEmployee;
+    private Button buttonCreateClient;
     @FXML
     private Button buttonCancel;
+
     private Stage primaryStage;
+
+    @FXML
+    private ChoiceBox<String> choiceBoxTarifas;
 
     /*Variables*/
     private int idUsuario;
-    private String nombreUsuario;
     private String nombreCompleto;
+    private String nombreUsuario;
     private String contrasena;
-    private java.sql.Date fechaContratacion;
+    private Date fechaNacimiento;
+    private Date fechaContratacion;
+    private String cif;
+    private String email;
+    private int telefono;
+    private String iban;
+    private String direccion;
+    private int tipoDeUsuario;
+    private int idSalario;
+    private int idTarifa;
 
-    public void buttonCreateEmployeeMethod(ActionEvent event) throws Exception {
+    public void initialize(){
+
+        this.anadeTarifas();
+        datePicker.setEditable(false);
+    }
+
+    public void anadeTarifas(){
+        ObservableList<String> lista_Tarifas = FXCollections.observableArrayList("Tarifa 1", "Tarifa 2", "Tarifa 3");
+        choiceBoxTarifas.setItems(lista_Tarifas);
+        this.choiceBoxTarifas.setValue("Seleccionar");
+
+    }
+    public void buttonCreateClientMethod(ActionEvent event) throws Exception {
 
         if(this.compruebaDatos()) {
 
@@ -47,7 +90,16 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
             this.nombreUsuario = textFieldNombre.getText();
             this.nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText());
             this.contrasena = textFieldPass.getText();
-            this.fechaContratacion = java.sql.Date.valueOf(datePicker.getValue());
+            this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
+            this.fechaContratacion = java.sql.Date.valueOf(datePickerContrata.getValue());
+            //this.tipoDeUsuario = tipoDeUsuario;
+            this.cif = textFieldCIF.getText();
+            this.email = textFieldEmail.getText();
+            this.telefono = Integer.parseInt(textFieldTelefono.getText());
+            this.iban = textFieldIban.getText();
+            this.direccion = textFieldDireccion.getText();
+            this.idSalario = Integer.parseInt(textFieldSalario.getText());
+            this.idTarifa = Integer.parseInt(choiceBoxTarifas.getValue());
 
             /* - - Tipos de usuario - -*/
             /* 1 - Administrador */
@@ -55,11 +107,13 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
             /* 3 - Cliente*/
             /**/
 
-            int tipoDeUsuario = 2; // Tipo usuario cliente.
+            int tipoDeUsuario = 3; // Tipo usuario cliente.
 
             /*Crea objeto userDao*/
             UsersDao userDao = new UsersDao();
-            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaContratacion, tipoDeUsuario);
+            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento,fechaContratacion,
+                    tipoDeUsuario,cif,email,telefono,iban,direccion,idSalario,idTarifa);
+
             /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
             userDao.anadir(userVo);
 
@@ -73,15 +127,14 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
         }
 
     }
-
     public void buttonCancelMethod(ActionEvent event) throws Exception {
 
         this.closeWindow();
     }
 
-   /* private Boolean compruebaDatos(){
+    private Boolean compruebaDatos(){
         /*FALTA COMPROBAR QUE EL ID SOLO SEA INT*/
-    /*
+
         if(textField_ID_Cliente.getText() == null|| this.textFieldNombre.getText() == null|| this.textFieldApellidos.getText() == null
                 || this.textFieldPass.getText() == null || this.choiceBoxTarifas.getValue() == null){
 
@@ -106,7 +159,7 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
         }
         return true;
 
-    }*/
+    }
 
     private void mensajeCreacionExitoso(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -115,21 +168,19 @@ public class ListenerAddEmployeeUI extends ListenerEmployeesUI {
         alert.setContentText("Usuario "+this.nombreCompleto+ " creado con exito!");
         alert.showAndWait();
     }
-
     private void resetEspaciosBlanco(){
-        this.datePicker.setValue(null);
+        this.textField_ID_Cliente.setText("");
         this.textFieldNombre.setText("");
         this.textFieldApellidos.setText("");
-        this.textFieldIdEmpleado.setText("");
         this.textFieldPass.setText("");
-
-       // this.choiceBoxTarifas.setValue("Seleccionar");
+        this.datePicker.setValue(null);
+        this.choiceBoxTarifas.setValue("Seleccionar");
 
     }
-
     private void closeWindow() throws Exception {
         this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
         this.primaryStage.close();
 
     }
+
 }

@@ -91,7 +91,7 @@ public class ListenerClientsUI {
         //DialogPane addClientPane = fxmlLoader.load();
 
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/view/AddClient.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/view/AddEmployeeUI.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(), 500, 350);
             Stage stage = new Stage();

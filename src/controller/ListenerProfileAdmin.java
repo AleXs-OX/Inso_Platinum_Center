@@ -57,7 +57,7 @@ public class ListenerProfileAdmin {
     public void showEmployeesWindow() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/showEmployees.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/view/showClients.fxml"));
 
         primaryStage = (Stage) this.buttonShowEmployees.getScene().getWindow();
 

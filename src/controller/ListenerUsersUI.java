@@ -65,15 +65,17 @@ public class ListenerUsersUI {
     public void showListClients(Boolean filter) throws Exception {
 
         UsersDao usersDao = new UsersDao();
+        ArrayList<UsersVo> userArrayList;
 
         if(filter) {
-            ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
-            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+            userArrayList = new ArrayList<>(usersDao.listar());
         }
         else {
-            ArrayList<UsersVo> userArrayList = new ArrayList<>(usersDao.listar());
-            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+            userArrayList = new ArrayList<>(usersDao.listarPorTipo(1));
         }
+
+            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+
             idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
             nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));

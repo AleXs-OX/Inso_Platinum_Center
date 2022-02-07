@@ -71,12 +71,13 @@ public class ListenerAddEmployeeUI extends ListenerUsersUI {
 
         this.anadeTarifas();
         datePicker.setEditable(false);
+        datePickerContrata.setEditable(false);
     }
 
     public void anadeTarifas(){
-        ObservableList<String> lista_Tarifas = FXCollections.observableArrayList("Tarifa 1", "Tarifa 2", "Tarifa 3");
+        ObservableList<String> lista_Tarifas = FXCollections.observableArrayList("Empleado");
         choiceBoxTarifas.setItems(lista_Tarifas);
-        this.choiceBoxTarifas.setValue("Seleccionar");
+        this.choiceBoxTarifas.setValue("Empleado");
 
     }
     public void buttonCreateClientMethod(ActionEvent event) throws Exception {
@@ -89,7 +90,6 @@ public class ListenerAddEmployeeUI extends ListenerUsersUI {
             this.contrasena = textFieldPass.getText();
             this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
             this.fechaContratacion = java.sql.Date.valueOf(datePickerContrata.getValue());
-            //this.tipoDeUsuario = tipoDeUsuario;
             this.cif = textFieldCIF.getText();
             this.email = textFieldEmail.getText();
             this.telefono = Integer.parseInt(textFieldTelefono.getText());
@@ -99,12 +99,12 @@ public class ListenerAddEmployeeUI extends ListenerUsersUI {
             this.idTarifa = Integer.parseInt(choiceBoxTarifas.getValue());
 
             /* - - Tipos de usuario - -*/
-            /* 1 - Administrador */
-            /* 2 - Empleado */
-            /* 3 - Cliente*/
+            /* 2 - Administrador */
+            /* 1 - Empleado */
+            /* 0 - Cliente*/
             /**/
 
-            int tipoDeUsuario = 3; // Tipo usuario cliente.
+            int tipoDeUsuario = 1; // Tipo usuario cliente.
 
             /*Crea objeto userDao*/
             UsersDao userDao = new UsersDao();

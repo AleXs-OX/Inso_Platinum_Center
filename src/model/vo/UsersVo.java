@@ -3,9 +3,7 @@ package model.vo;
 import java.sql.Date;
 
 public class UsersVo {
-	public static enum TipoDeUsuario {
-		CLIENTE, EMPLEADO, ADMINISTRADOR
-	};
+
 
 	private int idUsuario;
 	private String nombreCompleto;
@@ -22,10 +20,10 @@ public class UsersVo {
 	private int idSalario;
 	private int idTarifa;
 
-	//TODO deprecate
+
 	/*Constructor principal*/
-	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, Date fechaContratacion,
-				   int tipoDeUsuario, String cif, String email, int telefono, String IBAN, String direccion, int idSalario, int idTarifa) {
+	public UsersVo(int idUsuario, String nombreCompleto, String nombreUsuario, String contrasena, Date fechaNacimiento, int tipoDeUsuario, String cif, String email, int telefono, String iban, String direccion, int idSalario, int idTarifa) {
+
 		super();
 
 		this.idUsuario = idUsuario;
@@ -44,6 +42,10 @@ public class UsersVo {
 		this.idTarifa = idTarifa;
 
 	}
+
+	public static enum TipoDeUsuario {
+		CLIENTE, EMPLEADO, ADMINISTRADOR
+	};
 	/*Constructor vacio*/
 	public UsersVo(){
 		super();

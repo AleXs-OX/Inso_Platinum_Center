@@ -12,6 +12,7 @@ import model.dao.UsersDao;
 import model.vo.UsersVo;
 
 import java.io.IOException;
+import java.sql.Date;
 
 
 public class ListenerAddClientUI extends ListenerClientsUI{
@@ -40,10 +41,19 @@ public class ListenerAddClientUI extends ListenerClientsUI{
 
     /*Variables*/
     private int idUsuario;
-    private String nombreUsuario;
     private String nombreCompleto;
+    private String nombreUsuario;
     private String contrasena;
-    private java.sql.Date fechaNacimiento;
+    private Date fechaNacimiento;
+    private Date fechaContratacion;
+    private String cif;
+    private String email;
+    private int telefono;
+    private String iban;
+    private String direccion;
+    private int tipoDeUsuario;
+    private int idSalario;
+    private int idTarifa;
 
     public void initialize(){
 
@@ -66,6 +76,15 @@ public class ListenerAddClientUI extends ListenerClientsUI{
             this.nombreCompleto = nombreUsuario.concat(" ").concat(textFieldApellidos.getText());
             this.contrasena = textFieldPass.getText();
             this.fechaNacimiento = java.sql.Date.valueOf(datePicker.getValue());
+            this.fechaContratacion = fechaContratacion;
+            this.tipoDeUsuario = tipoDeUsuario;
+            this.cif = cif;
+            this.email = email;
+            this.telefono = telefono;
+            this.iban = "e";
+            this.direccion = direccion;
+            this.idSalario = idSalario;
+            this.idTarifa = idTarifa;
 
             /* - - Tipos de usuario - -*/
             /* 1 - Administrador */
@@ -77,7 +96,8 @@ public class ListenerAddClientUI extends ListenerClientsUI{
 
             /*Crea objeto userDao*/
             UsersDao userDao = new UsersDao();
-            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento, tipoDeUsuario);
+            UsersVo userVo = new UsersVo(idUsuario, nombreCompleto, nombreUsuario, contrasena, fechaNacimiento,
+                    tipoDeUsuario,cif,email,telefono,iban,direccion,idSalario,idTarifa);
             /*Registra el usuarioVo creado en userDao para introducirlo en la base de datos*/
             userDao.anadir(userVo);
 

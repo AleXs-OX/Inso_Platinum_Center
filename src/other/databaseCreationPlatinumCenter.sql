@@ -128,7 +128,7 @@ CREATE TABLE PAGOS(
 	idEmpleado INT(6) NOT NULL,
     fechaPago DATE NOT NULL,
     idSalario INT(2) NOT NULL,
-    FOREIGN KEY (idEmpleado) REFERENCES USUARIOS (idUsuario),
+    FOREIGN KEY (idEmpleado) REFERENCES USUARIOS (idUsuario) ON DELETE CASCADE,
     FOREIGN KEY (idSalario) REFERENCES SALARIOS (idSalario),
     CONSTRAINT PK_PAGOS PRIMARY KEY (idEmpleado, fechaPago)
 );
@@ -137,7 +137,7 @@ CREATE TABLE COBROS(
 	idCliente INT(6) NOT NULL,
     fechaCobro DATE NOT NULL,
     idTarifa INT(2) NOT NULL,
-    FOREIGN KEY (idCliente) REFERENCES USUARIOS (idUsuario),
+    FOREIGN KEY (idCliente) REFERENCES USUARIOS (idUsuario) ON DELETE CASCADE,
     FOREIGN KEY (idTarifa) REFERENCES TARIFAS (idTarifa),
     CONSTRAINT PK_COBROS PRIMARY KEY (idCliente, fechaCobro)
 );

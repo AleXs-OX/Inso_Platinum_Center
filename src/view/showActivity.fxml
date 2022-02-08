@@ -6,35 +6,59 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="602.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ShowActivity">
+<AnchorPane prefHeight="735.0" prefWidth="1078.0" style="-fx-background-color: #e3dcdc;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controll.ListenerActivityUI">
    <children>
-      <HBox layoutX="94.0" layoutY="107.0" prefHeight="60.0" prefWidth="649.0" spacing="70.0">
+      <HBox layoutX="94.0" layoutY="107.0" prefHeight="60.0" prefWidth="791.0" spacing="70.0" style="-fx-background-color: #9e9b9b;">
          <children>
-            <Label prefHeight="60.0" prefWidth="67.0" text="Actividad">
+            <Label prefHeight="60.0" prefWidth="67.0" text="Actividad" textFill="WHITE">
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="43.0" text="Fecha">
+            <Label prefHeight="60.0" prefWidth="43.0" text="Fecha" textFill="WHITE">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="72.0" text="Empleado">
+            <Label prefHeight="60.0" prefWidth="72.0" text="Empleado" textFill="WHITE">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
             </Label>
-            <Label prefHeight="60.0" prefWidth="37.0" text="Sala" />
-            <Label prefHeight="60.0" prefWidth="45.0" text="Rutina" />
+            <Label prefHeight="60.0" prefWidth="37.0" text="Sala" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label prefHeight="60.0" prefWidth="54.0" text="Rutina" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
          </children>
       </HBox>
-      <ScrollPane layoutX="94.0" layoutY="186.0" prefHeight="349.0" prefWidth="649.0">
+      <ScrollPane layoutX="94.0" layoutY="184.0" prefHeight="496.0" prefWidth="913.0">
          <content>
-            <VBox prefHeight="349.0" prefWidth="648.0" />
+            <VBox fx:id="itemsVbox" prefHeight="487.0" prefWidth="913.0" />
          </content>
       </ScrollPane>
+      <Text fill="#e05a3d" layoutX="439.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actividades" wrappingWidth="200.0">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

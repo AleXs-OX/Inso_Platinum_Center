@@ -14,7 +14,7 @@ public class ListenerProfileAdmin {
     @FXML
     private Button buttonShowClients;
     @FXML
-    private Button buttonShowEmployees;
+    private Button buttonActividades;
 
     private Button buttonAddUser;
     private Button buttonEditUser;
@@ -32,6 +32,14 @@ public class ListenerProfileAdmin {
         this.buttonShowClients.setOnAction(e -> {
             try {
                 this.showAdminProfileFXML();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        this.buttonActividades.setOnAction(e -> {
+            try {
+                this.showActivitiesWindowFXML();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -58,16 +66,16 @@ public class ListenerProfileAdmin {
 
     }
 
-    public void showEmployeesWindow() throws IOException {
+    public void showActivitiesWindowFXML() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/showClients.fxml"));
+        fxmlLoader.setLocation(getClass().getResource("/view/showActivity.fxml"));
 
-        primaryStage = (Stage) this.buttonShowEmployees.getScene().getWindow();
+        primaryStage = (Stage) this.buttonActividades.getScene().getWindow();
 
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 1100, 750);
         Stage stage = new Stage();
-        stage.setTitle("Show Employees");
+        stage.setTitle("Show Activities");
         stage.setScene(scene);
         stage.show();
 

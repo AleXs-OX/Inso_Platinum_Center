@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/view/LoginUI.fxml"));
-        primaryStage.setTitle("Platinum Center");
+        primaryStage.setTitle("Iniciar sesión en Platinum Center");
         primaryStage.setScene(new Scene(root, 695.0, 462.0));
         primaryStage.setResizable(false);
         primaryStage.show();

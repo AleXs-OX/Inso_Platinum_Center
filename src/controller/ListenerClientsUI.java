@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class ListenerClientsUI {
@@ -20,6 +21,9 @@ public class ListenerClientsUI {
 	
 	@FXML
     private Stage primaryStage;
+	
+	@FXML
+    private Label textoUsuario;
 	
 	public void initialize(){
 		this.botonMiPerfil.setOnAction(e -> {
@@ -58,4 +62,8 @@ public class ListenerClientsUI {
 			}
 		});
     }
+	
+	public void setTextoUsuario(String username) {
+		this.textoUsuario.setText("¡Bienvenido, " + username + "!");
+	}
 }

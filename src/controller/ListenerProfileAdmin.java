@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +19,9 @@ public class ListenerProfileAdmin {
     private Button buttonAddUser;
     private Button buttonEditUser;
     private Button buttonDeleteUser;
+    
+    @FXML
+    private Label textoUsuario;
 
     @FXML
     private Stage primaryStage;
@@ -69,5 +73,8 @@ public class ListenerProfileAdmin {
 
         primaryStage.close();
     }
-
+    
+    public void setTextoUsuario(String username) {
+    	this.textoUsuario.setText("¡Bienvenido, " + username + "!");
+    }
 }

@@ -1,9 +1,7 @@
 package controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -12,8 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
-
-import java.io.IOException;
 
 public class LoginUI {
 
@@ -44,7 +40,6 @@ public class LoginUI {
         });
     }
 
-    //Faltaria cambiar la excepcion a un try catch en el metodo entrar, no en el metodo initialize
     public void entrar() throws Exception {	
     	if(textFiledUser.getText() == null || textFieldPass.getText() == null || textFiledUser.getText() == "" || textFieldPass.getText() == "" ) {
 			error("Alguno de los campos está vacío. Rellénalos.");
@@ -54,20 +49,34 @@ public class LoginUI {
 				UsersVo vo = dao.buscar(textFiledUser.getText(), textFieldPass.getText());
 				
 				if(vo.getTipoDeUsuario() == 2 && vo.getNombreUsuario() != null){
-					Parent newRoot = FXMLLoader.load(getClass().getResource("/view/Administrator.fxml"));
-					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Administrator.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("Platinum Center - Panel de administración");
+					stage.setResizable(false);
+					stage.setScene(new Scene(loader.load()));
 					
-					primaryStage.getScene().setRoot(newRoot);
-					//AdministratorUI admin = newRoot.<AdministratorUI>getController();
-					//stage.setScene(scene);
-					//stage.show();
+					ListenerProfileAdmin controller = loader.getController();
+					controller.setTextoUsuario(vo.getNombreUsuario());
+					stage.show();
+					
+					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
+					primaryStage.close();
 				}else if(vo.getTipoDeUsuario() == 1 && vo.getNombreUsuario() != null){
 					//TODO
 					System.out.println("Por implementar: empleado");
 				}else if(vo.getTipoDeUsuario() == 0 && vo.getNombreUsuario() != null){
-					Parent newRoot = FXMLLoader.load(getClass().getResource("/view/Client.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Client.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("Platinum Center - Home");
+					stage.setResizable(false);
+					stage.setScene(new Scene(loader.load()));
+					
+					ListenerClientsUI controller = loader.getController();
+					controller.setTextoUsuario(vo.getNombreUsuario());
+					stage.show();
+					
 					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
-					primaryStage.getScene().setRoot(newRoot);
+					primaryStage.close();
 				}else {
 					error("Usuario y/o contraseña incorrectos. Revisa los campos.");
 				}

@@ -68,7 +68,7 @@ public class ListenerAddActivityUI {
         String horaFinal = "0";
         horaFinal = horaFinal.concat(textFieldDuracion.getText().concat(horaDefault));
 
-        //if(this.compruebaDatos()) {
+        if(this.compruebaDatos()) {
 
         this.activity_name = this.textFieldNombre.getText();
         this.descripcion = this.textFieldDescripcion.getText();
@@ -96,14 +96,9 @@ public class ListenerAddActivityUI {
         this.mensajeCreacionExitoso();
 
         /*Recarga la tabla de nuevo para que el usuario creado sea visible*/
-        /*Usa extends de ListenerClientsUI*/
-
         this.closeWindow();
 
-        //}
-    }
-    public void compruebaDatos(){
-
+        }
     }
 
     public void buttonCancelMethod(ActionEvent event) throws Exception {
@@ -123,6 +118,35 @@ public class ListenerAddActivityUI {
         alert.setHeaderText(null);
         alert.setContentText("Actividad "+this.activity_name+ " creada con exito!");
         alert.showAndWait();
+
+    }
+    private Boolean compruebaDatos(){
+        /*FALTA COMPROBAR QUE EL ID SOLO SEA INT*/
+
+        if(this.textFieldNombre.getText() == ""|| this.textFieldSala.getText() == ""|| this.textFieldIdRutina.getText() == ""
+                || this.textFieldDescripcion.getText() == ""|| this.textFieldDuracion.getText() == "" || this.textField_ID_Empleado.getText() == ""
+                || this.textFieldFechaCreacion.getText() == ""){
+
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Datos incorrectos");
+            alert.setHeaderText(null);
+            alert.setContentText("Algun campo introducido es incorrecto o esta vacio\n");
+            alert.showAndWait();
+            return false;
+
+        }else{
+
+            if(Integer.parseInt(this.textFieldDuracion.getText()) > 9 || Integer.parseInt(this.textFieldDuracion.getText()) == 0){
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Datos incorrectos");
+                alert.setHeaderText(null);
+                alert.setContentText("La duracion de la actividad debe ser entre 1 hora y 9 horas.\n");
+                alert.showAndWait();
+                return false;
+            }
+        }
+        return true;
 
     }
 

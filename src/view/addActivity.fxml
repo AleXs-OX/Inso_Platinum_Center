@@ -52,8 +52,12 @@
                </GridPane.margin>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldNombre" GridPane.columnIndex="1" />
-            <TextField id="textFieldUser" fx:id="textFieldDuracion" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField id="textFieldUser" fx:id="textFieldFechaCreacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField id="textFieldUser" fx:id="textField_ID_Empleado" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField id="textFieldUser" fx:id="textFieldSala" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField id="textFieldUser" fx:id="textFieldIdRutina" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField id="textFieldUser" fx:id="textFieldDuracion" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField id="textFieldUser" fx:id="textFieldDescripcion" prefHeight="78.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de creacion" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -78,7 +82,6 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <TextField id="textFieldUser" fx:id="textFieldSala" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion" wrappingWidth="104.3980712890625" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -87,9 +90,6 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <TextField id="textFieldUser" fx:id="textFieldIdRutina" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField id="textFieldUser" fx:id="textFieldDescripcion" prefHeight="78.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField id="textFieldUser" fx:id="textFieldFechaCreacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

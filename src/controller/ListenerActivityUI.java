@@ -77,7 +77,7 @@ public class ListenerActivityUI {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/view/addActivity.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 450, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 450, 600);
         Stage stage = new Stage();
         stage.setTitle("Add New Activity");
         stage.setScene(scene);
@@ -100,6 +100,26 @@ public class ListenerActivityUI {
 
     public void moreInfo(){
 
+        if(this.tablaActividades.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert("MAS INFORMACION");
+
+        }else {
+            ActivityVo activityVoSelected = this.tablaActividades.getSelectionModel().getSelectedItem();
+            String tipo;
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Informacion completa");
+            alert.setHeaderText(null);
+            alert.setContentText("Nombre de la actividad: "+activityVoSelected.getNombreActividad()+ "\n"+ "ID del Empleado: "+activityVoSelected.getIdEmpleado()+"\n"
+                    +"Fecha de creacion "+activityVoSelected.getFecha()+"\n"
+                    + "Duracion: "+activityVoSelected.getDuracion()+" hora(s)\n" +
+                    "Descripcion: "+activityVoSelected.getDescripcion()+"\n"
+                    +"IdSala donde se imparte: "+activityVoSelected.getIdSala()+"\n"
+                    +"IdRutina que se aplica: "+activityVoSelected.getIdRutina()+"\n");
+
+            alert.showAndWait();
+
+        }
     }
     public void reloadActivities() throws Exception {
         this.rellenaTabla();
@@ -112,7 +132,7 @@ public class ListenerActivityUI {
 
         primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
 
-        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 695, 462);
         Stage stage = new Stage();
         stage.setTitle("Administrador");
         stage.setScene(scene);
@@ -145,5 +165,6 @@ public class ListenerActivityUI {
         alert2.setContentText("Por favor seleccione una ACTIVIDAD antes de pulsar " + message);
         alert2.showAndWait();
     }
+
 
 }

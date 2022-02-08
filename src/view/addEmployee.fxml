@@ -39,16 +39,25 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IdCliente" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldNombre" GridPane.columnIndex="1" />
             <TextField id="textFieldUser" fx:id="textFieldApellidos" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -57,16 +66,25 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" GridPane.rowIndex="9">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" wrappingWidth="107.59808349609375" GridPane.rowIndex="8">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <ChoiceBox fx:id="choiceBoxTarifas" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <TextField id="textFieldUser" fx:id="textFieldPass" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
@@ -75,27 +93,42 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" wrappingWidth="80.3980712890625" GridPane.rowIndex="6">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarifa" wrappingWidth="61.998046875" GridPane.rowIndex="10">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldCIF" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="80.3980712890625" GridPane.rowIndex="7">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="idSalario" wrappingWidth="80.3980712890625" GridPane.rowIndex="12">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldTelefono" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField id="textFieldUser" fx:id="textFieldSalario" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
@@ -105,12 +138,18 @@
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <DatePicker fx:id="datePickerContrata" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Iban" wrappingWidth="80.3980712890625" GridPane.rowIndex="11">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldIban" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>

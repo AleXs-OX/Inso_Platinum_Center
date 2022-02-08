@@ -15,14 +15,14 @@ public class ActivityDao extends SQL_Controller_Conexion{
             this.openConnection();
 
             PreparedStatement st = this.getConnection().prepareStatement("INSERT INTO ACTIVIDADES"
-                    + "(nombreActividad, fecha, idEmpleado, idSala, descripcion, duracion, idRutina) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    + "(nombreActividad, fecha, idEmpleado, idSala, idRutina,descripcion,duracion) VALUES (?, ?, ?, ?, ?, ?, ?)");
             st.setString(1, actividad.getNombreActividad());
             st.setTimestamp(2, actividad.getFecha());
             st.setInt(3, actividad.getIdEmpleado());
             st.setInt(4, actividad.getIdSala());
-            st.setString(5, actividad.getDescripcion());
-            st.setTime(6, actividad.getDuracion());
-            st.setInt(7,actividad.getIdRutina());
+            st.setInt(5,actividad.getIdRutina());
+            st.setString(6, actividad.getDescripcion());
+            st.setTime(7, actividad.getDuracion());
 
             st.executeUpdate();
         }catch(Exception e) {

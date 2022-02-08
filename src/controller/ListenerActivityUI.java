@@ -4,22 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.dao.ActivityDao;
+import model.dao.UsersDao;
 import model.vo.ActivityVo;
 import model.vo.UsersVo;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Optional;
 
 public class ListenerActivityUI {
 
@@ -35,6 +32,21 @@ public class ListenerActivityUI {
     private TableColumn<UsersVo, Integer> tableColumnSala;
     @FXML
     private TableColumn<UsersVo, Integer> tableColumnRutina;
+
+    private Stage primaryStage;
+
+    /*Buttons*/
+
+    @FXML
+    private Button buttonAddActivity;
+    @FXML
+    private Button buttonDeleteActivity;
+    @FXML
+    private Button buttonBackMenu;
+    @FXML
+    private Button buttonMoreInfo;
+    @FXML
+    private Button buttonReloadActivities;
 
 
     public void initialize() throws Exception {
@@ -59,8 +71,79 @@ public class ListenerActivityUI {
 
         tablaActividades.setItems(activityVoList);
 
-
     }
 
+    public void addActivity() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/addActivity.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load(), 450, 700);
+        Stage stage = new Stage();
+        stage.setTitle("Add New Activity");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void deleteActivity() throws Exception {
+
+        if(this.tablaActividades.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert("ELIMINAR");
+        }else {
+            ActivityVo activityVoSelected = this.tablaActividades.getSelectionModel().getSelectedItem();
+
+            if (areYouSureAlert(activityVoSelected)) {
+                ActivityDao activityDao = new ActivityDao();
+                activityDao.eliminar(activityVoSelected);
+                this.rellenaTabla();
+            }
+        }
+    }
+
+    public void moreInfo(){
+
+    }
+    public void reloadActivities() throws Exception {
+        this.rellenaTabla();
+    }
+
+    public void backButtonMethod() throws Exception {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
+
+        primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
+
+        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        Stage stage = new Stage();
+        stage.setTitle("Administrador");
+        stage.setScene(scene);
+        stage.show();
+
+        primaryStage.close();
+    }
+
+
+    private Boolean areYouSureAlert(ActivityVo activity){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion Eliminar");
+        alert.setHeaderText("Eliminar ACTIVIDAD: "+ activity.getNombreActividad()+".");
+        alert.setContentText("Pulse Aceptar para confirmar");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    private void errorDeleteAlert(String message){
+
+        Alert alert2 = new Alert(Alert.AlertType.WARNING);
+        alert2.setTitle("Actividad no seleccionada");
+        alert2.setHeaderText(null);
+        alert2.setContentText("Por favor seleccione una ACTIVIDAD antes de pulsar " + message);
+        alert2.showAndWait();
+    }
 
 }

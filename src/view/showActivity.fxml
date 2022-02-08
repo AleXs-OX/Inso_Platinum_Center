@@ -71,29 +71,29 @@
             </Label>
          </children>
       </HBox>
-      <Button fx:id="buttonAddActivity" layoutX="96.0" layoutY="81.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Añadir">
+      <Button fx:id="buttonAddActivity" layoutX="96.0" layoutY="81.0" mnemonicParsing="false" onAction="#addActivity" prefHeight="32.0" prefWidth="72.0" style="-fx-background-radius: 10px;" text="Añadir">
          <font>
-            <Font name="Consolas Bold" size="14.0" />
+            <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
       <Button fx:id="buttonBackMenu" layoutX="282.0" layoutY="81.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Salir">
          <font>
-            <Font name="Consolas Bold" size="14.0" />
+            <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
       <Button fx:id="buttonDeleteActivity" layoutX="183.0" layoutY="81.0" mnemonicParsing="false" onAction="#deleteActivity" prefHeight="32.0" prefWidth="86.0" style="-fx-background-radius: 10px;" text="Eliminar">
          <font>
-            <Font name="Consolas Bold" size="14.0" />
+            <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="buttonReloadActivities" layoutX="828.0" layoutY="81.0" mnemonicParsing="false" onAction="#reloadActivities" prefHeight="32.0" prefWidth="181.0" style="-fx-background-radius: 10px;" text="Recargar Actividades">
+      <Button fx:id="buttonReloadActivities" layoutX="828.0" layoutY="81.0" mnemonicParsing="false" onAction="#reloadActivities" prefHeight="32.0" prefWidth="185.0" style="-fx-background-radius: 10px;" text="Recargar Actividades">
          <font>
-            <Font name="Consolas Bold" size="14.0" />
+            <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
       <Button fx:id="buttonMoreInfo" layoutX="637.0" layoutY="81.0" mnemonicParsing="false" onAction="#moreInfo" prefHeight="32.0" prefWidth="149.0" style="-fx-background-radius: 10px;" text="Mas informacion">
          <font>
-            <Font name="Consolas Bold" size="14.0" />
+            <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
    </children>

@@ -82,7 +82,6 @@ public class ListenerUsersUI {
             }
         }
 
-
             idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
             nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
@@ -132,6 +131,7 @@ public class ListenerUsersUI {
 
         if(this.tableShowClients.getSelectionModel().getSelectedItem() == null){
             this.errorDeleteAlert("MAS INFORMACION");
+
         }else {
             UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
             String tipo;
@@ -147,7 +147,13 @@ public class ListenerUsersUI {
             alert.setTitle("Informacion completa");
             alert.setHeaderText(null);
             alert.setContentText("Nombre: "+usersVoSelected.getNombreCompleto()+ "\n"+ "ID: "+usersVoSelected.getIdUsuario()+"\n"
-            +"Fecha nacimiento "+usersVoSelected.getFechaNacimiento());
+            +"Fecha nacimiento "+usersVoSelected.getFechaNacimiento()+"\n"
+            + "CIF: "+usersVoSelected.getCIF()+"\n" +
+            "Telefono: "+usersVoSelected.getTelefono()+"\n"
+                    +"Email: "+usersVoSelected.getEmail()+"\n"
+                    +"IBAN: "+usersVoSelected.getIBAN()+"\n"
+                    +"Direccion: "+usersVoSelected.getDireccion()+"\n"
+                    +"Id tarifa: "+usersVoSelected.getIdTarifa());
 
             alert.showAndWait();
 

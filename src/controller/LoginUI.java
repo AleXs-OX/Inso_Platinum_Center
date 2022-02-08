@@ -56,7 +56,7 @@ public class LoginUI {
 					stage.setScene(new Scene(loader.load()));
 					
 					ListenerProfileAdmin controller = loader.getController();
-					controller.setTextoUsuario(vo.getNombreUsuario());
+					controller.setUsuario(vo);
 					stage.show();
 					
 					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
@@ -72,7 +72,7 @@ public class LoginUI {
 					stage.setScene(new Scene(loader.load()));
 					
 					ListenerClientsUI controller = loader.getController();
-					controller.setTextoUsuario(vo.getNombreUsuario());
+					controller.setUsuario(vo);
 					stage.show();
 					
 					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();

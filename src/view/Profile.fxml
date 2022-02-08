@@ -12,18 +12,24 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="695.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="695.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerMiPerfil">
    <children>
       <Button contentDisplay="GRAPHIC_ONLY" layoutX="613.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-color: #252525;">
          <graphic>
-            <ImageView fitHeight="87.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="41.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Back.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Label layoutX="133.0" layoutY="34.0" text="Mi perfil" textFill="WHITE">
+      <Label layoutX="130.0" layoutY="34.0" text="Mi perfil" textFill="WHITE">
          <font>
             <Font size="40.0" />
          </font>
@@ -43,7 +49,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="140.0" text="Javier Gómez Martínez" textFill="WHITE">
+                  <Label id="nombreCompleto" fx:id="nombreCompleto" prefHeight="22.0" prefWidth="226.0" text="Javier Gómez Martínez" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -61,7 +67,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="140.0" text="jgomem04" textFill="WHITE">
+                  <Label id="nombreUsuario" fx:id="nombreUsuario" prefHeight="22.0" prefWidth="140.0" text="jgomem04" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -108,7 +114,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="140.0" text="14/02/2001" textFill="WHITE">
+                  <Label id="fechaNacimiento" fx:id="fechaNacimiento" prefHeight="22.0" prefWidth="140.0" text="14/02/2001" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -126,7 +132,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="140.0" text="01/02/2022" textFill="WHITE">
+                  <Label id="fechaAlta" fx:id="fechaAlta" prefHeight="22.0" prefWidth="140.0" text="01/02/2022" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -144,7 +150,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="140.0" text="00000000X" textFill="WHITE">
+                  <Label id="CIF" fx:id="CIF" prefHeight="22.0" prefWidth="140.0" text="00000000X" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -162,7 +168,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="161.0" text="jgomem04@estudiantes.unileon.es" textFill="WHITE">
+                  <Label id="email" fx:id="email" prefHeight="22.0" prefWidth="161.0" text="jgomem04@estudiantes.unileon.es" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -191,7 +197,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="161.0" text="+34987293031" textFill="WHITE">
+                  <Label id="telefono" fx:id="telefono" prefHeight="22.0" prefWidth="161.0" text="+34987293031" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -220,7 +226,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="161.0" text="ES24000000000000000" textFill="WHITE">
+                  <Label id="IBAN" fx:id="IBAN" prefHeight="22.0" prefWidth="161.0" text="ES24000000000000000" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -249,7 +255,7 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="161.0" text="Campus de Vegazana s/n" textFill="WHITE">
+                  <Label id="direccion" fx:id="direccion" prefHeight="22.0" prefWidth="161.0" text="Campus de Vegazana s/n" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

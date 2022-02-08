@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.vo.UsersVo;
 
 import java.io.IOException;
 
@@ -25,7 +26,8 @@ public class ListenerProfileAdmin {
 
     @FXML
     private Stage primaryStage;
-
+    
+    private UsersVo usuario;
 
     public void initialize(){
 
@@ -82,7 +84,12 @@ public class ListenerProfileAdmin {
         primaryStage.close();
     }
     
-    public void setTextoUsuario(String username) {
-    	this.textoUsuario.setText("¡Bienvenido, " + username + "!");
+    public void setUsuario(UsersVo usuario) {
+    	this.usuario = usuario;
+    	setTextoUsuario();
+    }
+    
+    private void setTextoUsuario() {
+    	this.textoUsuario.setText("¡Bienvenido, " + this.usuario.getNombreUsuario() + "!");
     }
 }

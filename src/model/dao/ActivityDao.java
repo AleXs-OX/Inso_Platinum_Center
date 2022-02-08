@@ -97,9 +97,10 @@ public class ActivityDao extends SQL_Controller_Conexion{
                 actividad.setFecha(rs.getTimestamp("fecha"));
                 actividad.setIdEmpleado(rs.getInt("idEmpleado"));
                 actividad.setIdSala(rs.getInt("idSala"));
+                actividad.setIdRutina(rs.getInt("idRutina"));
                 actividad.setDescripcion(rs.getString("descripcion"));
                 actividad.setDuracion(rs.getTime("duracion"));
-                actividad.setIdRutina(rs.getInt("idRutina"));
+
 
                 listaActividades.add(actividad);
             }

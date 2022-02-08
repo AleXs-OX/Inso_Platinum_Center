@@ -3,10 +3,10 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
@@ -41,6 +41,8 @@ public class LoginUI {
     }
 
     public void entrar() throws Exception {	
+    	primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
+    	
     	if(textFiledUser.getText() == null || textFieldPass.getText() == null || textFiledUser.getText() == "" || textFieldPass.getText() == "" ) {
 			error("Alguno de los campos está vacío. Rellénalos.");
 		}else {
@@ -59,7 +61,6 @@ public class LoginUI {
 					controller.setUsuario(vo);
 					stage.show();
 					
-					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
 					primaryStage.close();
 				}else if(vo.getTipoDeUsuario() == 1 && vo.getNombreUsuario() != null){
 					//TODO
@@ -75,10 +76,9 @@ public class LoginUI {
 					controller.setUsuario(vo);
 					stage.show();
 					
-					primaryStage = (Stage) this.buttonLogin.getScene().getWindow();
 					primaryStage.close();
 				}else {
-					error("Usuario y/o contraseña incorrectos. Revisa los campos.");
+					error("Usuario y/o contraseña incorrectos");
 				}
 				
 			}catch(Exception e) {
@@ -88,11 +88,20 @@ public class LoginUI {
     }
     
     private void error(String texto) {
-    	Alert alert = new Alert(Alert.AlertType.WARNING);
-    	
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(texto);
-        alert.showAndWait();
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/error.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("Error");
+			stage.setResizable(false);
+			stage.setScene(new Scene(loader.load()));
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(primaryStage); 
+			
+			ListenerError controller = loader.getController();
+			controller.setMensaje(texto);
+			stage.showAndWait();	
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
     }
 }

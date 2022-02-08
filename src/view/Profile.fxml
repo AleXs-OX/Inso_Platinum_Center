@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="695.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerMiPerfil">
    <children>
-      <Button contentDisplay="GRAPHIC_ONLY" layoutX="613.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-color: #252525;">
+      <Button id="atras" fx:id="atras" contentDisplay="GRAPHIC_ONLY" layoutX="613.0" layoutY="368.0" mnemonicParsing="false" style="-fx-background-color: #252525;">
          <graphic>
             <ImageView fitHeight="87.0" fitWidth="41.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -85,12 +85,12 @@
             </Label>
             <HBox prefHeight="30.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="22.0" prefWidth="161.0" text="************************" textFill="WHITE">
+                  <Label id="contrasena" fx:id="contrasena" prefHeight="22.0" prefWidth="161.0" text="************************" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
+                  <Button id="editarContrasena" fx:id="editarContrasena" mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -173,7 +173,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
+                  <Button id="editarEmail" fx:id="editarEmail" mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -202,7 +202,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
+                  <Button id="editarTelefono" fx:id="editarTelefono" mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -231,7 +231,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
+                  <Button id="editarIBAN" fx:id="editarIBAN" mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>
@@ -260,7 +260,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
+                  <Button id="editarDireccion" fx:id="editarDireccion" mnemonicParsing="false" style="-fx-background-color: #252525;" text="(Editar)" textFill="WHITE">
                      <font>
                         <Font name="System Italic" size="12.0" />
                      </font>

@@ -37,17 +37,17 @@
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" wrappingWidth="84.5126953125">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos" GridPane.rowIndex="1">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="IdCliente" GridPane.rowIndex="2">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldNombre" GridPane.columnIndex="1" />
@@ -55,17 +55,17 @@
             <TextField id="textFieldUser" fx:id="textField_ID_Cliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de nacimiento" GridPane.rowIndex="4">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" GridPane.rowIndex="9">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" wrappingWidth="107.59808349609375" GridPane.rowIndex="8">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <ChoiceBox fx:id="choiceBoxTarifas" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
@@ -73,28 +73,28 @@
             <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="CIF" wrappingWidth="61.998046875" GridPane.rowIndex="3">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" wrappingWidth="80.3980712890625" GridPane.rowIndex="6">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarifa" wrappingWidth="61.998046875" GridPane.rowIndex="10">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldCIF" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="80.3980712890625" GridPane.rowIndex="7">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="idSalario" wrappingWidth="80.3980712890625" GridPane.rowIndex="12">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldTelefono" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -103,13 +103,13 @@
             <TextField id="textFieldUser" fx:id="textFieldEmail" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de contratacion" GridPane.rowIndex="5">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <DatePicker fx:id="datePickerContrata" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Iban" wrappingWidth="80.3980712890625" GridPane.rowIndex="11">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldIban" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />

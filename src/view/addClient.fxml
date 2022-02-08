@@ -99,7 +99,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <DatePicker fx:id="datePickerContrata" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <DatePicker fx:id="datePickerAlta" prefHeight="25.0" prefWidth="188.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Iban" GridPane.rowIndex="11">
                <font>
                   <Font size="18.0" />

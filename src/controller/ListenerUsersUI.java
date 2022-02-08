@@ -195,7 +195,7 @@ public class ListenerUsersUI {
 
         primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
 
-        Scene scene = new Scene(fxmlLoader.load(), 500, 300);
+        Scene scene = new Scene(fxmlLoader.load(), 695, 462);
         Stage stage = new Stage();
         stage.setTitle("Administrador");
         stage.setScene(scene);

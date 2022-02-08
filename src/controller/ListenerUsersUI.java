@@ -69,20 +69,31 @@ public class ListenerUsersUI {
 
         if(filter) {
             userArrayList = new ArrayList<>(usersDao.listarPorTipo(0));
+
+            for(int i = 0; i < userArrayList.size();i++){
+                userArrayList.get(i).setCIF("Cliente");
+            }
         }
         else {
             userArrayList = new ArrayList<>(usersDao.listarPorTipo(1));
+
+            for(int i = 0; i < userArrayList.size();i++){
+                userArrayList.get(i).setCIF("Empleado");
+            }
         }
 
-            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
 
             idUserColumn.setCellValueFactory(new PropertyValueFactory("idUsuario"));
             nameColumn.setCellValueFactory(new PropertyValueFactory("nombreUsuario"));
             allNameColumn.setCellValueFactory(new PropertyValueFactory("nombreCompleto"));
             dateColumn.setCellValueFactory(new PropertyValueFactory("fechaNacimiento"));
-            //rateColumn.setCellValueFactory(new PropertyValueFactory("tipoUsuario"));
-            if(!userList.isEmpty() && userList.get(0).getTipoDeUsuario() == 0){
+            rateColumn.setCellValueFactory(new PropertyValueFactory("CIF"));
 
+            ObservableList<UsersVo> userList = FXCollections.observableArrayList(userArrayList);
+
+        if(!userList.isEmpty() && userList.get(0).getTipoDeUsuario() == 0){
+
+                //rateColumn.setCellValueFactory(0);
                 System.out.println("Filtrando busqueda por [Clientes]");
 
             }else{
@@ -90,7 +101,6 @@ public class ListenerUsersUI {
                 System.out.println("Filtrando busqueda por [Empleados]");
 
             }
-
             tableShowClients.setItems(userList);
 
     }
@@ -124,11 +134,20 @@ public class ListenerUsersUI {
             this.errorDeleteAlert("MAS INFORMACION");
         }else {
             UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
+            String tipo;
+
+            if(usersVoSelected.getTipoDeUsuario() == 0){
+
+                tipo = "Cliente";
+            }else{
+                tipo = "Empleado";
+            }
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Informacion completa");
             alert.setHeaderText(null);
-            alert.setContentText("Hola \n"+ "hola");
+            alert.setContentText("Nombre: "+usersVoSelected.getNombreCompleto()+ "\n"+ "ID: "+usersVoSelected.getIdUsuario()+"\n"
+            +"Fecha nacimiento "+usersVoSelected.getFechaNacimiento());
 
             alert.showAndWait();
 
@@ -152,8 +171,14 @@ public class ListenerUsersUI {
         if(this.tableShowClients.getSelectionModel().getSelectedItem() == null){
             this.errorDeleteAlert("ELIMINAR");
         }else {
+
             UsersVo usersVoSelected = this.tableShowClients.getSelectionModel().getSelectedItem();
 
+            if (areYouSureAlert(usersVoSelected)) {
+                UsersDao userDao = new UsersDao();
+                userDao.eliminar(usersVoSelected);
+                this.showListClients(this.filter);
+            }
         }
     }
 

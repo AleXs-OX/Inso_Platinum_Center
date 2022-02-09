@@ -29,14 +29,18 @@ public class ListenerSalaYMaterial {
     private Button buttonAddMaterial;
 
     @FXML
-    private Button buttonReload;
-    @FXML
-    private Button backButton;
-
-    @FXML
     private Button buttonDeleteSala;
     @FXML
     private Button buttonDeleteMaterial;
+
+    @FXML
+    private Button buttonShowRoom;
+    @FXML
+    private Button buttonReloadInfo;
+    @FXML
+    private Button buttonMoreInfo;
+    @FXML
+    private Button buttonBackMenu;
 
 
 
@@ -110,6 +114,30 @@ public class ListenerSalaYMaterial {
         ObservableList<MaterialVo> materialVoList = FXCollections.observableArrayList(materialArrayList);
 
         tableShowMaterial.setItems(materialVoList);
+    }
+    public void addSala(){
+
+    }
+    public void deleteSala(){
+
+    }
+    public void showRoom(){
+
+    }
+    public void addMaterial(){
+
+    }
+    public void deleteMaterial(){
+
+    }
+    public void reloadInfo(){
+
+    }
+    public void moreInfo(){
+
+    }
+    public void backButtonMethod(){
+
     }
 
 }

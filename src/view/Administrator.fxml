@@ -116,7 +116,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="buttonSalas" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Salas" textFill="WHITE">
+            <Button fx:id="buttonSalasYMaterial" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Salas" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

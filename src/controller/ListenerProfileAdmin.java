@@ -16,8 +16,9 @@ public class ListenerProfileAdmin {
     private Button buttonShowClients;
     @FXML
     private Button buttonActividades;
+    @FXML
+    private Button buttonSalasYMaterial;
 
-    private Button buttonAddUser;
     private Button buttonEditUser;
     private Button buttonDeleteUser;
     
@@ -42,6 +43,14 @@ public class ListenerProfileAdmin {
         this.buttonActividades.setOnAction(e -> {
             try {
                 this.showActivitiesWindowFXML();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        this.buttonSalasYMaterial.setOnAction(e -> {
+            try {
+                this.showRoomsYMaterialFXML();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -76,6 +85,22 @@ public class ListenerProfileAdmin {
         primaryStage = (Stage) this.buttonActividades.getScene().getWindow();
 
         Scene scene = new Scene(fxmlLoader.load(), 1100, 750);
+        Stage stage = new Stage();
+        stage.setTitle("Show Room & Material");
+        stage.setScene(scene);
+        stage.show();
+
+        primaryStage.close();
+    }
+
+    public void showRoomsYMaterialFXML() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/showSalasYMaterial.fxml"));
+
+        primaryStage = (Stage) this.buttonActividades.getScene().getWindow();
+
+        Scene scene = new Scene(fxmlLoader.load(), 1050, 700);
         Stage stage = new Stage();
         stage.setTitle("Show Activities");
         stage.setScene(scene);

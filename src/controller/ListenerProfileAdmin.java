@@ -100,7 +100,7 @@ public class ListenerProfileAdmin {
 
         primaryStage = (Stage) this.buttonActividades.getScene().getWindow();
 
-        Scene scene = new Scene(fxmlLoader.load(), 1050, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 987, 736);
         Stage stage = new Stage();
         stage.setTitle("Show Activities");
         stage.setScene(scene);

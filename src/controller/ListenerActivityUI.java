@@ -79,7 +79,7 @@ public class ListenerActivityUI {
 
         Scene scene = new Scene(fxmlLoader.load(), 450, 600);
         Stage stage = new Stage();
-        stage.setTitle("Add New Activity");
+        stage.setTitle("Add New Room");
         stage.setScene(scene);
         stage.show();
     }

@@ -3,6 +3,8 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
@@ -17,6 +19,7 @@ import model.vo.MaterialVo;
 import model.vo.RoomVo;
 import model.vo.UsersVo;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -34,7 +37,7 @@ public class ListenerSalaYMaterial {
     private Button buttonDeleteMaterial;
 
     @FXML
-    private Button buttonShowRoom;
+    private Button buttonShowMaterial;
     @FXML
     private Button buttonReloadInfo;
     @FXML
@@ -115,13 +118,22 @@ public class ListenerSalaYMaterial {
 
         tableShowMaterial.setItems(materialVoList);
     }
-    public void addSala(){
+    public void addSala() throws IOException {
 
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/addRoom.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load(), 433, 441);
+        Stage stage = new Stage();
+        stage.setTitle("Add New Room");
+        stage.setScene(scene);
+        stage.show();
     }
+
     public void deleteSala(){
 
     }
-    public void showRoom(){
+    public void showMaterial(){
 
     }
     public void addMaterial(){
@@ -130,8 +142,8 @@ public class ListenerSalaYMaterial {
     public void deleteMaterial(){
 
     }
-    public void reloadInfo(){
-
+    public void reloadInfo() throws Exception {
+        this.showRooms();
     }
     public void moreInfo(){
 

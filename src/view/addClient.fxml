@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddEmployeeUI">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="433.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerAddClientUI">
    <children>
       <GridPane hgap="5.0" layoutX="7.0" layoutY="67.0" prefHeight="569.0" prefWidth="422.0" vgap="5.0">
          <columnConstraints>
@@ -91,7 +91,7 @@
                </font>
             </Text>
             <TextField id="textFieldUser" fx:id="textFieldTelefono" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField id="textFieldUser" fx:id="textFieldSalario" editable="false" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField id="textFieldUser" fx:id="textFieldSalario" disable="true" editable="false" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
             <TextField id="textFieldUser" fx:id="textFieldDireccion" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField id="textFieldUser" fx:id="textFieldEmail" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de alta" GridPane.rowIndex="5">

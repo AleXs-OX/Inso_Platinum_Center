@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="265.0" prefWidth="329.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerCambiarValor">
+   <children>
+      <Button id="aceptar" fx:id="aceptar" layoutX="104.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Aceptar" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/ok.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <ImageView fitHeight="84.0" fitWidth="72.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/tool.png" />
+         </image>
+      </ImageView>
+      <Label id="titulo" fx:id="titulo" layoutX="75.0" layoutY="14.0" text="Cambiar valor" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Line endX="301.6000061035156" endY="57.899993896484375" startX="75.5" startY="57.899993896484375" stroke="WHITE" />
+      <VBox layoutX="25.0" layoutY="82.0" prefHeight="50.0" prefWidth="279.0">
+         <children>
+            <Label id="tituloValorActual" fx:id="tituloValorActual" prefHeight="27.0" prefWidth="226.0" text="Valor actual" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label id="valorActual" fx:id="valorActual" prefHeight="18.0" prefWidth="276.0" text="Escuela de Ingenierías, Campus de Vegazana, s/n, 24008 León" textFill="WHITE" />
+         </children>
+      </VBox>
+      <VBox layoutX="25.0" layoutY="132.0" prefHeight="53.0" prefWidth="276.0">
+         <children>
+            <Label prefHeight="27.0" prefWidth="224.0" text="Nuevo valor" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField id="valorNuevo" fx:id="valorNuevo" promptText="Insertar nuevo valor" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

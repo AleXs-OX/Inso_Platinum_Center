@@ -80,7 +80,7 @@ public class ListenerMiPerfil {
 				ListenerCambiarContrasena controller = loader.getController();
 				stage.showAndWait();
 				
-				if(controller.getValorPrimero().compareTo(controller.getValorSegundo()) == 0) {
+				if(controller.getValorPrimero().compareTo(controller.getValorSegundo()) == 0 && controller.getValorPrimero().length() > 0) {
 					this.usuario.setContrasena(controller.getValorPrimero());
 					actualizar();
 					cargarModificacion();

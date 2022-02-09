@@ -27,10 +27,12 @@ public class ListenerCambiarContrasena {
 			try {
 				primaryStage = (Stage) this.aceptar.getScene().getWindow();
 				
-				if(getValorPrimero().compareTo(getValorSegundo()) == 0) {
+				if(getValorPrimero().compareTo(getValorSegundo()) == 0 && getValorPrimero().length() > 0) {
 					primaryStage.close();					
+				}else if(getValorPrimero().length() == 0) {
+					error("Introduzca una contraseña válida");	
 				}else {
-					error("Los valores introducidos no coinciden");
+					error("Los valores introducidos no coinciden");					
 				}
 			}catch(Exception ex) {
 				ex.printStackTrace();

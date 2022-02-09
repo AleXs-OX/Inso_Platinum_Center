@@ -74,27 +74,27 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="buttonAddSala" layoutX="196.0" layoutY="113.0" mnemonicParsing="false" onAction="#addSala" prefHeight="32.0" prefWidth="72.0" style="-fx-background-radius: 10px;" text="Añadir">
+            <Button fx:id="buttonAddSala" layoutX="132.0" layoutY="113.0" mnemonicParsing="false" onAction="#addSala" prefHeight="32.0" prefWidth="72.0" style="-fx-background-radius: 10px;" text="Añadir">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonBackMenu" layoutX="377.0" layoutY="32.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Salir">
+            <Button fx:id="buttonBackMenu" layoutX="998.0" layoutY="16.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Salir">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonDeleteSala" layoutX="283.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteSala" prefHeight="32.0" prefWidth="86.0" style="-fx-background-radius: 10px;" text="Eliminar">
+            <Button fx:id="buttonDeleteSala" layoutX="219.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteSala" prefHeight="32.0" prefWidth="86.0" style="-fx-background-radius: 10px;" text="Eliminar">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonReloadActivities" layoutX="471.0" layoutY="85.0" mnemonicParsing="false" onAction="#reloadActivities" prefHeight="32.0" prefWidth="185.0" style="-fx-background-radius: 10px;" text="Recargar Datos">
+            <Button fx:id="buttonReloadActivities" layoutX="489.0" layoutY="85.0" mnemonicParsing="false" onAction="#reloadActivities" prefHeight="32.0" prefWidth="185.0" style="-fx-background-radius: 10px;" text="Recargar Datos">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonMoreInfo" layoutX="489.0" layoutY="32.0" mnemonicParsing="false" onAction="#moreInfo" prefHeight="32.0" prefWidth="149.0" style="-fx-background-radius: 10px;" text="Mas informacion">
+            <Button fx:id="buttonMoreInfo" layoutX="507.0" layoutY="32.0" mnemonicParsing="false" onAction="#moreInfo" prefHeight="32.0" prefWidth="149.0" style="-fx-background-radius: 10px;" text="Mas informacion">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
@@ -163,6 +163,11 @@
                </font>
             </Button>
             <Button fx:id="buttonDeleteMaterial" layoutX="807.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="32.0" prefWidth="86.0" style="-fx-background-radius: 10px;" text="Eliminar">
+               <font>
+                  <Font name="Consolas Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="buttonDeleteSala1" layoutX="326.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteSala" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10px;" text="Ver material">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>

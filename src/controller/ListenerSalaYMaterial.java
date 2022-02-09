@@ -5,10 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.dao.ActivityDao;
@@ -23,6 +20,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ListenerSalaYMaterial {
 
@@ -84,7 +82,7 @@ public class ListenerSalaYMaterial {
     public void initialize() throws Exception {
 
         this.showRooms();
-        this.tableShowMaterial();
+        //this.tableShowMaterial();
     }
 
     private void showRooms() throws Exception {
@@ -103,10 +101,13 @@ public class ListenerSalaYMaterial {
         tableShowSalas.setItems(roomVoList);
     }
 
-    private void tableShowMaterial() throws Exception {
+    private void tableShowMaterial(int idSalaM) throws Exception {
 
         MaterialDao materialDao = new MaterialDao();
-        ArrayList<MaterialVo> materialArrayList = new ArrayList<>(materialDao.listar());
+
+        //ArrayList<MaterialVo> materialArrayList = new ArrayList<>(materialDao.buscar(room.getIdSala()));
+
+        MaterialVo materialVo = materialDao.buscar(idSalaM);
 
         idMaterialColumn.setCellValueFactory(new PropertyValueFactory("idMaterial"));
         nameMaterialColumn.setCellValueFactory(new PropertyValueFactory("nombreMaterial"));
@@ -114,10 +115,11 @@ public class ListenerSalaYMaterial {
         timeBajaColumn.setCellValueFactory(new PropertyValueFactory("fechaBaja"));
         idSala.setCellValueFactory(new PropertyValueFactory("idSala"));
 
-        ObservableList<MaterialVo> materialVoList = FXCollections.observableArrayList(materialArrayList);
+        ObservableList<MaterialVo> materialVoList = FXCollections.observableArrayList(materialVo);
 
         tableShowMaterial.setItems(materialVoList);
     }
+
     public void addSala() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
@@ -130,11 +132,28 @@ public class ListenerSalaYMaterial {
         stage.show();
     }
 
-    public void deleteSala(){
+    public void deleteSala() throws Exception {
 
+        if(this.tableShowSalas.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert("ELIMINAR");
+        }else {
+            RoomVo roomVoSelected = this.tableShowSalas.getSelectionModel().getSelectedItem();
+
+            if (areYouSureAlert(roomVoSelected)) {
+                RoomDao roomDao = new RoomDao();
+                roomDao.eliminar(roomVoSelected);
+                this.showRooms();
+            }
+        }
     }
-    public void showMaterial(){
+    public void showMaterial() throws Exception {
 
+        if(this.tableShowSalas.getSelectionModel().getSelectedItem() == null){
+            this.errorDeleteAlert("VER MATERIAL");
+        }else {
+            RoomVo roomVoSelected = this.tableShowSalas.getSelectionModel().getSelectedItem();
+            this.tableShowMaterial(roomVoSelected.getIdSala());
+        }
     }
     public void addMaterial(){
 
@@ -150,6 +169,30 @@ public class ListenerSalaYMaterial {
     }
     public void backButtonMethod(){
 
+    }
+
+    private Boolean areYouSureAlert(RoomVo room){
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion Eliminar");
+        alert.setHeaderText("Eliminar SALA: "+ room.getNombreSala()+".");
+        alert.setContentText("Pulse Aceptar para confirmar");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    private void errorDeleteAlert(String message){
+
+        Alert alert2 = new Alert(Alert.AlertType.WARNING);
+        alert2.setTitle("Actividad no seleccionada");
+        alert2.setHeaderText(null);
+        alert2.setContentText("Por favor seleccione una SALA antes de pulsar " + message);
+        alert2.showAndWait();
     }
 
 }

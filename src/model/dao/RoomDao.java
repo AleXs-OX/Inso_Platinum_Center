@@ -1,6 +1,7 @@
 package model.dao;
 
 import model.connection.SQL_Controller_Conexion;
+import model.vo.ActivityVo;
 import model.vo.RoomVo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -154,5 +155,25 @@ public class RoomDao extends SQL_Controller_Conexion{
         }
 
         return listaSalas;
+    }
+    public void eliminar(RoomVo room) throws Exception{
+        try {
+            this.openConnection();
+
+            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM SALAS WHERE "
+                    + "idSala=?");
+            st.setInt(1, room.getIdSala());
+
+            st.executeUpdate();
+
+        }catch(Exception e) {
+            throw new Exception("Error eliminando actividad: " + e.getMessage());
+        }finally {
+            try {
+                this.closeConnection();
+            }catch(Exception e) {
+                throw new Exception("Error al cerrar la conexión eliminando actividad: " + e.getMessage());
+            }
+        }
     }
 }

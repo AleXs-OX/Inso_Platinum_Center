@@ -68,7 +68,7 @@ public class ListenerAddClientUI extends ListenerUsersUI {
     private int idTarifa;
 
 
-    public void buttonCreateEmployeeMethod(ActionEvent event) throws Exception {
+    public void buttonCreateClientMethod(ActionEvent event) throws Exception {
 
         if (this.compruebaDatos()) {
 
@@ -113,7 +113,6 @@ public class ListenerAddClientUI extends ListenerUsersUI {
     }
 
     public void buttonCancelMethod(ActionEvent event) throws Exception {
-
         this.closeWindow();
     }
 

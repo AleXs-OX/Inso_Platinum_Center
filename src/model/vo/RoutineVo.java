@@ -7,7 +7,15 @@ public class RoutineVo {
 	private String nombreRutina;
 	private String descripcion;
 	private int calorias;
-	
+
+	public RoutineVo(int idRutina, int idCreador, String nombreRutina, String descripcion, int calorias){
+		this.idRutina = idRutina;
+		this.idCreador = idCreador;
+		this.nombreRutina = nombreRutina;
+		this.descripcion = descripcion;
+		this.calorias = calorias;
+	}
+
 	public RoutineVo() {
 		super();
 	}

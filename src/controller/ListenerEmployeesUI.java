@@ -16,7 +16,44 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class ListenerEmployeesUI {
-    Boolean filter = false; /* True = Filter Users*/
-    /* False = Filter Employees*/
 
+    @FXML
+    private Button botonMisRutinas;
+
+    @FXML
+    private Button botonClientes;
+
+    @FXML
+    private Button botonMisDietas;
+
+    @FXML
+    private Button botonMisActividades;
+
+    @FXML
+    private Stage primaryStage;
+
+    @FXML
+    private Label textoUsuario;
+
+    private UsersVo empleado;
+
+    public void initialize(){
+
+        this.botonClientes.setOnAction(e -> {
+            //Todo
+        });
+
+        this.botonMisDietas.setOnAction(e -> {
+            //Todo
+        });
+
+        this.botonMisActividades.setOnAction(e -> {
+            //Todo
+        });
+
+        this.botonMisDietas.setOnAction(e -> {
+            //Todo
+        });
+
+    }
 }

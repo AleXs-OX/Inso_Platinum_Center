@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="462.0" prefWidth="695.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerEmployeesUI">
+   <children>
+      <ImageView fitHeight="114.0" fitWidth="204.0" layoutX="246.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/platinum_center_logo_blanco.png" />
+         </image>
+      </ImageView>
+      <HBox alignment="CENTER" layoutX="63.0" layoutY="88.0" prefHeight="286.0" prefWidth="570.0">
+         <children>
+            <Button id="botonMisRutinas" fx:id="botonMisRutinas" contentDisplay="TOP" mnemonicParsing="false" prefHeight="114.0" prefWidth="129.0" style="-fx-background-color: #252525;" text="Rutinas" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="103.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/routine.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="27.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button id="botonMiPerfil" fx:id="botonClientes" contentDisplay="TOP" mnemonicParsing="false" prefHeight="174.0" prefWidth="140.0" style="-fx-background-color: #252525;" text="Clientes" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="63.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/person.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button id="botonMisDietas" fx:id="botonMisDietas" contentDisplay="TOP" mnemonicParsing="false" prefWidth="64.0" style="-fx-background-color: #252525;" text="Dietas" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="68.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/food.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button id="botonMisActividades" fx:id="botonMisActividades" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Actividades" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="66.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/clock.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER" layoutX="1.0" prefHeight="99.0" prefWidth="687.0">
+         <children>
+            <Label id="textoUsuario" fx:id="textoUsuario" text="¡Bienvenido, Empleado!" textFill="WHITE">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

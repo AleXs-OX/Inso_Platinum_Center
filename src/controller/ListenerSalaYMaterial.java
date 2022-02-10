@@ -105,9 +105,7 @@ public class ListenerSalaYMaterial {
 
         MaterialDao materialDao = new MaterialDao();
 
-        //ArrayList<MaterialVo> materialArrayList = new ArrayList<>(materialDao.buscar(room.getIdSala()));
-
-        MaterialVo materialVo = materialDao.buscar(idSalaM);
+        ArrayList<MaterialVo> materialArrayList = new ArrayList<>(materialDao.listarPorSala(idSalaM));
 
         idMaterialColumn.setCellValueFactory(new PropertyValueFactory("idMaterial"));
         nameMaterialColumn.setCellValueFactory(new PropertyValueFactory("nombreMaterial"));
@@ -115,7 +113,7 @@ public class ListenerSalaYMaterial {
         timeBajaColumn.setCellValueFactory(new PropertyValueFactory("fechaBaja"));
         idSala.setCellValueFactory(new PropertyValueFactory("idSala"));
 
-        ObservableList<MaterialVo> materialVoList = FXCollections.observableArrayList(materialVo);
+        ObservableList<MaterialVo> materialVoList = FXCollections.observableArrayList(materialArrayList);
 
         tableShowMaterial.setItems(materialVoList);
     }
@@ -151,22 +149,38 @@ public class ListenerSalaYMaterial {
         stage.setTitle("Add New Material");
         stage.setScene(scene);
         stage.show();
-    }
-    public void deleteMaterial(){
 
+        if(!stage.isShowing()){
+            System.out.println("pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        }
+    }
+    public void deleteMaterial() throws Exception {
+
+        MaterialVo materialVoSelected = this.tableShowMaterial.getSelectionModel().getSelectedItem();
+
+        if(materialVoSelected == null){
+            this.errorDeleteAlert("Dar de baja el MATERIAL");
+
+        }else {
+            if (areYouSureAlert(materialVoSelected.getNombreMaterial())) {
+
+                ListenerRemoveMaterialUI removeMaterial = new ListenerRemoveMaterialUI();
+                removeMaterial.removeMaterial(materialVoSelected);
+                this.showMaterial();
+            }
+        }
     }
     public void reloadInfo() throws Exception {
         this.showRooms();
     }
-    public void moreInfo(){
 
-    }
-
-    private Boolean areYouSureAlert(RoomVo room){
+    private Boolean areYouSureAlert(String s){
+        long millis=System.currentTimeMillis();
+        java.sql.Date date=new java.sql.Date(millis);
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmacion Eliminar");
-        alert.setHeaderText("Eliminar SALA: "+ room.getNombreSala()+".");
+        alert.setTitle("Confirmacion Dar de baja");
+        alert.setHeaderText("Dar de baja MATERIAL: "+ s +" a fecha: "+date);
         alert.setContentText("Pulse Aceptar para confirmar");
 
         Optional<ButtonType> result = alert.showAndWait();

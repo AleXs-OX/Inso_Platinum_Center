@@ -11,7 +11,6 @@ import model.vo.MaterialVo;
 import model.vo.RoomVo;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class ListenerAddMaterialUI {
@@ -24,7 +23,7 @@ public class ListenerAddMaterialUI {
     private TextField textFieldIDMaterial;
 
     @FXML
-    private DatePicker datePickerAlta;
+    private TextField textFieldAlta;
     @FXML
     private DatePicker datePickerBaja;
 
@@ -37,12 +36,21 @@ public class ListenerAddMaterialUI {
     private String nombreMaterial;
     private int idMaterial;
     private Date fechaAlta;
-    private Date fechaBaja;
+    private java.sql.Date date;
 
     private Stage primaryStage;
 
     public void initialize() throws Exception {
+
         this.rellenaChoiceBox();
+
+        long millis=System.currentTimeMillis();
+        this.date = new java.sql.Date(millis);
+
+        this.textFieldAlta.setText(date.toString());
+        this.textFieldAlta.setDisable(true);
+
+
     }
     public void buttonCreateMaterialMethod() throws Exception {
         if(this.compruebaDatos()) {
@@ -51,12 +59,11 @@ public class ListenerAddMaterialUI {
             this.nombreMaterial = this.textFieldNombre.getText();
             this.idMaterial = Integer.parseInt(this.textFieldIDMaterial.getText());
 
-            this.fechaAlta = java.sql.Date.valueOf(datePickerAlta.getValue());
+            this.fechaAlta = this.date;
 
-            this.fechaBaja = java.sql.Date.valueOf(datePickerBaja.getValue());
 
             MaterialDao materialDao = new MaterialDao();
-            MaterialVo materialVo = new MaterialVo(this.idMaterial, this.nombreMaterial,this.fechaAlta,this.fechaBaja,this.idSala);
+            MaterialVo materialVo = new MaterialVo(this.idMaterial, this.nombreMaterial,this.fechaAlta,null,this.idSala);
 
             materialDao.anadir(materialVo);
             this.mensajeCreacionExitoso();
@@ -67,10 +74,9 @@ public class ListenerAddMaterialUI {
     public void rellenaChoiceBox() throws Exception {
 
         RoomDao roomDao = new RoomDao();
-        RoomVo roomVo = new RoomVo();
 
-        ArrayList<RoomVo> roomArrayList = new ArrayList<>(roomDao.listarID());
-        ObservableList<RoomVo> roomVoList = FXCollections.observableArrayList(roomArrayList);
+        ArrayList<Integer> roomArrayList = new ArrayList<>(roomDao.listarID());
+        ObservableList<Integer> roomVoList = FXCollections.observableArrayList(roomArrayList);
 
         this.choiceBoxIdSala.setItems(roomVoList);
         this.choiceBoxIdSala.setValue("Seleccione Sala");
@@ -84,7 +90,7 @@ public class ListenerAddMaterialUI {
         /*FALTA COMPROBAR QUE EL ID SOLO SEA INT*/
 
         if(this.textFieldNombre.getText() == ""|| this.textFieldIDMaterial.getText() == ""|| this.choiceBoxIdSala.getValue() == null
-                || this.datePickerAlta.getValue() == null || this.datePickerBaja.getValue() == null){
+                || this.textFieldAlta.getText() == ""){
 
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Datos incorrectos");
@@ -104,7 +110,7 @@ public class ListenerAddMaterialUI {
         alert.showAndWait();
     }
 
-    private void closeWindow() throws Exception {
+    private void closeWindow() {
         this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
         this.primaryStage.close();
     }

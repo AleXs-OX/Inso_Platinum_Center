@@ -157,8 +157,9 @@ public class RoomDao extends SQL_Controller_Conexion{
         return listaSalas;
     }
 
-    public List<RoomVo> listarID() throws Exception{
-        ArrayList<RoomVo> listaSalas = new ArrayList<>();
+    public List<Integer> listarID() throws Exception{
+
+        ArrayList<Integer> listaIdSalas = new ArrayList<>();
 
         try {
             this.openConnection();
@@ -169,7 +170,7 @@ public class RoomDao extends SQL_Controller_Conexion{
             while(rs.next()) {
                 RoomVo sala = new RoomVo();
                 sala.setIdSala(rs.getInt("idSala"));
-                listaSalas.add(sala);
+                listaIdSalas.add(sala.getIdSala());
             }
         }catch(Exception e) {
             throw new Exception("Error al listar salas: " + e.getMessage());
@@ -181,6 +182,6 @@ public class RoomDao extends SQL_Controller_Conexion{
             }
         }
 
-        return listaSalas;
+        return listaIdSalas;
     }
 }

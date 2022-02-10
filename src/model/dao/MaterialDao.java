@@ -172,4 +172,38 @@ public class MaterialDao extends SQL_Controller_Conexion{
 		
 		return material;
 	}
+	public List<MaterialVo> listarPorSala(int idSala) throws Exception{
+		ArrayList<MaterialVo> listaMateriales = new ArrayList<MaterialVo>();
+
+		try {
+			this.openConnection();
+
+			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM MATERIALES "
+					+"WHERE idSala=?");
+
+			st.setInt(1, idSala);
+			ResultSet rs = st.executeQuery();
+
+			while(rs.next()) {
+				MaterialVo material = new MaterialVo();
+				material.setIdMaterial(rs.getInt("idMaterial"));
+				material.setNombreMaterial(rs.getString("nombreMaterial"));
+				material.setFechaAlta(rs.getDate("fechaAlta"));
+				material.setFechaBaja(rs.getDate("fechaBaja"));
+				material.setIdSala(rs.getInt("idSala"));
+
+				listaMateriales.add(material);
+			}
+		}catch(Exception e) {
+			throw new Exception("Error listando materiales: " + e.getMessage());
+		}finally {
+			try {
+				this.closeConnection();
+			}catch(Exception e){
+				throw new Exception("Error al cerrar la conexión listando materiales: " + e.getMessage());
+			}
+		}
+
+		return listaMateriales;
+	}
 }

@@ -151,7 +151,7 @@
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonDeleteMaterial" layoutX="807.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="32.0" prefWidth="86.0" style="-fx-background-radius: 10px;" text="Eliminar">
+            <Button fx:id="buttonDeleteMaterial" layoutX="807.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10px;" text="Dar de baja">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>

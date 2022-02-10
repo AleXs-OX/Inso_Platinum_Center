@@ -9,15 +9,14 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="548.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox id="box" fx:id="box" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="51.0" prefWidth="548.0" style="-fx-background-color: #252525;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="36.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fork.png" />
          </image>
       </ImageView>
-      <Label text="180" textFill="WHITE">
+      <Label id="calorias" fx:id="calorias" text="180" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -25,7 +24,7 @@
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Button mnemonicParsing="false" style="-fx-background-color: #252525;" text="Dieta mediterránea" textFill="WHITE">
+      <Button id="nombre" fx:id="nombre" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Dieta mediterránea" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.dao.RoutinesClientsDao;
@@ -15,6 +16,9 @@ import model.vo.UsersVo;
 public class ListenerMisRutinas {
 	
 	private UsersVo usuario;
+	
+	@FXML
+	private ListView<RoutineVo> listView;
 	
 	private ObservableList<RoutineVo> listaRutinas;
 	
@@ -65,7 +69,9 @@ public class ListenerMisRutinas {
 		RoutinesClientsDao dao = new RoutinesClientsDao();
 		
 		try {
-			this.listaRutinas = FXCollections.observableArrayList(dao.listar(this.usuario));	
+			this.listaRutinas = FXCollections.observableArrayList(dao.listar(this.usuario));
+			this.listView.setItems(listaRutinas);
+			this.listView.setCellFactory(routineCell -> new ListenerRoutineCell());
 		}catch(Exception e) {
 			error("Se produjo un error inesperado al listar: " + e.getMessage());
 		}

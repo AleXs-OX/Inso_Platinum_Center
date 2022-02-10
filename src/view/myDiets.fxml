@@ -28,7 +28,7 @@
             <Image url="@../images/platinum_center_logo_blanco.png" />
          </image>
       </ImageView>
-      <ListView layoutX="44.0" layoutY="117.0" prefHeight="291.0" prefWidth="550.0" style="-fx-background-color: #252525;" />
+      <ListView id="listView" fx:id="listView" layoutX="44.0" layoutY="117.0" prefHeight="291.0" prefWidth="501.0" style="-fx-background-color: #252525;" stylesheets="@../styles/ListViewStyle.css" />
       <Button id="atras" fx:id="atras" layoutX="607.0" layoutY="312.0" mnemonicParsing="false" style="-fx-background-color: #252525;">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">

@@ -1,0 +1,15 @@
+.list-view .list-cell:even {
+    -fx-background-color: #252525;
+}
+
+.list-view .list-cell:odd {
+    -fx-background-color: #252525;
+}
+
+.list-cell:empty {
+    visibility:hidden;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-scale-x: 0;
+}

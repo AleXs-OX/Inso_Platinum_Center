@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.dao.ActivitiesClientsDao;
@@ -17,6 +18,9 @@ public class ListenerMisActividades {
 	private UsersVo usuario;
 	
 	private ObservableList<ActivityVo> listaActividades;
+	
+	@FXML
+	private ListView<ActivityVo> listView;
 	
 	@FXML
 	private Button buscar;
@@ -65,7 +69,9 @@ public class ListenerMisActividades {
 		ActivitiesClientsDao dao = new ActivitiesClientsDao();
 		
 		try {
-			this.listaActividades = FXCollections.observableArrayList(dao.listar(this.usuario));	
+			this.listaActividades = FXCollections.observableArrayList(dao.listar(this.usuario));
+			this.listView.setItems(listaActividades);
+			this.listView.setCellFactory(activityCell -> new ListenerActivityCell());
 		}catch(Exception e) {
 			error("Se produjo un error inesperado al listar: " + e.getMessage());
 		}

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.dao.DietsClientsDao;
@@ -17,6 +18,9 @@ public class ListenerMisDietas {
 	private UsersVo usuario;
 	
 	private ObservableList<DietVo> listaDietas;
+	
+	@FXML
+	private ListView<DietVo> listView;
 	
 	@FXML
 	private Button buscar;
@@ -67,6 +71,8 @@ public class ListenerMisDietas {
 		
 		try {
 			this.listaDietas = FXCollections.observableArrayList(dao.listar(this.usuario));	
+			this.listView.setItems(listaDietas);
+			this.listView.setCellFactory(dietCell -> new ListenerDietCell());
 		}catch(Exception e) {
 			error("Se produjo un error inesperado al listar: " + e.getMessage());
 		}

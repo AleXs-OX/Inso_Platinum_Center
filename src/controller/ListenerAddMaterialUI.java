@@ -37,6 +37,7 @@ public class ListenerAddMaterialUI {
     private int idMaterial;
     private Date fechaAlta;
     private java.sql.Date date;
+    private boolean creadoConExito;
 
     private Stage primaryStage;
 
@@ -49,6 +50,8 @@ public class ListenerAddMaterialUI {
 
         this.textFieldAlta.setText(date.toString());
         this.textFieldAlta.setDisable(true);
+
+        this.creadoConExito = false;
 
 
     }
@@ -67,6 +70,7 @@ public class ListenerAddMaterialUI {
 
             materialDao.anadir(materialVo);
             this.mensajeCreacionExitoso();
+            this.creadoConExito = true;
             this.closeWindow();
         }
     }
@@ -113,6 +117,10 @@ public class ListenerAddMaterialUI {
     private void closeWindow() {
         this.primaryStage = (Stage) this.textFieldNombre.getScene().getWindow();
         this.primaryStage.close();
+    }
+
+    public boolean isCreadoConExito(){
+        return this.creadoConExito;
     }
 
 }

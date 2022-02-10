@@ -18,6 +18,8 @@ public class ListenerProfileAdmin {
     private Button buttonActividades;
     @FXML
     private Button buttonSalasYMaterial;
+    @FXML
+    private Button buttonMaterial;
 
     private Button buttonEditUser;
     private Button buttonDeleteUser;
@@ -49,6 +51,14 @@ public class ListenerProfileAdmin {
         });
 
         this.buttonSalasYMaterial.setOnAction(e -> {
+            try {
+                this.showRoomsYMaterialFXML();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        this.buttonMaterial.setOnAction(e -> {
             try {
                 this.showRoomsYMaterialFXML();
             } catch (IOException ex) {

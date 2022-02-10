@@ -33,6 +33,8 @@ public class ListenerAddRoomUI {
     @FXML
     private Button buttonCancel;
 
+    boolean creadoConExito;
+
     private int idSala;
     private String nombreSala;
     private int aforo;
@@ -42,7 +44,9 @@ public class ListenerAddRoomUI {
     private Stage primaryStage;
 
     public void initialize(){
+
         this.rellenaChoiceBox();
+        this.creadoConExito = false;
     }
 
     public void rellenaChoiceBox(){
@@ -77,6 +81,7 @@ public class ListenerAddRoomUI {
 
             roomDao.anadir(roomVo);
             this.mensajeCreacionExitoso();
+            this.creadoConExito = true;
             this.closeWindow();
         }
     }
@@ -114,6 +119,9 @@ public class ListenerAddRoomUI {
         }
         return true;
 
+    }
+    public boolean isCreadoConExito(){
+        return this.creadoConExito;
     }
 
 }

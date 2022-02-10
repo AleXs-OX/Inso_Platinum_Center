@@ -118,16 +118,23 @@ public class ListenerSalaYMaterial {
         tableShowMaterial.setItems(materialVoList);
     }
 
-    public void addSala() throws IOException {
+    public void addSala() throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/view/addRoom.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 433, 441);
+
+        ListenerAddRoomUI controller = fxmlLoader.getController();
+
         Stage stage = new Stage();
         stage.setTitle("Add New Room");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
+
+        if(controller.isCreadoConExito()){
+            this.showRooms();
+        }
     }
 
     public void showMaterial() throws Exception {
@@ -139,19 +146,21 @@ public class ListenerSalaYMaterial {
             this.tableShowMaterial(roomVoSelected.getIdSala());
         }
     }
-    public void addMaterial() throws IOException {
+    public void addMaterial() throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(getClass().getResource("/view/addMaterial.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 433, 441);
+
+        ListenerAddMaterialUI controller = fxmlLoader.getController();
         Stage stage = new Stage();
         stage.setTitle("Add New Material");
         stage.setScene(scene);
-        stage.show();
+        stage.showAndWait();
 
-        if(!stage.isShowing()){
-            System.out.println("pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        if(controller.isCreadoConExito()){
+            this.showMaterial();
         }
     }
     public void deleteMaterial() throws Exception {
@@ -159,7 +168,7 @@ public class ListenerSalaYMaterial {
         MaterialVo materialVoSelected = this.tableShowMaterial.getSelectionModel().getSelectedItem();
 
         if(materialVoSelected == null){
-            this.errorDeleteAlert("Dar de baja el MATERIAL");
+            this.errorDeleteAlert2("Dar de baja el MATERIAL");
 
         }else {
             if (areYouSureAlert(materialVoSelected.getNombreMaterial())) {
@@ -197,6 +206,14 @@ public class ListenerSalaYMaterial {
         alert2.setTitle("Actividad no seleccionada");
         alert2.setHeaderText(null);
         alert2.setContentText("Por favor seleccione una SALA antes de pulsar " + message);
+        alert2.showAndWait();
+    }
+    private void errorDeleteAlert2(String message){
+
+        Alert alert2 = new Alert(Alert.AlertType.WARNING);
+        alert2.setTitle("Material no seleccionada");
+        alert2.setHeaderText(null);
+        alert2.setContentText("Por favor seleccione un MATERIAL antes de pulsar " + message);
         alert2.showAndWait();
     }
     public void backButtonMethod() throws Exception {

@@ -49,40 +49,10 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="buttonDietas" contentDisplay="TOP" mnemonicParsing="false" prefHeight="93.0" prefWidth="78.0" style="-fx-background-color: #252525;" text="Dietas" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="71.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/food.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutX="153.0" layoutY="235.0" prefHeight="132.0" prefWidth="402.0">
          <children>
-            <Button fx:id="buttonSalario" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Finanzas" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="51.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/euro.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="buttonMaterial" contentDisplay="TOP" mnemonicParsing="false" prefWidth="103.0" style="-fx-background-color: #252525;" text="Material" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -100,21 +70,6 @@
                <padding>
                   <Insets right="5.0" />
                </padding>
-            </Button>
-            <Button fx:id="buttonRutinas" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Rutinas" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="52.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/routine.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
             </Button>
             <Button fx:id="buttonSalasYMaterial" contentDisplay="TOP" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Salas" textFill="WHITE">
                <cursor>

@@ -83,11 +83,6 @@
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonReloadInfo" layoutX="471.0" layoutY="113.0" mnemonicParsing="false" onAction="#reloadInfo" prefHeight="32.0" prefWidth="185.0" style="-fx-background-radius: 10px;" text="Recargar Datos">
-               <font>
-                  <Font name="Consolas Bold" size="15.0" />
-               </font>
-            </Button>
             <TableView fx:id="tableShowMaterial" layoutX="563.0" layoutY="206.0" prefHeight="509.0" prefWidth="487.0">
                <columns>
                   <TableColumn fx:id="idMaterialColumn" minWidth="0.0" prefWidth="75.0" />
@@ -146,12 +141,12 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="buttonAddMaterial" layoutX="720.0" layoutY="113.0" mnemonicParsing="false" onAction="#addMaterial" prefHeight="32.0" prefWidth="72.0" style="-fx-background-radius: 10px;" text="Añadir">
+            <Button fx:id="buttonAddMaterial" layoutX="703.0" layoutY="113.0" mnemonicParsing="false" onAction="#addMaterial" prefHeight="32.0" prefWidth="72.0" style="-fx-background-radius: 10px;" text="Añadir">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="buttonDeleteMaterial" layoutX="807.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10px;" text="Dar de baja">
+            <Button fx:id="buttonDeleteMaterial" layoutX="790.0" layoutY="113.0" mnemonicParsing="false" onAction="#deleteMaterial" prefHeight="32.0" prefWidth="123.0" style="-fx-background-radius: 10px;" text="Dar de baja">
                <font>
                   <Font name="Consolas Bold" size="15.0" />
                </font>

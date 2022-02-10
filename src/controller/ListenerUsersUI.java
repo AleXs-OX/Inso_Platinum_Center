@@ -241,6 +241,10 @@ public class ListenerUsersUI {
         alert2.setContentText("Porfavor seleccione un usuario antes de pulsar " + message);
         alert2.showAndWait();
     }
+    public void changeToEmployee(){
+        this.buttonFilterBy.setVisible(false);
+        this.buttonFilterBy.setDisable(true);
+    }
 }
 
 

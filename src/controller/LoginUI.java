@@ -63,8 +63,20 @@ public class LoginUI {
 					
 					primaryStage.close();
 				}else if(vo.getTipoDeUsuario() == 1 && vo.getNombreUsuario() != null){
-					//TODO
-					System.out.println("Por implementar: empleado");
+
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Employee.fxml"));
+
+					Stage stage = new Stage();
+					stage.setTitle("Platinum Center - Panel de Empleado");
+					stage.setResizable(false);
+					stage.setScene(new Scene(loader.load()));
+
+					ListenerEmployeesUI controller = loader.getController();
+					controller.setUsuario(vo);
+					stage.show();
+
+					primaryStage.close();
+
 				}else if(vo.getTipoDeUsuario() == 0 && vo.getNombreUsuario() != null){
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Client.fxml"));
 					Stage stage = new Stage();

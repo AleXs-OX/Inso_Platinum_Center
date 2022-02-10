@@ -8,7 +8,6 @@ import java.sql.Timestamp;
 public class ListenerRemoveMaterialUI {
 
     MaterialVo material;
-    Timestamp timestamp;
 
 
     public ListenerRemoveMaterialUI(){}

@@ -156,24 +156,31 @@ public class RoomDao extends SQL_Controller_Conexion{
 
         return listaSalas;
     }
-    public void eliminar(RoomVo room) throws Exception{
+
+    public List<RoomVo> listarID() throws Exception{
+        ArrayList<RoomVo> listaSalas = new ArrayList<>();
+
         try {
             this.openConnection();
 
-            PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM SALAS WHERE "
-                    + "idSala=?");
-            st.setInt(1, room.getIdSala());
+            PreparedStatement st = this.getConnection().prepareStatement("SELECT idSala FROM SALAS");
+            ResultSet rs = st.executeQuery();
 
-            st.executeUpdate();
-
+            while(rs.next()) {
+                RoomVo sala = new RoomVo();
+                sala.setIdSala(rs.getInt("idSala"));
+                listaSalas.add(sala);
+            }
         }catch(Exception e) {
-            throw new Exception("Error eliminando actividad: " + e.getMessage());
+            throw new Exception("Error al listar salas: " + e.getMessage());
         }finally {
             try {
                 this.closeConnection();
-            }catch(Exception e) {
-                throw new Exception("Error al cerrar la conexión eliminando actividad: " + e.getMessage());
+            }catch(Exception e){
+                throw new Exception("Error al cerrar la conexion listando salas: " + e.getMessage());
             }
         }
+
+        return listaSalas;
     }
 }

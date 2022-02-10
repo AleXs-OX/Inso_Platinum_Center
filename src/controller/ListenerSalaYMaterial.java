@@ -132,20 +132,6 @@ public class ListenerSalaYMaterial {
         stage.show();
     }
 
-    public void deleteSala() throws Exception {
-
-        if(this.tableShowSalas.getSelectionModel().getSelectedItem() == null){
-            this.errorDeleteAlert("ELIMINAR");
-        }else {
-            RoomVo roomVoSelected = this.tableShowSalas.getSelectionModel().getSelectedItem();
-
-            if (areYouSureAlert(roomVoSelected)) {
-                RoomDao roomDao = new RoomDao();
-                roomDao.eliminar(roomVoSelected);
-                this.showRooms();
-            }
-        }
-    }
     public void showMaterial() throws Exception {
 
         if(this.tableShowSalas.getSelectionModel().getSelectedItem() == null){
@@ -155,8 +141,16 @@ public class ListenerSalaYMaterial {
             this.tableShowMaterial(roomVoSelected.getIdSala());
         }
     }
-    public void addMaterial(){
+    public void addMaterial() throws IOException {
 
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/addMaterial.fxml"));
+
+        Scene scene = new Scene(fxmlLoader.load(), 433, 441);
+        Stage stage = new Stage();
+        stage.setTitle("Add New Material");
+        stage.setScene(scene);
+        stage.show();
     }
     public void deleteMaterial(){
 
@@ -165,9 +159,6 @@ public class ListenerSalaYMaterial {
         this.showRooms();
     }
     public void moreInfo(){
-
-    }
-    public void backButtonMethod(){
 
     }
 
@@ -193,6 +184,21 @@ public class ListenerSalaYMaterial {
         alert2.setHeaderText(null);
         alert2.setContentText("Por favor seleccione una SALA antes de pulsar " + message);
         alert2.showAndWait();
+    }
+    public void backButtonMethod() throws Exception {
+
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
+
+        primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
+
+        Scene scene = new Scene(fxmlLoader.load(), 695, 462);
+        Stage stage = new Stage();
+        stage.setTitle("Administrador");
+        stage.setScene(scene);
+        stage.show();
+
+        primaryStage.close();
     }
 
 }

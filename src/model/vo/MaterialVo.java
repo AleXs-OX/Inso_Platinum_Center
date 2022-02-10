@@ -9,7 +9,15 @@ public class MaterialVo {
 	private Date fechaAlta;
 	private Date fechaBaja;
 	private int idSala;
-	
+
+	public MaterialVo(int idMaterial,String nombreMaterial,Date fechaAlta,Date fechaBaja,int idSala){
+
+		this.idMaterial = idMaterial;
+		this.nombreMaterial = nombreMaterial;
+		this.fechaAlta = fechaAlta;
+		this.fechaBaja = fechaBaja;
+		this.idSala = idSala;
+	}
 	public MaterialVo() {
 		super();
 	}

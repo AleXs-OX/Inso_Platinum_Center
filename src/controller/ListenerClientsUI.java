@@ -52,8 +52,18 @@ public class ListenerClientsUI {
 		
 		this.botonMisDietas.setOnAction(e -> {
 			try {
-				//TODO
-				System.out.println("Botón mis dietas");
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/myDiets.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("Platinum Center - Mis dietas");
+				stage.setResizable(false);
+				stage.setScene(new Scene(loader.load()));
+				
+				ListenerMisDietas controller = loader.getController();
+				controller.setUsuario(usuario);
+				stage.show();
+				
+				primaryStage = (Stage) this.botonMisDietas.getScene().getWindow();
+				primaryStage.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
@@ -61,8 +71,18 @@ public class ListenerClientsUI {
 		
 		this.botonMisActividades.setOnAction(e -> {
 			try {
-				//TODO
-				System.out.println("Botón mis actividades");
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/myActivities.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("Platinum Center - Mis actividades");
+				stage.setResizable(false);
+				stage.setScene(new Scene(loader.load()));
+				
+				ListenerMisActividades controller = loader.getController();
+				controller.setUsuario(usuario);
+				stage.show();
+				
+				primaryStage = (Stage) this.botonMisActividades.getScene().getWindow();
+				primaryStage.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}
@@ -70,8 +90,18 @@ public class ListenerClientsUI {
 		
 		this.botonMisRutinas.setOnAction(e -> {
 			try {
-				//TODO
-				System.out.println("Botón mis rutinas");
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/myRoutines.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("Platinum Center - Mis rutinas");
+				stage.setResizable(false);
+				stage.setScene(new Scene(loader.load()));
+				
+				ListenerMisRutinas controller = loader.getController();
+				controller.setUsuario(usuario);
+				stage.show();
+				
+				primaryStage = (Stage) this.botonMisRutinas.getScene().getWindow();
+				primaryStage.close();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}

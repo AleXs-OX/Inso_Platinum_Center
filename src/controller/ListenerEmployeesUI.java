@@ -63,7 +63,7 @@ public class ListenerEmployeesUI {
         stage.setScene(scene);
 
         ListenerUsersUI controller = fxmlLoader.getController();
-        controller.changeToEmployee();
+        controller.changeToEmployee(this.usuario);
 
         stage.show();
 
@@ -82,6 +82,10 @@ public class ListenerEmployeesUI {
         Stage stage = new Stage();
         stage.setTitle("Show Room & Material");
         stage.setScene(scene);
+
+        ListenerActivityUI controller = fxmlLoader.getController();
+        controller.changeToEmployee(this.usuario);
+
         stage.show();
 
         primaryStage.close();

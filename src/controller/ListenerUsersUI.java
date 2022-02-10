@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.dao.UsersDao;
 import model.vo.UsersVo;
@@ -37,6 +38,8 @@ public class ListenerUsersUI {
     @FXML
     private Button buttonFilterBy;
 
+    boolean isEmployee = false;
+    UsersVo vo;
 
     @FXML
     private TableView<UsersVo> tableShowClients;
@@ -52,6 +55,10 @@ public class ListenerUsersUI {
     private TableColumn<UsersVo, Date> dateColumn;
     @FXML
     private TableColumn<UsersVo, Integer> rateColumn;
+
+
+    @FXML
+    private Text textTablaUsers;
 
     @FXML
     private Stage primaryStage;
@@ -190,18 +197,36 @@ public class ListenerUsersUI {
 
     public void backButtonMethod() throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
+        if(!isEmployee) {
 
-        primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 695, 462);
-        Stage stage = new Stage();
-        stage.setTitle("Administrador");
-        stage.setScene(scene);
-        stage.show();
+            primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
 
-        primaryStage.close();
+            Scene scene = new Scene(fxmlLoader.load(), 695, 462);
+            Stage stage = new Stage();
+            stage.setTitle("Administrador");
+            stage.setScene(scene);
+            stage.show();
+
+            primaryStage.close();
+        }else{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Employee.fxml"));
+
+            primaryStage = (Stage) this.buttonAddUser.getScene().getWindow();
+
+            Stage stage = new Stage();
+            stage.setTitle("Platinum Center - Panel de Empleado");
+            stage.setResizable(false);
+            stage.setScene(new Scene(loader.load()));
+
+            ListenerEmployeesUI controller = loader.getController();
+            controller.setUsuario(vo);
+            stage.show();
+
+            primaryStage.close();
+        }
     }
 
     private void closeWindow() throws Exception {
@@ -241,9 +266,14 @@ public class ListenerUsersUI {
         alert2.setContentText("Porfavor seleccione un usuario antes de pulsar " + message);
         alert2.showAndWait();
     }
-    public void changeToEmployee(){
+    public void changeToEmployee(UsersVo vo){
         this.buttonFilterBy.setVisible(false);
         this.buttonFilterBy.setDisable(true);
+        this.textTablaUsers.setText("Tabla de Clientes");
+
+        this.isEmployee = true;
+        this.vo = vo;
+
     }
 }
 

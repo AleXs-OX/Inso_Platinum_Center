@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.dao.ActivityDao;
 import model.dao.UsersDao;
@@ -47,6 +48,12 @@ public class ListenerActivityUI {
     private Button buttonMoreInfo;
     @FXML
     private Button buttonReloadActivities;
+
+    @FXML
+    private Text textActividades;
+
+    boolean isEmployee = false;
+    UsersVo vo;
 
 
     public void initialize() throws Exception {
@@ -127,18 +134,38 @@ public class ListenerActivityUI {
 
     public void backButtonMethod() throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
+        if(!isEmployee) {
 
-        primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/view/Administrator.fxml"));
 
-        Scene scene = new Scene(fxmlLoader.load(), 695, 462);
-        Stage stage = new Stage();
-        stage.setTitle("Administrador");
-        stage.setScene(scene);
-        stage.show();
+            primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
 
-        primaryStage.close();
+            Scene scene = new Scene(fxmlLoader.load(), 695, 462);
+            Stage stage = new Stage();
+            stage.setTitle("Administrador");
+            stage.setScene(scene);
+            stage.show();
+
+            primaryStage.close();
+
+        }else{
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Employee.fxml"));
+
+            primaryStage = (Stage) this.buttonBackMenu.getScene().getWindow();
+
+            Stage stage = new Stage();
+            stage.setTitle("Platinum Center - Panel de Empleado");
+            stage.setResizable(false);
+            stage.setScene(new Scene(loader.load()));
+
+            ListenerEmployeesUI controller = loader.getController();
+            controller.setUsuario(vo);
+            stage.show();
+
+            primaryStage.close();
+        }
     }
 
 
@@ -164,6 +191,18 @@ public class ListenerActivityUI {
         alert2.setHeaderText(null);
         alert2.setContentText("Por favor seleccione una ACTIVIDAD antes de pulsar " + message);
         alert2.showAndWait();
+    }
+
+    public void changeToEmployee(UsersVo vo){
+        this.textActividades.setText("Actividades a mi cargo");
+        this.buttonAddActivity.setVisible(false);
+        this.buttonAddActivity.setDisable(true);
+
+        this.buttonDeleteActivity.setVisible(false);
+        this.buttonDeleteActivity.setDisable(true);
+        this.isEmployee = true;
+
+        this.vo = vo;
     }
 
 

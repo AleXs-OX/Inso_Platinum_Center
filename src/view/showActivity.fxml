@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="735.0" prefWidth="1078.0" style="-fx-background-color: #b5b0b0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerActivityUI">
    <children>
-      <Text fill="#e05a3d" layoutX="96.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actividades" wrappingWidth="200.0">
+      <Text fx:id="textActividades" fill="#e05a3d" layoutX="94.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actividades" wrappingWidth="509.0">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>
@@ -76,7 +76,7 @@
             <Font name="Consolas Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="buttonBackMenu" layoutX="282.0" layoutY="81.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Salir">
+      <Button fx:id="buttonBackMenu" layoutX="888.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButtonMethod" prefHeight="32.0" prefWidth="66.0" style="-fx-background-radius: 10px;" text="Salir">
          <font>
             <Font name="Consolas Bold" size="15.0" />
          </font>

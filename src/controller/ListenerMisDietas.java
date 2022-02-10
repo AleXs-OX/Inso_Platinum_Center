@@ -68,7 +68,7 @@ public class ListenerMisDietas {
 		try {
 			this.listaDietas = FXCollections.observableArrayList(dao.listar(this.usuario));	
 		}catch(Exception e) {
-			error("Se produjo un error inesperado al lista las dietas: " + e.getMessage());
+			error("Se produjo un error inesperado al listar: " + e.getMessage());
 		}
 	}
 	

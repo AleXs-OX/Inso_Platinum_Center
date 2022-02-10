@@ -1,15 +1,22 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import model.dao.ActivitiesClientsDao;
+import model.vo.ActivityVo;
 import model.vo.UsersVo;
 
 public class ListenerMisActividades {
 	
 	private UsersVo usuario;
+	
+	private ObservableList<ActivityVo> listaActividades;
 	
 	@FXML
 	private Button buscar;
@@ -51,6 +58,34 @@ public class ListenerMisActividades {
 	
 	public void setUsuario(UsersVo usuario) {
 		this.usuario = usuario;
-		//TODO
+		rellenar();
 	}
+	
+	private void rellenar() {
+		ActivitiesClientsDao dao = new ActivitiesClientsDao();
+		
+		try {
+			this.listaActividades = FXCollections.observableArrayList(dao.listar(this.usuario));	
+		}catch(Exception e) {
+			error("Se produjo un error inesperado al listar: " + e.getMessage());
+		}
+	}
+	
+	private void error(String texto){
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/error.fxml"));
+			Stage stage = new Stage();
+			stage.setTitle("Error");
+			stage.setResizable(false);
+			stage.setScene(new Scene(loader.load()));
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.initOwner(primaryStage); 
+			
+			ListenerError controller = loader.getController();
+			controller.setMensaje(texto);
+			stage.showAndWait();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	 }
 }

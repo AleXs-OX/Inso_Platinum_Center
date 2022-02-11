@@ -34,7 +34,21 @@ public class ListenerMisActividades {
 	public void initialize() {
 		this.buscar.setOnAction(e-> {
 			try {
-				//TODO
+				primaryStage = (Stage) this.buscar.getScene().getWindow();
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/buscarActividad.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("Buscar actividad");
+				stage.setResizable(false);
+				stage.setScene(new Scene(loader.load()));
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(primaryStage); 
+				
+				ListenerBuscarActividades controller = loader.getController();
+				controller.setUsuario(usuario);
+				stage.showAndWait();
+				
+				rellenar();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}

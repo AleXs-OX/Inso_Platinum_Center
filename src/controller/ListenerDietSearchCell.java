@@ -66,6 +66,26 @@ private UsersVo usuario;
 					}
 				});
 				
+				nombre.setOnAction(e -> {
+					try {
+						primaryStage = (Stage) this.nombre.getScene().getWindow();
+						
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoDiet.fxml"));
+						Stage stage = new Stage();
+						stage.setTitle(dieta.getNombreDieta());
+						stage.setResizable(false);
+						stage.setScene(new Scene(loader.load()));
+						stage.initModality(Modality.WINDOW_MODAL);
+						stage.initOwner(primaryStage);
+						
+						ListenerVerDieta controller = loader.getController();
+						controller.setDieta(dieta);
+						stage.showAndWait();
+					}catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				});
+				
 				nombre.setText(dieta.getNombreDieta());
 				setText(null);
 				setGraphic(box);
@@ -103,7 +123,7 @@ private UsersVo usuario;
 			dao.anadir(dieta, usuario);
 			primaryStage.close();
 		}catch(Exception ex) {
-			error("Se produjo un error al añadir la rutina al perfil");
+			error("Se produjo un error al añadir la dieta al perfil");
 		}
 	}
 	

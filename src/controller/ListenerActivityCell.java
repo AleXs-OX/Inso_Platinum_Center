@@ -5,10 +5,13 @@ import java.util.Date;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import model.vo.ActivityVo;
 
 public class ListenerActivityCell extends ListCell<ActivityVo> {
@@ -25,6 +28,7 @@ public class ListenerActivityCell extends ListCell<ActivityVo> {
 	@FXML
 	private FXMLLoader loader;
 	
+	private Stage primaryStage;
 	
 	@Override
 	protected void updateItem(ActivityVo actividad, boolean empty) {
@@ -47,6 +51,26 @@ public class ListenerActivityCell extends ListCell<ActivityVo> {
 			if(todayDate.before(actividad.getFecha())) {
 				nombre.setText(actividad.getNombreActividad());
 				fecha.setText(actividad.getFecha().toString());
+				
+				nombre.setOnAction(e -> {
+					try {
+						primaryStage = (Stage) this.nombre.getScene().getWindow();
+
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoActivity.fxml"));
+						Stage stage = new Stage();
+						stage.setTitle(actividad.getNombreActividad());
+						stage.setResizable(false);
+						stage.setScene(new Scene(loader.load()));
+						stage.initModality(Modality.WINDOW_MODAL);
+						stage.initOwner(primaryStage); 
+						
+						ListenerVerActividad controller = loader.getController();
+						controller.setActividad(actividad);
+						stage.showAndWait();
+					}catch(Exception ex) {
+						ex.printStackTrace();
+					}
+				});
 				
 				setText(null);
 				setGraphic(box);

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +12,12 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.dao.RoutinesClientsDao;
-import model.vo.RoutineVo;
+import model.dao.ActivitiesClientsDao;
+import model.vo.ActivityVo;
 import model.vo.UsersVo;
 
-public class ListenerSearchRoutineCell extends ListCell<RoutineVo>{
-	
+public class ListenerActivitySearchCell extends ListCell<ActivityVo>{
+
 	private UsersVo usuario;
 	
 	@FXML
@@ -33,15 +34,15 @@ public class ListenerSearchRoutineCell extends ListCell<RoutineVo>{
 	
 	private Stage primaryStage;
 	
-	public ListenerSearchRoutineCell(UsersVo usuario) {
+	public ListenerActivitySearchCell(UsersVo usuario) {
 		this.usuario = usuario;
 	}
 	
 	@Override
-	protected void updateItem(RoutineVo rutina, boolean empty) {
-		super.updateItem(rutina, empty);
+	protected void updateItem(ActivityVo actividad, boolean empty) {
+		super.updateItem(actividad, empty);
 		
-		if(rutina != null) {
+		if(actividad != null) {
 			if(loader == null) {
 				loader = new FXMLLoader(getClass().getResource("/view/cellSearch.fxml"));
 				loader.setController(this);
@@ -53,34 +54,34 @@ public class ListenerSearchRoutineCell extends ListCell<RoutineVo>{
 				}
 			}
 			
-			if(yaAnadido(rutina)) {
+			if(yaAnadido(actividad)) {
 				setText(null);
 				setGraphic(null);
 			}else {
 				anadir.setOnAction(e -> {
 					try {
 						primaryStage = (Stage) this.anadir.getScene().getWindow();
-						anadir(rutina);
+						anadir(actividad);
 					}catch(Exception ex) {
 						ex.printStackTrace();
 					}
 				});
 				
-				nombre.setText(rutina.getNombreRutina());
+				nombre.setText(actividad.getNombreActividad());
 				nombre.setOnAction(e -> {
 					try {
 						primaryStage = (Stage) this.nombre.getScene().getWindow();
-						
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoRoutine.fxml"));
+
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoActivity.fxml"));
 						Stage stage = new Stage();
-						stage.setTitle(rutina.getNombreRutina());
+						stage.setTitle(actividad.getNombreActividad());
 						stage.setResizable(false);
 						stage.setScene(new Scene(loader.load()));
 						stage.initModality(Modality.WINDOW_MODAL);
 						stage.initOwner(primaryStage); 
 						
-						ListenerVerRutina controller = loader.getController();
-						controller.setRutina(rutina);
+						ListenerVerActividad controller = loader.getController();
+						controller.setActividad(actividad);
 						stage.showAndWait();
 					}catch(Exception ex) {
 						ex.printStackTrace();
@@ -93,37 +94,44 @@ public class ListenerSearchRoutineCell extends ListCell<RoutineVo>{
 		}
 	}
 	
-	private boolean yaAnadido(RoutineVo rutina) {
-		int idRutina = rutina.getIdRutina();
+	private boolean yaAnadido(ActivityVo actividad) {
+		String nombreActividad = actividad.getNombreActividad();
+		Date fecha = actividad.getFecha();
+		Date hoy = new Date();
 		boolean yaAnadido = false;
 		
-		RoutinesClientsDao dao = new RoutinesClientsDao();
-		try {
-			ArrayList<RoutineVo> lista = (ArrayList<RoutineVo>) dao.listar(usuario);
-			
-			for(int i=0; i<lista.size(); i++) {
-				RoutineVo otraRutina = lista.get(i);
-			
-				if(otraRutina.getIdRutina() == idRutina) {
-					yaAnadido = true;
-					break;
+		
+		if(fecha.before(hoy)) {
+			yaAnadido = true;
+		}else {
+			ActivitiesClientsDao dao = new ActivitiesClientsDao();
+			try {
+				ArrayList<ActivityVo> lista = (ArrayList<ActivityVo>) dao.listar(usuario);
+				
+				for(int i=0; i<lista.size(); i++) {
+					ActivityVo otraActividad = lista.get(i);
+					
+					if(fecha.compareTo(otraActividad.getFecha()) == 0 && nombreActividad.compareTo(otraActividad.getNombreActividad()) == 0) {
+						yaAnadido = true;
+						break;
+					}
 				}
+			}catch(Exception ex) {
+				ex.printStackTrace();
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
 		}
 		
 		return yaAnadido;
 	}
 	
-	private void anadir(RoutineVo rutina) {
-		RoutinesClientsDao dao = new RoutinesClientsDao();
+	private void anadir(ActivityVo actividad) {
+		ActivitiesClientsDao dao = new ActivitiesClientsDao();
 		
 		try {
-			dao.anadir(rutina, usuario);
+			dao.anadir(actividad, usuario);
 			primaryStage.close();
 		}catch(Exception ex) {
-			error("Se produjo un error al añadir la rutina al perfil");
+			error("Se produjo un error al añadir la actividad al perfil");
 		}
 	}
 	

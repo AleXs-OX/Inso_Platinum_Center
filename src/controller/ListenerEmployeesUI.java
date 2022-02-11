@@ -47,6 +47,22 @@ public class ListenerEmployeesUI {
                 ex.printStackTrace();
             }
         });
+
+        this.botonMisRutinas.setOnAction(e ->{
+            try {
+               this.showMyRoutinesWindowFXML();
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        this.botonMisDietas.setOnAction(e ->{
+            try {
+                this.showMyDietsWindowFXML();
+            } catch (Exception ex){
+                ex.printStackTrace();
+            }
+        });
     }
 
     public void showAdminProfileFXML() throws IOException{
@@ -91,6 +107,39 @@ public class ListenerEmployeesUI {
         primaryStage.close();
     }
 
+    public void showMyDietsWindowFXML() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/myDiets.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Platinum Center - Mis dietas");
+        stage.setResizable(false);
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        ListenerMisDietas controller = fxmlLoader.getController();
+        controller.setUsuario(usuario);
+
+        stage.show();
+
+        primaryStage = (Stage) this.botonMisDietas.getScene().getWindow();
+        primaryStage.close();
+
+    }
+
+    public void showMyRoutinesWindowFXML() throws IOException {
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/myRoutines.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Platinum Center - Mis rutinas");
+        stage.setResizable(false);
+        stage.setScene(new Scene(fxmlLoader.load()));
+
+        ListenerMisRutinas controller = fxmlLoader.getController();
+        controller.setUsuario(usuario);
+        stage.show();
+
+        primaryStage = (Stage) this.botonMisRutinas.getScene().getWindow();
+        primaryStage.close();
+    }
 
     public void setUsuario(UsersVo usuario) {
         this.usuario = usuario;

@@ -34,7 +34,21 @@ public class ListenerMisRutinas {
 	public void initialize() {
 		this.buscar.setOnAction(e-> {
 			try {
-				//TODO
+				primaryStage = (Stage) this.buscar.getScene().getWindow();
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/buscarRutina.fxml"));
+				Stage stage = new Stage();
+				stage.setTitle("Buscar rutina");
+				stage.setResizable(false);
+				stage.setScene(new Scene(loader.load()));
+				stage.initModality(Modality.WINDOW_MODAL);
+				stage.initOwner(primaryStage); 
+				
+				ListenerBuscarRutinas controller = loader.getController();
+				controller.setUsuario(usuario);
+				stage.showAndWait();
+				
+				rellenar();
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}

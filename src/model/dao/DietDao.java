@@ -93,8 +93,9 @@ public class DietDao extends SQL_Controller_Conexion{
 			this.openConnection();
 			
 			PreparedStatement st = this.getConnection().prepareStatement("SELECT * FROM DIETAS WHERE nombreDieta "
-					+ "LIKE ?");
+					+ "LIKE ? OR descripcion LIKE ?");
 			st.setString(1, criterioBusqueda);
+			st.setString(2, criterioBusqueda);
 			ResultSet rs = st.executeQuery();
 			
 			while(rs.next()) {

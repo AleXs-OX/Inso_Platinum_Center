@@ -10,21 +10,21 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.dao.RoutineDao;
-import model.vo.RoutineVo;
+import model.dao.DietDao;
+import model.vo.DietVo;
 import model.vo.UsersVo;
 
-public class ListenerBuscarRutinas {
-
+public class ListenerBuscarDietas {
+	
 	private UsersVo usuario;
 	
-	private ObservableList<RoutineVo> listaRutinas;
+	private ObservableList<DietVo> listaDietas;
 	
 	@FXML
 	private Button cerrar;
 	
 	@FXML
-	private ListView<RoutineVo> listView;
+	private ListView<DietVo> listView;
 	
 	@FXML
 	private TextField buscar;
@@ -52,12 +52,12 @@ public class ListenerBuscarRutinas {
 	}
 	
 	private void buscar(String termino) {
-		RoutineDao dao = new RoutineDao();
+		DietDao dao = new DietDao();
 		
 		try {
-			this.listaRutinas = FXCollections.observableArrayList(dao.buscar(termino));
-			this.listView.setItems(listaRutinas);
-			this.listView.setCellFactory(searchCell -> new ListenerSearchRoutineCell(usuario));
+			this.listaDietas = FXCollections.observableArrayList(dao.buscar(termino));
+			this.listView.setItems(listaDietas);
+			this.listView.setCellFactory(searchCell -> new ListenerDietSearchCell(usuario));
 		}catch(Exception ex) {
 			error("Se produjo un error inesperado al listar: " + ex.getMessage());
 		}

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
@@ -34,7 +35,18 @@ public class ListenerVerRutina {
 	@FXML
 	private Label nombre;
 	
+	@FXML
+	private Button cerrar;
+	
 	public void initialize() {
+		this.cerrar.setOnAction(e -> {
+			try {
+				primaryStage = (Stage) this.cerrar.getScene().getWindow();
+				primaryStage.close();
+			}catch(Exception ex) {
+				ex.printStackTrace();
+			}
+		});
 	}
 	
 	public void setRutina(RoutineVo rutina) {

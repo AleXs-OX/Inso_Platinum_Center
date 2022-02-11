@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
@@ -66,5 +68,20 @@
          </font>
       </Label>
       <Line endX="691.4000244140625" endY="212.19998168945312" layoutX="-208.0" layoutY="-122.0" startX="336.4000244140625" startY="212.19998168945312" stroke="WHITE" />
+      <Button id="cerrar" fx:id="cerrar" layoutX="291.0" layoutY="394.0" mnemonicParsing="false" style="-fx-background-color: #252525;" text="Cerrar" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/x.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

@@ -11,9 +11,9 @@ import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.vo.ExerciseVo;
+import model.vo.FoodVo;
 
-public class ListenerExerciseCell extends ListCell<ExerciseVo>{
+public class ListenerFoodCell extends ListCell<FoodVo>{
 	@FXML
 	private FXMLLoader loader;
 	
@@ -29,12 +29,12 @@ public class ListenerExerciseCell extends ListCell<ExerciseVo>{
 	private Stage primaryStage;
 	
 	@Override
-	protected void updateItem(ExerciseVo ejercicio, boolean empty) {
-		super.updateItem(ejercicio, empty);
+	protected void updateItem(FoodVo comida, boolean empty) {
+		super.updateItem(comida, empty);
 		
-		if(ejercicio != null) {
+		if(comida != null) {
 			if(loader == null) {
-				loader = new FXMLLoader(getClass().getResource("/view/cellRoutine.fxml"));
+				loader = new FXMLLoader(getClass().getResource("/view/cellDiet.fxml"));
 				loader.setController(this);
 				
 				try {
@@ -45,23 +45,23 @@ public class ListenerExerciseCell extends ListCell<ExerciseVo>{
 			}
 			
 			
-			calorias.setText(ejercicio.getCalorias() + "");
-			nombre.setText(ejercicio.getNombreEjercicio());
+			calorias.setText(comida.getCalorias() + "");
+			nombre.setText(comida.getNombreAlimento());
 			
 			nombre.setOnAction(e -> {
 				try {
 					primaryStage = (Stage) this.nombre.getScene().getWindow();
 					
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoExercise.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/infoFood.fxml"));
 					Stage stage = new Stage();
-					stage.setTitle(ejercicio.getNombreEjercicio());
+					stage.setTitle(comida.getNombreAlimento());
 					stage.setResizable(false);
 					stage.setScene(new Scene(loader.load()));
 					stage.initModality(Modality.WINDOW_MODAL);
 					stage.initOwner(primaryStage); 
 					
-					ListenerVerEjercicio controller = loader.getController();
-					controller.setEjercicio(ejercicio);
+					ListenerVerComida controller = loader.getController();
+					controller.setComida(comida);
 					stage.showAndWait();
 				}catch(Exception ex) {
 					ex.printStackTrace();

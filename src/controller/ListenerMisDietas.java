@@ -57,18 +57,37 @@ public class ListenerMisDietas {
 		
 		this.atras.setOnAction(e-> {
 			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Client.fxml"));
-				Stage stage = new Stage();
-				stage.setTitle("Platinum Center - Home");
-				stage.setResizable(false);
-				stage.setScene(new Scene(loader.load()));
-				
-				ListenerClientsUI controller = loader.getController();
-				controller.setUsuario(usuario);
-				stage.show();
-				
-				primaryStage = (Stage) this.atras.getScene().getWindow();
-				primaryStage.close();
+				if(this.usuario.getTipoDeUsuario() == 0) {
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Client.fxml"));
+					Stage stage = new Stage();
+					stage.setTitle("Platinum Center - Home");
+					stage.setResizable(false);
+					stage.setScene(new Scene(loader.load()));
+
+					ListenerClientsUI controller = loader.getController();
+					controller.setUsuario(usuario);
+					stage.show();
+
+					primaryStage = (Stage) this.atras.getScene().getWindow();
+					primaryStage.close();
+
+				}else{
+
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Employee.fxml"));
+
+					primaryStage = (Stage) this.atras.getScene().getWindow();
+
+					Stage stage = new Stage();
+					stage.setTitle("Platinum Center - Panel de Empleado");
+					stage.setResizable(false);
+					stage.setScene(new Scene(loader.load()));
+
+					ListenerEmployeesUI controller = loader.getController();
+					controller.setUsuario(usuario);
+					stage.show();
+
+					primaryStage.close();
+				}
 			}catch(Exception ex) {
 				ex.printStackTrace();
 			}

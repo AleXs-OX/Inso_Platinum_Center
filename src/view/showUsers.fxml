@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="800.0" style="-fx-background-color: #ebe8e8;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListenerUsersUI">
    <children>
-      <Button fx:id="buttonAddUser" layoutX="16.0" layoutY="82.0" mnemonicParsing="false" onAction="#addClientButton" prefHeight="32.0" prefWidth="66.0" text="Añadir">
+      <Button fx:id="buttonAddUser" layoutX="16.0" layoutY="82.0" mnemonicParsing="false" onAction="#addClientButton" prefHeight="32.0" prefWidth="66.0" text="Add">
          <font>
             <Font name="Consolas Bold" size="14.0" />
          </font>

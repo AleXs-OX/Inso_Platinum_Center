@@ -72,7 +72,7 @@ public class ListenerAddActivityUI {
 
         this.activity_name = this.textFieldNombre.getText();
         this.descripcion = this.textFieldDescripcion.getText();
-        this.fecha = this.timestamp;
+        this.fecha = Timestamp.valueOf(this.textFieldFechaCreacion.getText());
         this.duracion = Time.valueOf(horaFinal);
         this.idEmpleado = Integer.parseInt(textField_ID_Empleado.getText());
         this.idSala = Integer.parseInt(textFieldSala.getText());

@@ -48,21 +48,6 @@ public class ListenerEmployeesUI {
             }
         });
 
-        this.botonMisRutinas.setOnAction(e ->{
-            try {
-               this.showMyRoutinesWindowFXML();
-            } catch(Exception ex) {
-                ex.printStackTrace();
-            }
-        });
-
-        this.botonMisDietas.setOnAction(e ->{
-            try {
-                this.showMyDietsWindowFXML();
-            } catch (Exception ex){
-                ex.printStackTrace();
-            }
-        });
     }
 
     public void showAdminProfileFXML() throws IOException{

@@ -58,7 +58,7 @@
             <TextField id="textFieldUser" fx:id="textFieldIdRutina" prefHeight="25.0" prefWidth="225.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField id="textFieldUser" fx:id="textFieldDuracion" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <TextField id="textFieldUser" fx:id="textFieldDescripcion" prefHeight="78.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de creacion" GridPane.rowIndex="1">
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

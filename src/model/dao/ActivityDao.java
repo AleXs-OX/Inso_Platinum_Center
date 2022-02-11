@@ -41,8 +41,9 @@ public class ActivityDao extends SQL_Controller_Conexion{
     		this.openConnection();
     		
     		PreparedStatement st = this.getConnection().prepareStatement("DELETE FROM ACTIVIDADES WHERE "
-    				+ "nombreActividad=?");
+    				+ "nombreActividad=? AND fecha=?");
     		st.setString(1, actividad.getNombreActividad());
+            st.setTimestamp(2, actividad.getFecha());
     		
     		st.executeUpdate();
     	}catch(Exception e) {
